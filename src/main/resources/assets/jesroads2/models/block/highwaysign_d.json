@@ -1,0 +1,26 @@
+{
+    "parent": "block/block",
+	"elements": [
+        {   "from": [ 0, 2, 7 ],
+            "to": [ 16, 14, 9 ],
+			"rotation": {
+                "origin": [ 8, 8, 8 ],
+                "axis": "y",
+                "angle": 45,
+                "rescale": true
+            },
+            "faces": {
+                "down":  { "texture": "#side"},
+                "up":    { "texture": "#side" },
+                "north": { "texture": "#side" },
+                "south": { "texture": "#front" },
+                "west":  { "texture": "#side" },
+                "east":  { "texture": "#side" }
+            }
+        }
+    ],
+    "textures": {
+		"side": "jesroads2:blocks/signs/side",
+		"particle": "jesroads2:blocks/signs/side"
+    }
+}

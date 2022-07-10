@@ -1,0 +1,16 @@
+{
+    "forge_marker": 1,
+	"variants": {
+		"variant": {
+			"traffic_cone": {
+				"model": "jesroads2:traffic_cone"
+			},
+			"traffic_post": {
+				"model": "jesroads2:traffic_post"
+			},
+			"traffic_cone_l": {
+				"model": "jesroads2:traffic_cone_large"
+			}
+		}
+	}
+}

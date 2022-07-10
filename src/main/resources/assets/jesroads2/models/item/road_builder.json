@@ -1,0 +1,10 @@
+{
+    "parent": "item/handheld",
+	"textures": {
+		"layer0": "jesroads2:items/road_builder"
+	},
+	"overrides":[
+		{ "predicate": { "type": 0 }, "model": "jesroads2:item/road_builder" },
+		{ "predicate": { "type": 1 }, "model": "jesroads2:item/build_hammer" }
+	]
+}

@@ -1,0 +1,54 @@
+{
+    "parent": "block/block",
+	"elements": [
+		{	"from": [3, 0, 3],
+			"to": [13, 1, 13],
+			"faces": {
+                "down":  { "texture": "#bottom", "cullface": "down" },
+                "up":    { "texture": "#side", "uv": [8.0, 8.0, 16.0, 16.0] },
+                "north": { "texture": "#bottom" },
+                "south": { "texture": "#bottom" },
+                "west":  { "texture": "#bottom" },
+                "east":  { "texture": "#bottom" }
+            }
+		},
+		{
+			"from": [4, 1, 4],
+			"to": [12, 5, 12],
+			"faces": {
+                "up":    { "texture": "#side", "uv": [8.0, 8.0, 16.0, 16.0] },
+                "north": { "texture": "#side", "uv": [8.0, 8.0, 16.0, 16.0] },
+                "south": { "texture": "#side", "uv": [8.0, 8.0, 16.0, 16.0] },
+                "west":  { "texture": "#side", "uv": [8.0, 8.0, 16.0, 16.0] },
+                "east":  { "texture": "#side", "uv": [8.0, 8.0, 16.0, 16.0] }
+			}
+		},
+		{
+			"from": [5, 5, 5],
+			"to": [11, 8, 11],
+			"faces": {
+                "up":    { "texture": "#side", "uv": [0.0, 0.0, 8.0, 8.0] },
+                "north": { "texture": "#side", "uv": [0.0, 0.0, 8.0, 8.0] },
+                "south": { "texture": "#side", "uv": [0.0, 0.0, 8.0, 8.0] },
+                "west":  { "texture": "#side", "uv": [0.0, 0.0, 8.0, 8.0] },
+                "east":  { "texture": "#side", "uv": [0.0, 0.0, 8.0, 8.0] }
+			}
+		},
+		{
+			"from": [6, 8, 6],
+			"to": [10, 12, 10],
+			"faces": {
+                "up":    { "texture": "#side", "uv": [8.0, 8.0, 16.0, 16.0] },
+                "north": { "texture": "#side", "uv": [8.0, 8.0, 16.0, 16.0] },
+                "south": { "texture": "#side", "uv": [8.0, 8.0, 16.0, 16.0] },
+                "west":  { "texture": "#side", "uv": [8.0, 8.0, 16.0, 16.0] },
+                "east":  { "texture": "#side", "uv": [8.0, 8.0, 16.0, 16.0] }
+			}
+		}
+	],
+	"textures":{
+		"bottom": "jesroads2:blocks/traffic_item_bottom",
+		"side": "jesroads2:blocks/traffic_item",
+		"particle": "jesroads2:blocks/traffic_item"
+	}
+}

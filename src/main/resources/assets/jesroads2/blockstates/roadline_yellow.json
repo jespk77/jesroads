@@ -1,0 +1,25 @@
+{
+    "forge_marker": 1,
+	"variants": {
+		"direction": {
+			"north": { },
+			"south": { "y": 180 },
+			"east": { "y": 90 },
+			"west": { "y": 270 }
+		},
+		"variant": {
+			"side": { 	"model": "jesroads2:roadline_side",
+						"textures": { 
+							"line": "jesroads2:blocks/roadline_yellow"
+					} 	},
+			"diagonal": { 	"model": "jesroads2:roadline_diagonal",
+						"textures": { 
+							"line": "jesroads2:blocks/roadline_yellow"
+					} 	},
+			"middle": { 	"model": "jesroads2:roadline_middle",
+						"textures": { 
+							"line": "jesroads2:blocks/roadline_yellow"
+					} 	}
+		}
+    }
+}

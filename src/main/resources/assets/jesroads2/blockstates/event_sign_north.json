@@ -1,0 +1,44 @@
+{
+    "forge_marker": 1,
+	"defaults": {
+		"model": "jesroads2:dynamic_sign"
+	},
+	"variants": {
+		"event":{
+			"none": { "textures": {
+					"front": "jesroads2:blocks/esigns/event_none"
+				}
+			}, "roadworkswarning": { "textures": {
+					"front": "jesroads2:blocks/esigns/event_roadworks_ahead"
+				}
+			}, "roadworks": { "textures": {
+					"front": "jesroads2:blocks/esigns/event_roadworks"
+				}
+			}, "accidentwarning": { "textures": {
+					"front": "jesroads2:blocks/esigns/event_accident_ahead"
+				}
+			}, "accident": { "textures": {
+					"front": "jesroads2:blocks/esigns/event_accident"
+				}
+			}, "leftmergewarning": { "textures": {
+					"front": "jesroads2:blocks/esigns/event_leftmerge_ahead"
+				}
+			}, "leftmerge": { "textures": {
+					"front": "jesroads2:blocks/esigns/event_leftmerge"
+				}
+			}, "rightmergewarning": { "textures": {
+					"front": "jesroads2:blocks/esigns/event_rightmerge_ahead"
+				}
+			}, "rightmerge": { "textures": {
+					"front": "jesroads2:blocks/esigns/event_rightmerge"
+				}
+			}, "closedwarning": { "textures": {
+					"front": "jesroads2:blocks/esigns/event_closed_ahead"
+				}
+			}, "closed": { "textures": {
+					"front": "jesroads2:blocks/esigns/event_closed"
+				}
+			}
+		}
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "forge_marker": 1,
+	"defaults":{
+		"model": "jesroads2:freeway_distance"
+	},
+	"variants":{
+		"direction": {
+			"north": { },
+			"south": { "y": 180 },
+			"east": { "y": 90 },
+			"west": { "y": 270 }
+		},
+		"up": {
+			"true": {  },
+			"false": {  }
+		},
+		"down": {
+			"true": {  },
+			"false": {  }
+		},
+		"blackout": {
+			"true": { "textures": { "front": "jesroads2:blocks/signs/blackout" } },
+			"false": {  }
+		}, 
+		"data": {
+			"true": {},
+			"false": {}
+		}
+	}
+}

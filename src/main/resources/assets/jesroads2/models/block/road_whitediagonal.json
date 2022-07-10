@@ -1,0 +1,36 @@
+{
+	"parent": "block/block",
+	"elements": [
+		{	"from": [ 0, 0, 0 ],
+			"to": [ 16, 16, 16 ],
+			"faces": {
+				"up": 	{ "texture": "#top" },
+				"down": { "texture": "#bottom", "cullface": "down" },
+				"south": { "texture": "#side", "cullface": "south" },
+				"west": { "texture": "#side", "cullface": "west" },
+				"north": { "texture": "#side", "cullface": "north" },
+				"east": { "texture": "#side", "cullface": "east" }
+			}
+		},
+		{   "from": [ -3.5, 16, 7.35 ],
+            "to": [ 19.5, 16.1, 8.65 ],
+			"rotation": {
+                "origin": [ 8, 8, 8 ],
+                "axis": "y",
+                "angle": 45,
+                "rescale": false
+            },
+            "faces": {
+                "up":    { "texture": "#line", "uv": [ 0.0, 14.0, 16.0, 16.0 ] },
+                "north": { "texture": "#line" },
+                "south": { "texture": "#line" },
+                "west":  { "texture": "#line" },
+                "east":  { "texture": "#line" }
+            }
+        }
+	],
+	"textures": {
+		"bottom": "jesroads2:blocks/concrete",
+		"particle": "jesroads2:blocks/road/paved_aged"
+	}
+}

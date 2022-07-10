@@ -1,0 +1,16 @@
+{
+    "forge_marker": 1,
+	"defaults": {
+		"model": "jesroads2:floodlight_controller"
+	},
+	"variants": {
+		"direction": {
+			"north": { "y": 180 },
+			"south": {  },
+			"east": { "y": 270 },
+			"west": { "y": 90 },
+			"up": { "x": -90 },
+			"down": { "x": 90 }
+		}
+    }
+}

@@ -1,0 +1,78 @@
+{
+    "parent": "block/block",
+	"elements": [
+        {   "from": [ 0, 0, 8 ],
+            "to": [ 16, 16, 14 ],
+            "faces": {
+                "down":  { "texture": "#side", "cullface": "down" },
+                "up":    { "texture": "#side", "cullface": "up" },
+                "north": { "texture": "#side" },
+                "south": { "texture": "#front" },
+                "west":  { "texture": "#side", "cullface": "west" },
+                "east":  { "texture": "#side", "cullface": "east" }
+            }
+        },
+		{   "from": [ 0, 0, 14 ],
+            "to": [ 16, 1, 15 ],
+            "faces": {
+                "down":  { "texture": "#side", "cullface": "down" },
+                "up":    { "texture": "#side" },
+                "south": { "texture": "#side_front" },
+                "west":  { "texture": "#side" },
+                "east":  { "texture": "#side" }
+            }
+        },
+		{   "from": [ 0, 15, 14 ],
+            "to": [ 16, 16, 15 ],
+            "faces": {
+                "down":  { "texture": "#side" },
+                "up":    { "texture": "#side", "cullface": "up" },
+                "south": { "texture": "#side_front" },
+                "west":  { "texture": "#side" },
+                "east":  { "texture": "#side" }
+            }
+        },
+		{   "from": [ 0, 1, 14 ],
+            "to": [ 1, 15, 15 ],
+            "faces": {
+                "south": { "texture": "#side_front" },
+                "west":  { "texture": "#side", "cullface": "west" },
+                "east":  { "texture": "#side" }
+            }
+        },
+		{   "from": [ 15, 1, 14 ],
+            "to": [ 16, 15, 15 ],
+            "faces": {
+                "south": { "texture": "#side_front" },
+                "west":  { "texture": "#side" },
+                "east":  { "texture": "#side", "cullface": "east" }
+            }
+        },
+		{   "from": [ 0, 2, 6 ],
+            "to": [ 16, 6, 8 ],
+            "faces": {
+                "down":  { "texture": "#support" },
+                "up":    { "texture": "#support" },
+                "north": { "texture": "#support" },
+                "west":  { "texture": "#support" },
+                "east":  { "texture": "#support" }
+            }
+        },
+		{   "from": [ 0, 10, 6 ],
+            "to": [ 16, 14, 8 ],
+            "faces": {
+                "down":  { "texture": "#support" },
+                "up":    { "texture": "#support" },
+                "north": { "texture": "#support" },
+                "west":  { "texture": "#support" },
+                "east":  { "texture": "#support" }
+            }
+        }
+    ],
+    "textures": {
+		"support": "jesroads2:blocks/sign_support",
+		"side_front": "jesroads2:blocks/esigns/sign_outside",
+		"side": "jesroads2:blocks/esigns/side",
+		"particle": "jesroads2:blocks/esigns/side"
+    }
+}

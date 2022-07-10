@@ -1,0 +1,28 @@
+{
+    "forge_marker": 1,
+	"defaults": {
+		"model": "jesroads2:trafficlight"
+	},
+	"variants": {
+		"direction": {
+			"north": { },
+			"south": { "y": 180 },
+			"east": { "y": 90 },
+			"west": { "y": 270 }
+		},
+		"state": {
+			"off": { "textures": { "front": "jesroads2:blocks/trafficlights/right_off" } },
+			"green": { "textures": { "front": "jesroads2:blocks/trafficlights/right_green" } },
+			"red": { "textures": { "front": "jesroads2:blocks/trafficlights/right_red" } },
+			"yellow": { "textures": { "front": "jesroads2:blocks/trafficlights/right_yellow" } }
+		},
+		"left": {
+			"true": { "submodel": "jesroads2:trafficlight_post_west_light" },
+			"false": { }
+		},
+		"right": {
+			"true": { "submodel": "jesroads2:trafficlight_post_east_light" },
+			"false": { }
+		}
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "parent": "jesroads2:item/sign_detour",
+	"textures": {
+		"front": "jesroads2:blocks/signs/detour_up"
+	}
+}

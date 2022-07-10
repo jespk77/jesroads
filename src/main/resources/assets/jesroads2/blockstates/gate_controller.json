@@ -1,0 +1,16 @@
+{
+    "forge_marker": 1,
+	"variants": {
+		"direction": {
+			"north": { },
+			"south": { "y": 180 },
+			"east": { "y": 90 },
+			"west": { "y": 270 }
+		},
+		"part": {
+			"bottom": { "model": "jesroads2:gate_controller_bottom" },
+			"top": { "model": "jesroads2:gate_controller_top" },
+			"light": { "model": "jesroads2:gate_controller_bottom" }
+		}
+    }
+}

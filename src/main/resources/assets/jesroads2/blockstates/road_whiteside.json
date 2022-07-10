@@ -1,0 +1,41 @@
+{
+    "forge_marker": 1,
+	"defaults": {
+		"model": "jesroads2:road_whiteside"
+	},
+	"variants": {
+		"direction": {
+			"north": {  },
+			"south": { "y": 180 },
+			"east": { "y": 90 },
+			"west": { "y": 270 }
+		},
+		"road_aging": {
+			"true": { 
+				"textures": { 
+					"line": "jesroads2:blocks/road/line_white_new",
+					"side": "jesroads2:blocks/road/paved_new",
+					"top": "jesroads2:blocks/road/paved_new"
+				} },
+			"false": { 
+				"textures": { 
+					"line": "jesroads2:blocks/road/line_white_aged",
+					"side": "jesroads2:blocks/road/paved_aged",
+					"top": "jesroads2:blocks/road/paved_aged"
+				} }
+		}, "foundation": {
+			"true": {
+				
+			}, "false": {
+				"textures": { 
+					"side": "jesroads2:blocks/road/paved_invalid",
+					"top": "jesroads2:blocks/road/paved_invalid"
+				}
+			}
+		},
+		"check": {
+			"true": {},
+			"false": {}
+		}
+    }
+}

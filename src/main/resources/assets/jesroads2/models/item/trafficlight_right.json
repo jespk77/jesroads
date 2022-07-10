@@ -1,0 +1,13 @@
+{
+    "parent": "jesroads2:block/trafficlight",
+	"textures": {
+		"front": "jesroads2:blocks/trafficlights/right_all"
+	},
+	"display": {
+		"firstperson_righthand": {
+            "rotation": [ 0, 135, 0 ],
+            "translation": [ 0, 2, 0 ],
+            "scale": [ 0.40, 0.40, 0.40 ]
+        }
+	}
+}

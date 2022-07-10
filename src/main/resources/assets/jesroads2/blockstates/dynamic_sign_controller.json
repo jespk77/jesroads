@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "normal": { "model": "jesroads2:dynamic_controller" }
+    }
+}

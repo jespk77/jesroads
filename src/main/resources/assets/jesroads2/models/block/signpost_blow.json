@@ -1,0 +1,18 @@
+{
+	"parent": "jesroads2:block/road",
+	"elements": [
+        {   "from": [ 7, 0, 5 ],
+            "to": [ 9, 2, 7 ],
+            "faces": {
+                "north": { "texture": "#tex" },
+                "south": { "texture": "#tex" },
+                "west":  { "texture": "#tex" },
+                "east":  { "texture": "#tex" }
+            }
+        }
+    ],
+	"textures": {
+		"tex": "jesroads2:blocks/signs/side",
+		"particle": "jesroads2:blocks/signs/side"
+	}
+}

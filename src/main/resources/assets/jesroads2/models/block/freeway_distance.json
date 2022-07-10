@@ -1,0 +1,32 @@
+{
+    "parent": "block/block",
+	"elements": [
+        {   "from": [ 0, 6, 7 ],
+            "to": [ 16, 16, 9 ],
+            "faces": {
+                "down":  { "texture": "#side"},
+                "up":    { "texture": "#side" },
+                "north": { "texture": "#side" },
+                "south": { "texture": "#front" },
+                "west":  { "texture": "#side" },
+                "east":  { "texture": "#side" }
+            }
+        },
+		{   "from": [ 7, 0, 7 ],
+            "to": [ 9, 6, 9 ],
+            "faces": {
+                "down":  { "texture": "#side", "cullface": "down" },
+                "up":    { "texture": "#side", "cullface": "up" },
+                "north": { "texture": "#side" },
+				"south": { "texture": "#side" },
+                "west":  { "texture": "#side" },
+                "east":  { "texture": "#side" }
+            }
+        }
+    ],
+    "textures": {
+		"front": "jesroads2:blocks/signs/freeway_distance",
+		"side": "jesroads2:blocks/signs/side",
+		"particle": "jesroads2:blocks/signs/side"
+    }
+}

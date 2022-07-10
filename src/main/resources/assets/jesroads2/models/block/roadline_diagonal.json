@@ -1,0 +1,24 @@
+{
+    "parent": "block/block",
+	"elements": [
+        {   "from": [ 0, 0, 7 ],
+            "to": [ 16, 0.2, 9 ],
+			"rotation": {
+                "origin": [ 8, 8, 8 ],
+                "axis": "y",
+                "angle": 45,
+                "rescale": false
+            },
+            "faces": {
+                "up":    { "texture": "#line" },
+                "north": { "texture": "#line" },
+                "south": { "texture": "#line" },
+                "west":  { "texture": "#line" },
+                "east":  { "texture": "#line" }
+            }
+        }
+    ],
+    "textures": {
+		"particle": "jesroads2:blocks/roadline_white"
+    }
+}

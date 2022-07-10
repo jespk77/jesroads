@@ -1,0 +1,20 @@
+{
+    "parent": "block/block",
+	"elements": [
+		{	"from": [3, 0, 0],
+			"to": [13, 16, 15],
+			"faces": {
+                "down":  { "texture": "#main", "cullface": "down" },
+                "up":    { "texture": "#main", "cullface": "up" },
+                "north": { "texture": "#main", "cullface": "north" },
+                "south": { "texture": "#main", "cullface": "south" },
+                "west":  { "texture": "#main" },
+                "east":  { "texture": "#main" }
+            }
+		}
+	],
+    "textures": {
+        "main": "jesroads2:blocks/trafficlights/traffic_controller",
+		"particle": "jesroads2:blocks/trafficlights/traffic_controller"
+    }
+}

@@ -1,0 +1,48 @@
+{
+    "forge_marker": 1,
+	"defaults":{
+		"model": "jesroads2:sign_support"
+	},
+	"variants": {
+		"post": {
+			"true": { "submodel": "jesroads2:sign_support_post" },
+			"false": {  }
+		},
+		"north": {
+			"true": { "submodel": "jesroads2:sign_support_side" },
+			"false": {  }
+		},
+		"north_west": {
+			"true": { "submodel": "jesroads2:sign_support_side_d", "y": 90 },
+			"false": {  }
+		},
+		"north_east": {
+			"true": { "submodel": "jesroads2:sign_support_side_d", "y": 180 },
+			"false": {  }
+		},
+		"south": {
+			"true": { "submodel": "jesroads2:sign_support_side", "y": 180 },
+			"false": {  }
+		},
+		"south_west": {
+			"true": { "submodel": "jesroads2:sign_support_side_d" },
+			"false": {  }
+		},
+		"south_east": {
+			"true": { "submodel": "jesroads2:sign_support_side_d", "y": 270 },
+			"false": {  }
+		},
+		"east": {
+			"true": { "submodel": "jesroads2:sign_support_side", "y": 90 },
+			"false": {  }
+		},
+		"west": {
+			"true": { "submodel": "jesroads2:sign_support_side", "y": 270 },
+			"false": {  }
+		},
+		"snowy": {
+			"true": { "submodel": "snow_height2" },
+			"false": {   }
+		}
+	}
+}

@@ -1,0 +1,11 @@
+{
+	"parent": "item/generated",
+    "textures": {
+        "layer0": "jesroads2:items/remote_control_none"
+    },
+	"overrides":[
+		{ "predicate": { "status": 0 }, "model": "jesroads2:item/remote_control" },
+		{ "predicate": { "status": 1 }, "model": "jesroads2:item/remote_control_off" },
+		{ "predicate": { "status": 2 }, "model": "jesroads2:item/remote_control_on" }
+	]
+}

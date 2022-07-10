@@ -1,0 +1,60 @@
+{
+    "parent": "block/block",
+	"textures":{
+		"texture": "jesroads2:blocks/concrete"
+	},
+	"elements":[
+		{
+			"from": [1, 0, 0],
+			"to": [15, 3, 16],
+			"faces": {
+				"down":  { "texture": "#texture", "cullface": "down" },
+				"north": { "texture": "#texture", "cullface": "north" },
+                "south": { "texture": "#texture", "cullface": "south" },
+                "west":  { "texture": "#texture" },
+                "east":  { "texture": "#texture" }
+			}
+		},
+		{
+			"from": [4, 2, 0],
+			"to": [7, 7.5, 16],
+			"rotation": {
+                "origin": [ 5, 5, 4 ],
+                "axis": "z",
+                "angle": -45,
+                "rescale": true
+            },
+			"faces": {
+                "south": { "texture": "#texture", "cullface": "south" },
+				"north": { "texture": "#texture", "cullface": "north" },
+                "west":  { "texture": "#texture" }
+			}
+		},
+		{
+			"from": [9, 2, 0],
+			"to": [12, 7.5, 16],
+			"rotation": {
+                "origin": [ 11, 5, 4 ],
+                "axis": "z",
+                "angle": 45,
+                "rescale": true
+            },
+			"faces": {
+                "south": { "texture": "#texture", "cullface": "south" },
+				"north": { "texture": "#texture", "cullface": "north" },
+                "east":  { "texture": "#texture" }
+			}
+		},
+		{
+			"from": [6.5, 3, 0],
+			"to": [9.5, 16, 16],
+			"faces": {
+                "up":    { "texture": "#texture" },
+                "south": { "texture": "#texture", "cullface": "south" },
+				"north": { "texture": "#texture", "cullface": "north" },
+                "west":  { "texture": "#texture" },
+                "east":  { "texture": "#texture" }
+			}
+		}
+	]
+}

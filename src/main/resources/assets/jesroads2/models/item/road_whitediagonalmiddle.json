@@ -1,0 +1,15 @@
+{
+    "parent": "jesroads2:block/road_whitediagonalmiddle",
+	"display": {
+        "thirdperson": {
+            "rotation": [ 10, -45, 170 ],
+            "translation": [ 0, 1.5, -2.75 ],
+            "scale": [ 0.375, 0.375, 0.375 ]
+        }
+    },
+	"textures": { 
+		"line": "jesroads2:blocks/road/line_white_new",
+		"side": "jesroads2:blocks/road/paved_new",
+		"top": "jesroads2:blocks/road/paved_new"
+	}
+}

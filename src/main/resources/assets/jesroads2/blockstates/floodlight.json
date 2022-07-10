@@ -1,0 +1,16 @@
+{
+    "forge_marker": 1,
+	"defaults": { "model": "jesroads2:floodlight" },
+	"variants": {
+		"type": {
+			"zero": { "textures": { "side": "jesroads2:blocks/floodlight_side", "top": "jesroads2:blocks/floodlight_up" } },
+			"one": {},
+			"two": {},
+			"three": {}
+		},
+		"enabled": {
+			"true": { "textures": { "bottom": "jesroads2:blocks/floodlight_on" } },
+			"false": { "textures": { "bottom": "jesroads2:blocks/floodlight_off" } }
+		}
+    }
+}

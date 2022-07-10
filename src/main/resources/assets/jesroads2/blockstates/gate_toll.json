@@ -1,0 +1,27 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"textures": { "particle": "jesroads2:blocks/barrier_gate/toll_side" }
+	},
+	"variants": {
+		"orientation": {
+			"north": { },
+			"south": { "y": 180 },
+			"east": { "y": 90 },
+			"west": { "y": 270 }
+		},
+		"part": {
+			"bottom": { "model": "jesroads2:gate_bottom", "textures": { "base": "jesroads2:blocks/barrier_gate/toll_side" } },
+			"top": { "model": "jesroads2:gate_top", "textures": { "base": "jesroads2:blocks/barrier_gate/toll_side" } },
+			"light": { "model": "jesroads2:gate_light" }
+		},
+		"open": {
+			"true": { "textures": { "front": "jesroads2:blocks/barrier_gate/light_open" } },
+			"false": { "textures": { "front": "jesroads2:blocks/barrier_gate/light_closed" } }
+		},
+		"post": {
+			"true": { "submodel": "jesroads2:gate_post" },
+			"false": { }
+		}
+    }
+}

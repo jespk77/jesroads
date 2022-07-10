@@ -1,0 +1,15 @@
+{
+    "forge_marker": 1,
+	"variants": {
+		"direction": {
+			"north": {  },
+			"south": { "y": 180 },
+			"east": { "y": 90 },
+			"west": { "y": 270 }
+		},
+		"size":{
+			"large": { "model": "jesroads2:signpost_large" },
+			"small": { "model": "jesroads2:signpost" }
+		}
+	}
+}

@@ -1,0 +1,15 @@
+{
+    "forge_marker": 1,
+	"defaults": {
+		"model": "jesroads2:roadlight_centered",
+		"textures": { "top": "jesroads2:blocks/lights/roadlight_white" }
+	},
+	"variants": {
+		"direction": {
+			"south": { },
+			"west": { "y": 90 },
+			"north": { "y": 180 },
+			"east": { "y": 270 }
+		}
+    }
+}

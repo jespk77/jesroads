@@ -1,0 +1,25 @@
+{
+    "forge_marker": 1,
+	"variants": {
+		"direction": {
+			"north": { "y": 270 },
+			"south": { "y": 90 },
+			"east": {  },
+			"west": { "y": 180 }
+		},
+		"part": {
+			"post": { 
+				"model": "jesroads2:streetlight_post"
+			},
+			"post_split": {
+				"model": "jesroads2:streetlight_split"
+			},
+			"post_single": {
+				"model": "jesroads2:streetlight_single"
+			},
+			"post_lamp": {
+				"model": "jesroads2:streetlight_light"
+			}
+		}
+    }
+}

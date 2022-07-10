@@ -1,0 +1,45 @@
+{
+    "textures":{
+		"texture": "jesroads2:blocks/roadfence",
+		"particle": "jesroads2:blocks/roadfence"
+	},
+	"elements":[
+		{
+			"from": [6, 0, 6],
+			"to": [10, 1, 10],
+			"faces":{
+				"down":  { "texture": "#texture", "cullface": "down" },
+                "up":    { "texture": "#texture" },
+                "north": { "texture": "#texture" },
+                "south": { "texture": "#texture" },
+                "west":  { "texture": "#texture" },
+                "east":  { "texture": "#texture" }
+			},
+			"__comment": "post_foot"
+		},
+		{
+			"from": [7, 1, 7],
+			"to": [9, 12, 9],
+			"faces":{
+                "north": { "texture": "#texture" },
+                "south": { "texture": "#texture" },
+                "west":  { "texture": "#texture" },
+                "east":  { "texture": "#texture" }
+			},
+			"__comment": "post_bar"
+		},
+		{
+			"from": [6, 12, 6],
+			"to": [10, 13.9, 10],
+			"faces":{
+				"down":  { "texture": "#texture" },
+                "up":    { "texture": "#texture" },
+                "north": { "texture": "#texture" },
+                "south": { "texture": "#texture" },
+                "west":  { "texture": "#texture" },
+                "east":  { "texture": "#texture" }
+			},
+			"__comment": "post_bar_holder"
+		}
+	]
+}

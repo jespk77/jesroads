@@ -1,0 +1,264 @@
+TO DO
+- Features
+ * Add cars [on hold]
+ * Add entering and leaving "state" signs [on hold]
+ * Add ground blocks that convert to dirt after some time [ON HOLD]
+
+- Fixes
+ * Traffic light bindings don't save
+
+RELEASES
+=== REVIVAL UPDATE ===
+== 2.6 ==
+- Everything from the 2.5 update
+- Textures have been reworked
+- Player reach can now be toggled and is no longer dependent on inventory items
+- Fixes and improvements
+
+=== DETAILS UPDATE ===
+== 2.5 - No finished release ==
+- Gate controllers now have a GUI and can be given a name
+- Binder can now visualize the controller it is bound to
+- Traffic lights and freeway signs have support for Optifine emissive textures
+- Added dynamic event signs
+
+=== ANNIVERSARY UPDATE ===
+== 2.4 - Jul 24, 2017 ==
+- Added street lights
+- Added freeway distance signs
+- Added road closed sign
+- Info overlay toggles multiple levels of info
+- Items are sorted over several tabs
+- Can now blackout individual lines on signs
+- More fixes and improvements
+
+== 2.4.1 - Aug 1, 2017 ==
+- Fixes and Improvements (cfg change)
+- Memory blocks can have up to two dates
+- Road blocks now have both real and game date 
+- Added gui screen for all mod options and they can be changed without game restart
+- Added keywords for specific road sign text colors
+- Right click on a field in a gui will clear the field
+
+== 2.4.2 - Oct 15, 2017 ==
+- Fixes and improvements
+- Road builder added multi block placement/replacement mode
+- Memory blocks also store world time when placed
+- Can change/add road sign text keywords in the options
+- Biome colors change depending on real world calendar
+
+== 2.4.3 - Dec 30, 2017 ==
+- Added floodlights with controller
+- Added extenders
+- Alt + click with road builder in air to do small teleport
+- Reach distance increased while holding road builder
+- Alt + scroll changes hotbar slot used by road builder block
+
+== 2.4.4 - Jan 7, 2018 ==
+- Fixes and improvements
+- Added colored lights (controllable with floodlight controller)
+
+=== GATE UPDATE ===
+== 2.3 - Jan 10, 2017 ==
+- Readded barrier gates
+- Added barrier controllers
+- Added tickets and ticket machines
+- Reusable tickets by using a diamond on a controller
+- Added builder modes to road builder
+
+== 2.3.1 - Jan 13, 2017 ==
+- Clock is now displayed correctly and hides on display of memory blocks
+- Player speed displayed under clock
+- Remove trees/large mushrooms in one click using the road builder
+- Road builder terrain leveler now also ignores leaves
+
+== 2.3.2 - Jan 15, 2017 ==
+- Fixed memory blocks (again)
+- Fixed the clock (again)
+- Manual TileEntity set when using pick block with NBT for all blocks with tile entities
+- Adjusted shadows on diagonal blocks
+- Removed road speed boost to keep sprinting
+
+== 2.3.3 - Jan 21, 2017 ==
+- Fixed some bugs
+- Added uptime counter to the clock
+- Slopes force sprinting and give small speed boost
+- Road builder: break block with CTRL to level terrain
+- Road builder: sneak while holding to speed up growth
+
+== 2.3.4 - Feb 19, 2017 ==
+- Fixed some bugs
+- Many small improvements
+- Added roadlights
+- Road builder: undo last action with N
+- Dynamic sign controllers can now scan for signs
+- Traffic controller: use lever to switch single light mode
+
+== 2.3.5 - Mar 9, 2017 ==
+- Redone getting direction from placement angle
+- Road builder: added highlight of left click action
+- Road builder: switch between modes with hotkey C
+- Memory blocks give beacon beam when holding road builder
+
+== 2.3.6 - Apr 8, 2017 ==
+- Multiple fixes and improvements
+- Traffic light Controller logic redone
+- Added new large traffic cone
+- Updated configuration file and added comments
+- Road Builder can undo more than one action
+- Sneak use with empty hand on supports to autocreate support
+- Road Builder stops placing roads when back neighbor block is no longer a road block
+
+== 2.3.7 - Apr 15, 2017 ==
+- Fixes and improvements
+- Info overlay displays both real and in-game time
+- Info overlay counts walked distance (reset with K)
+- Info overlay will only display speed when walking on roads and is colored depending on speed
+- Road Builder toggle filling terrain with relative or fixed block (toggle with R)
+- Traffic Controllers can be set to automatically turn off at night
+
+== 2.3.8 - May 6, 2017 ==
+- Fixes and improvements
+- Road Builder remote placement in the looking direction
+- Pressing G can change the held item by an alternative one (from regular to slopes)
+- Reworked all road textures
+- Only manually placed road blocks will have new looking texture (and remain for a number of days)
+- Can only break road blocks while holding another road block or road builder
+- Slightly changed trafficlight model
+
+== 2.3.9 - Jun 11, 2017 ==
+- Fixes and improvements
+- Reformatted time display and added world days
+- Added hotkeys to increment/decrement terrain data for road builder
+- Road builder now makes middle lines line up diagonally
+- Updated dynamic sign textures and model
+- Traffic warnings are now split based on source controller
+- Prevented certain blocks from dropping items
+
+== 2.3.10 - Jul 13, 2017 ==
+- Fixes and improvements
+- Updated for Minecraft 1.12
+- Added remote control for controllers
+- Added freeway entrance sign
+- Visible marking when a road doesn't have a proper base (use with empty hand to set)
+- Temporary lanes now working properly
+- Traffic Light Controller now have a test mode
+
+=== LIGHT UPDATE ===
+== 2.2 - Dec 11, 2016 ==
+- Added traffic lights with controller
+- Added line painter for temporary line changes
+- Added concrete divider
+- Updated for 1.11
+- Updated some models and improved rendering of some blocks
+- General fixes and changes
+
+== 2.2.1 - Dec 11, 2016 ==
+- Fixed colliding traffic lights staying green
+- Fixed traffic light models
+
+== 2.2.2 - Dec 12, 2016 ==
+- Fixed (lame) crash with dynamic sign controllers
+- Use sign on support or support on sign to switch between them
+- Dynamic sign controllers now remember when slow was toggled
+- Dynamic sign end event gets properly saved
+- Updated some block bounds
+- Added more detailed block models
+- Fixed roads not giving speed boost
+- Use diamond block to keep new texture
+
+== 2.2.3 - Dec 20, 2016 ==
+- Placing new road blocks look newer again
+- All editable signs support text color and size changes
+- Highway signs can be placed underneath a solid block
+- Hide overlay when in a GUI
+- Road builder can now shape terrain and has an updated texture
+- All full blocks no longer pass light
+
+== 2.2.4 - Dec 21, 2016 ==
+- Editable signs can be blacked out again
+- Edit signs by alt clicking
+- Road builders stops leveling terrain after it finds a concrete block
+- Use a road slope on a slope of the same type to rotate it
+- Slopes only rotate when placed next to a solid block instead of not air
+
+== 2.2.5 - Dec 27, 2016 ==
+- Road builder toggles terrain leveling when it finds a concrete block
+- Road builder gui pressing tab follows the right order
+
+== 2.2.6 - Jan 6, 2016 ==
+- Updated to 1.11.2
+- Display current time on screen with default hotkey Y
+- Use command "/sleep" to sleep through the night
+- Road builder sets base based on placement requirements
+- Road builder sets concrete block if it is a bridge
+
+
+=== FREEWAY UPDATE ===
+== 2.1 - Sept 14, 2016 ==
+- Dynamic signs added with a controller
+- Barrier gates added
+- Fixed diagonal roadfences 
+- General Improvements
+
+== 2.1.1 - Sept 24, 2016 ==
+- Fixed incorrect road base block placing
+- Traffic Binder: CTRL displays distance
+- Traffic Binder: ALT remotely unbind
+- Road Fence data changed, some blocks are affected
+
+== 2.1.2 - Sept 24, 2016 ==
+- Minor fixes from 2.1.1, some road fences still have to be replaced
+- Added more and fixed some bounding boxes
+
+== (2.1.3 - Oct 17, 2016) ==
+- Road Builder no longer resets placed date
+- Fixed some bugs and crashes
+- Added end option to dynamic sings
+- Road Builder now has an options overlay when it is selected
+
+== 2.1.4_conv - Oct 31, 2016 ==
+- Preparations for removing tileentities from roads (older worlds)
+- Added memory blocks to manually store dates
+
+== 2.1.5 - Oct 31, 2016 == 
+- Removed tileentities from roads
+- Roads get older texture after reload
+- Added memory blocks to manually store dates
+
+== 2.1.6 - Nov 6, 2016 ==
+- The position of sign text can now be changed
+- Use dynamic sign on support or support on dynamic sign to change it (if possible)
+- Crash and bugs fixed
+
+
+===== THE BASICS =====
+== 2.0.0 - Jul 24, 2016 ==
+- Road Blocks + Slopes (single + double)
+- Road Barriers
+- Road Base Blocks
+- Concrete Blocks
+
+== 2.0.1 - Aug 1, 2016 ==
+- Bug fixes from 2.0.0
+- Modular Highway Signs
+- Road Builders Wand, building roads in one click
+- Road speed boost is applied only while sprinting
+- Road arrows
+- Road signs
+
+== 2.0.2 - Aug 7, 2016 ==
+- Modular Freeway Signs
+- Sign Supports
+- Traffic Cones and Posts
+- Roads have two speed boosts, applied under certain conditions
+- General Improvements
+- Highway and freeway signs can be blacked out
+
+== 2.0.3 - Aug 9, 2016 ==
+- General Improvements
+- Several defaults moved to config file
+- Road Builder Wand, building roads with one click
+
+== 2.0.4 - Aug 9, 2016 ==
+- Minor improvements from 2.0.3

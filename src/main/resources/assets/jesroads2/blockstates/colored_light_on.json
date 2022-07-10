@@ -1,0 +1,26 @@
+{
+    "forge_marker": 1,
+	"defaults": {
+		"model": "minecraft:cube_all"
+	},
+	"variants":{
+		"color": {
+			"black":{ "textures": {"all": "jesroads2:blocks/coloredlight_black"} },
+			"red":{ "textures": {"all": "jesroads2:blocks/coloredlight_red"} },
+			"green":{ "textures": {"all": "jesroads2:blocks/coloredlight_green"} },
+			"brown":{ "textures": {"all": "jesroads2:blocks/coloredlight_brown"} },
+			"blue":{ "textures": {"all": "jesroads2:blocks/coloredlight_blue"} },
+			"purple":{ "textures": {"all": "jesroads2:blocks/coloredlight_purple"} },
+			"cyan":{ "textures": {"all": "jesroads2:blocks/coloredlight_cyan"} },
+			"silver":{ "textures": {"all": "jesroads2:blocks/coloredlight_silver"} },
+			"gray":{ "textures": {"all": "jesroads2:blocks/coloredlight_gray"} },
+			"pink":{ "textures": {"all": "jesroads2:blocks/coloredlight_pink"} },
+			"lime":{ "textures": {"all": "jesroads2:blocks/coloredlight_lime"} },
+			"yellow":{ "textures": {"all": "jesroads2:blocks/coloredlight_yellow"} },
+			"light_blue":{ "textures": {"all": "jesroads2:blocks/coloredlight_lightblue"} },
+			"magenta":{ "textures": {"all": "jesroads2:blocks/coloredlight_magenta"} },
+			"orange":{ "textures": {"all": "jesroads2:blocks/coloredlight_orange"} },
+			"white":{ "textures": {"all": "jesroads2:blocks/coloredlight_white"} }
+		}
+	}
+}

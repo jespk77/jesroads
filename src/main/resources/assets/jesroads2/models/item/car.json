@@ -1,0 +1,6 @@
+{
+	"parent": "item/generated",
+	"overrides": [
+		{ "predicate": { "type": 0 }, "model": "jesroads2:item/vehicles/basic_car" }
+	]
+}

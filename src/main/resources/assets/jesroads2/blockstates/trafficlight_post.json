@@ -1,0 +1,36 @@
+{
+    "forge_marker": 1,
+	"defaults": {
+		"model": "jesroads2:trafficlight_post"
+	},
+	"variants": {
+		"post": {
+			"true": { "submodel": "jesroads2:trafficlight_post_post" },
+			"false": { }
+		},
+		"up": {
+			"true": { "submodel": "jesroads2:trafficlight_post_up" },
+			"false": { }
+		},
+		"north": {
+			"true": { "submodel": "jesroads2:trafficlight_post_north" },
+			"false": { }
+		},
+		"south": {
+			"true": { "submodel": "jesroads2:trafficlight_post_south" },
+			"false": { }
+		},
+		"east": {
+			"true": { "submodel": "jesroads2:trafficlight_post_east" },
+			"false": { }
+		},
+		"west": {
+			"true": { "submodel": "jesroads2:trafficlight_post_west" },
+			"false": { }
+		},
+		"snowy": {
+			"true": { "submodel": "snow_height2" },
+			"false": {   }
+		}
+    }
+}

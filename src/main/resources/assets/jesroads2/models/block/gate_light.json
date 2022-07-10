@@ -1,0 +1,20 @@
+{
+	"parent": "block/block",
+	"elements": [
+        {   "from": [ 5, 0, 6 ],
+            "to": [ 11, 11, 10 ],
+            "faces": {
+				"up":    { "texture": "#tex" },
+                "down":  { "texture": "#tex" },
+                "north": { "texture": "#tex" },
+                "south": { "texture": "#front" },
+                "west":  { "texture": "#tex" },
+                "east":  { "texture": "#tex" }
+            }
+        }
+    ],
+	"textures": {
+		"tex": "jesroads2:blocks/trafficlights/side",
+		"particle": "jesroads2:blocks/trafficlights/side"
+	}
+}

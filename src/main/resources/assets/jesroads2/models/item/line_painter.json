@@ -1,0 +1,44 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "jesroads2:items/line_painter"
+    },
+    "overrides": [
+        {
+            "predicate": {
+                "type": 0
+            },
+            "model": "jesroads2:item/line_painter_white_side"
+        },
+		{
+            "predicate": {
+                "type": 1
+            },
+            "model": "jesroads2:item/line_painter_white_diagonal"
+        },
+		{
+            "predicate": {
+                "type": 2
+            },
+            "model": "jesroads2:item/line_painter_white_middle"
+        },
+		{
+            "predicate": {
+                "type": 3
+            },
+            "model": "jesroads2:item/line_painter_yellow_side"
+        },
+		{
+            "predicate": {
+                "type": 4
+            },
+            "model": "jesroads2:item/line_painter_yellow_diagonal"
+        },
+		{
+            "predicate": {
+                "type": 5
+            },
+            "model": "jesroads2:item/line_painter_yellow_middle"
+        }
+    ]
+}

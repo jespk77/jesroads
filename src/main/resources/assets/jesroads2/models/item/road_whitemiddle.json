@@ -1,0 +1,15 @@
+{
+    "parent": "jesroads2:block/road_whitemiddle",
+	"display": {
+        "gui": {
+            "rotation": [ 30, 45, 0 ],
+            "translation": [ 0, 0, 0],
+            "scale":[ 0.625, 0.625, 0.625 ]
+        }
+    },
+	"textures": { 
+		"line": "jesroads2:blocks/road/line_white_new",
+		"side": "jesroads2:blocks/road/paved_new",
+		"top": "jesroads2:blocks/road/paved_new"
+	}
+}

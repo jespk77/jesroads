@@ -1,0 +1,6 @@
+{
+    "parent": "jesroads2:block/roadline_middle",
+	"textures": {
+		"line": "jesroads2:blocks/roadline_white"
+	}
+}

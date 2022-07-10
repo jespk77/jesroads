@@ -1,0 +1,31 @@
+{
+    "parent": "block/block",
+	"elements": [
+        {   "from": [ 0, 2, 6 ],
+            "to": [ 16, 6, 7 ],
+            "faces": {
+                "down":  { "texture": "#side"},
+                "up":    { "texture": "#side" },
+                "north": { "texture": "#side" },
+                "south": { "texture": "#side" },
+                "west":  { "texture": "#side" },
+                "east":  { "texture": "#side" }
+            }
+        },
+		{   "from": [ 0, 10, 6 ],
+            "to": [ 16, 14, 7 ],
+            "faces": {
+                "down":  { "texture": "#side"},
+                "up":    { "texture": "#side" },
+                "north": { "texture": "#side" },
+                "south": { "texture": "#side" },
+                "west":  { "texture": "#side" },
+                "east":  { "texture": "#side" }
+            }
+        }
+    ],
+    "textures": {
+		"side": "jesroads2:blocks/sign_support",
+		"particle": "jesroads2:blocks/sign_support"
+    }
+}

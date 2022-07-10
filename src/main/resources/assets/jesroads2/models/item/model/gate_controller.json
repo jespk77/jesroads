@@ -1,0 +1,21 @@
+{
+    "parent": "block/block",
+	"elements": [
+        {   "from": [ 2, 0, 2 ],
+            "to": [ 14, 16, 14 ],
+            "faces": {
+                "up":    { "texture": "#side" },
+				"down":  { "texture": "#side" },
+                "north": { "texture": "#front" },
+                "south": { "texture": "#side" },
+                "west":  { "texture": "#side" },
+                "east":  { "texture": "#side" }
+            }
+        }
+    ],
+    "textures": {
+		"front": "jesroads2:blocks/barrier_gate/controller_front",
+		"side": "jesroads2:blocks/barrier_gate/controller_side",
+		"particle": "jesroads2:blocks/barrier_gate/controller_side"
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "axis=z,temporary=false": { "model": "jesroads2:trafficlight_controller" },
+		"axis=y,temporary=false": { "model": "jesroads2:trafficlight_controller" },
+		"axis=x,temporary=false": { "model": "jesroads2:trafficlight_controller", "y": 90 },
+		"axis=z,temporary=true": { "model": "jesroads2:trafficlight_controller2" },
+		"axis=y,temporary=true": { "model": "jesroads2:trafficlight_controller2" },
+		"axis=x,temporary=true": { "model": "jesroads2:trafficlight_controller2", "y": 90 }
+    }
+}

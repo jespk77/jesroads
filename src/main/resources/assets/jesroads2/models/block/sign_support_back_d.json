@@ -1,0 +1,45 @@
+{
+    "parent": "block/block",
+	"elements": [
+        {   "from": [ 0, 2, 6 ],
+            "to": [ 16, 6, 7 ],
+			"rotation": {
+                "origin": [ 8, 8, 8 ],
+                "axis": "y",
+                "angle": 45,
+                "rescale": true
+            },
+			"shade": false,
+            "faces": {
+                "down":  { "texture": "#side"},
+                "up":    { "texture": "#side" },
+                "north": { "texture": "#side" },
+                "south": { "texture": "#side" },
+                "west":  { "texture": "#side" },
+                "east":  { "texture": "#side" }
+            }
+        },
+		{   "from": [ 0, 10, 6 ],
+            "to": [ 16, 14, 7 ],
+			"rotation": {
+                "origin": [ 8, 8, 8 ],
+                "axis": "y",
+                "angle": 45,
+                "rescale": true
+            },
+			"shade": false,
+            "faces": {
+                "down":  { "texture": "#side"},
+                "up":    { "texture": "#side" },
+                "north": { "texture": "#side" },
+                "south": { "texture": "#side" },
+                "west":  { "texture": "#side" },
+                "east":  { "texture": "#side" }
+            }
+        }
+    ],
+    "textures": {
+		"side": "jesroads2:blocks/sign_support_d",
+		"particle": "jesroads2:blocks/sign_support"
+    }
+}

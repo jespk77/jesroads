@@ -1,0 +1,57 @@
+{
+    "forge_marker": 1,
+	"variants":{
+		"north_west": {
+			"none": {},
+			"south": { "submodel": "jesroads2:roadfence_sideleft" },
+			"west": { "submodel": "jesroads2:roadfence_sideleft", "y": 270 },
+			"north": { "submodel": "jesroads2:roadfence_sideleft" },
+			"east": { "submodel": "jesroads2:roadfence_sideleft", "y": 90 },
+			"diagonal_ns": { "submodel": "jesroads2:roadfence_d" },
+			"diagonal_ew": { "submodel": "jesroads2:roadfence_d", "y": 270 }
+		},
+		"north_east": {
+			"none": {},
+			"south": { "submodel": "jesroads2:roadfence_sideright" },
+			"west": { "submodel": "jesroads2:roadfence_sideleft", "y": 270 },
+			"north": { "submodel": "jesroads2:roadfence_sideright" },
+			"east": { "submodel": "jesroads2:roadfence_sideleft", "y": 90 },
+			"diagonal_ns": { "submodel": "jesroads2:roadfence_d", "y": 90 },
+			"diagonal_ew": { "submodel": "jesroads2:roadfence_d", "y": 90 }
+		},
+		"south_west": {
+			"none": {},
+			"south": { "submodel": "jesroads2:roadfence_sideright", "y": 180 },
+			"west": { "submodel": "jesroads2:roadfence_sideright", "y": 270 },
+			"north": { "submodel": "jesroads2:roadfence_sideright", "y": 180 },
+			"east": { "submodel": "jesroads2:roadfence_sideright", "y": 90 },
+			"diagonal_ns": { "submodel": "jesroads2:roadfence_d", "y": 270 },
+			"diagonal_ew": { "submodel": "jesroads2:roadfence_d" }
+		},
+		"south_east": {
+			"none": {},
+			"south": { "submodel": "jesroads2:roadfence_sideleft", "y": 180 },
+			"west": { "submodel": "jesroads2:roadfence_sideright", "y": 270 },
+			"north": { "submodel": "jesroads2:roadfence_sideleft", "y": 180 },
+			"east": { "submodel": "jesroads2:roadfence_sideright", "y": 90 },
+			"diagonal_ns": { "submodel": "jesroads2:roadfence_d", "y": 180 },
+			"diagonal_ew": { "submodel": "jesroads2:roadfence_d", "y": 180 }
+		},
+		"orientation": {
+			"north_south": {  },
+			"east_west": {  }
+		},
+		"streetlight": {
+			"true": { "submodel": "jesroads2:streetlight_post" },
+			"false": { "submodel": "jesroads2:roadfence_post" }
+		},
+		"snowy": {
+			"true": { "submodel": "snow_height2" },
+			"false": {   }
+		},
+		"sign": {
+			"true": { "submodel": "jesroads2:roadfence_signpost" },
+			"false": {  }
+		}
+	}
+}

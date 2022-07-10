@@ -1,0 +1,31 @@
+{
+    "forge_marker": 1,
+	"defaults":{
+		"model": "jesroads2:highwaysign",
+		"textures": { "front": "jesroads2:blocks/signs/highway_route_f" }
+	},
+	"variants":{
+		"direction": {
+			"north": { },
+			"south": { "y": 180 },
+			"east": { "y": 90 },
+			"west": { "y": 270 }
+		},
+		"up": {
+			"true": { "submodel": "jesroads2:signpost_bup" },
+			"false": {  }
+		},
+		"down": {
+			"true": { "submodel": "jesroads2:signpost_blow" },
+			"false": {  }
+		},
+		"blackout": {
+			"true": { "textures": { "front": "jesroads2:blocks/signs/blackout" } },
+			"false": {  }
+		}, 
+		"data": {
+			"true": {},
+			"false": {}
+		}
+	}
+}

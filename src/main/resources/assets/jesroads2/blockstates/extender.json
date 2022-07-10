@@ -1,0 +1,18 @@
+{
+    "forge_marker": 1,
+	"defaults": { "model": "jesroads2:extender" },
+	"variants": {
+		"direction": {
+			"down": { "x": 90 },
+			"up": { "x": -90 },
+			"north": { },
+			"south": { "y": 180 },
+			"west": { "y": 270 },
+			"east": { "y": 90 }
+		},
+		"extended":{
+			"true": { },
+			"false": { }
+		}
+	}
+}

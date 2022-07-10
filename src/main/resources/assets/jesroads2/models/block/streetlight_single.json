@@ -1,0 +1,35 @@
+{
+    "parent": "block/block",
+	"elements": [
+        {   
+			"from": [ 6.1, 0, 6.1 ],
+            "to": [ 9.9, 8, 9.9 ],
+            "faces": {
+                "north": { "texture": "#side" },
+                "south": { "texture": "#side" },
+                "west":  { "texture": "#side" },
+                "east":  { "texture": "#side" }
+            }
+        },
+		{   
+			"from": [ 6, 7, 7 ],
+            "to": [ 10, 16, 9 ],
+			"rotation": {
+                "origin": [ 8, 8, 8 ],
+                "axis": "x",
+                "angle": 45,
+                "rescale": true
+            },
+            "faces": {
+                "north": { "texture": "#side" },
+                "south": { "texture": "#side" },
+                "west":  { "texture": "#side" },
+                "east":  { "texture": "#side" }
+            }
+        }
+    ],
+    "textures": {
+		"side": "jesroads2:blocks/streetlight_post",
+		"particle": "jesroads2:blocks/streetlight_post"
+    }
+}

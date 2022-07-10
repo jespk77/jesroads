@@ -1,0 +1,212 @@
+itemGroup.jesroads_basic=JesRoads Basics
+itemGroup.jesroads_road=JesRoads Roads
+itemGroup.jesroads_roadextra=JesRoads Road Extras
+itemGroup.jesroads_system=JesRoads Systems
+itemGroup.jesroads_sign=JesRoads Signs
+itemGroup.jesroads_vehicles=JesRoads Vehicles
+
+item.road_builder.name=Road Builder
+item.traffic_binder.name=Controller Configurator
+item.line_painter.name=Line Painter
+item.remote_control.name=Remote Control
+
+item.car.name=Car
+
+tile.concrete.name=Concrete
+tile.roadbase.name=Road Base
+tile.ground.name=Ground
+tile.floodlight.name=Floodlight
+tile.floodlight_controller.name=Floodlight Controller
+tile.floodlight_beam.name=WHERE DID YOU GET THIS FROM?!?
+tile.extender.name=Extender
+
+tile.memory.15.name=Memory Block (Black)
+tile.memory.14.name=Memory Block (Red)
+tile.memory.13.name=Memory Block (Green)
+tile.memory.12.name=Memory Block (Brown)
+tile.memory.11.name=Memory Block (Blue)
+tile.memory.10.name=Memory Block (Purple)
+tile.memory.9.name=Memory Block (Cyan)
+tile.memory.8.name=Memory Block (Light Gray)
+tile.memory.7.name=Memory Block (Gray)
+tile.memory.6.name=Memory Block (Pink)
+tile.memory.5.name=Memory Block (Lime)
+tile.memory.4.name=Memory Block (Yellow)
+tile.memory.3.name=Memory Block (Light Blue)
+tile.memory.2.name=Memory Block (Magenta)
+tile.memory.1.name=Memory Block (Orange)
+tile.memory.0.name=Memory Block (White)
+
+tile.colored_light.0.name=Colored Light (White)
+tile.colored_light.1.name=Colored Light (Orange)
+tile.colored_light.2.name=Colored Light (Magenta)
+tile.colored_light.3.name=Colored Light (Light Blue)
+tile.colored_light.4.name=Colored Light (Yellow)
+tile.colored_light.5.name=Colored Light (Lime)
+tile.colored_light.6.name=Colored Light (Pink)
+tile.colored_light.7.name=Colored Light (Gray)
+tile.colored_light.8.name=Colored Light (Light Gray)
+tile.colored_light.9.name=Colored Light (Cyan)
+tile.colored_light.10.name=Colored Light (Purple)
+tile.colored_light.11.name=Colored Light (Blue)
+tile.colored_light.12.name=Colored Light (Brown)
+tile.colored_light.13.name=Colored Light (Green)
+tile.colored_light.14.name=Colored Light (Red)
+tile.colored_light.15.name=Colored Light (Black)
+
+tile.road.name=Road
+tile.road_detector.name=Road Detector
+tile.road_whiteside.name=Road: White Side Line
+tile.road_whitemiddle.name=Road: White Middle Line
+tile.road_whitediagonal.name=Road: White Diagonal Line
+tile.road_whitediagonalmiddle.name=Road: White Diagonal Middle Line
+tile.road_yellowside.name=Road: Yellow Side Line
+tile.road_yellowdiagonal.name=Road: Yellow Diagonal Line
+
+tile.road_arrowleft.name=Road: Left Arrow
+tile.road_arrowup.name=Road: Up Arrow
+tile.road_arrowright.name=Road: Right Arrow
+
+tile.roadslope.name=Road Slope
+tile.roadslope_whiteside.name=Road Slope: White Side Line
+tile.roadslope_whitemiddle.name=Road Slope: White Middle Line
+tile.roadslope_yellowside.name=Road Slope: Yellow Side Line
+
+tile.streetlight.0.name=Streetlight Single
+tile.streetlight.1.name=Streetlight Double
+tile.roadlight_side.name=Roadlight Side
+tile.roadlight_centered.name=Roadlight Centered
+
+tile.roadfence.name=Road Barrier
+tile.concrete_divider.name=Concrete Divider
+
+tile.barrier_gate.name=Barrier Gate (Basic)
+tile.barrier_gate_1.name=Barrier Gate (Dark)
+tile.gate_toll.name=Toll Gate
+tile.gate_controller.name=Gate Controller
+tile.ticket_machine.name=Ticket Machine
+item.gate_ticket.0.name=Gate Ticket
+item.gate_ticket.1.name=Reusable Ticket
+item.gate_ticket.2.name=Toll Ticket
+item.gate_ticket.3.name=Toll Pass
+
+tile.sign_highway_dir_left.name=Highway Sign: Left Direction
+tile.sign_highway_dir_right.name=Highway Sign: Right Direction
+tile.sign_highway_dir_up.name=Highway Sign: Up Direction
+tile.sign_highway_route.name=Highway Sign: Highway Pointer
+tile.sign_highway_routef.name=Highway Sign: Freeway Pointer
+tile.sign_highway_text.name=Highway Sign: Text
+
+tile.sign_freeway_dir_right.name=Freeway Sign: Right Exit
+tile.sign_freeway_dir_up.name=Freeway Sign: Up Arrow
+tile.sign_freeway_dir_down.name=Freeway Sign: Down Arrow
+tile.sign_freeway_route.name=Freeway Sign: Freeway Pointer
+tile.sign_freeway_routeh.name=Freeway Sign: Highway Pointer
+tile.sign_freeway_text.name=Freeway Sign: Text
+tile.sign_freeway_text_half.name=Freeway Sign: Text Half
+tile.sign_freeway_blank.name=Freeway Sign: Text
+tile.sign_freeway_entrance.name=Freeway Sign: Entrance
+tile.sign_freeway_distance.name=Freeway Sign: Distance
+tile.sign_freeway_separator.name=Freeway Sign: Separator
+
+tile.signpost.0.name=Signpost Large
+tile.signpost.1.name=Signpost Small
+
+tile.warning_light.name=Warning Light
+tile.traffic_item.0.name=Traffic Cone
+tile.traffic_item.1.name=Traffic Post
+tile.traffic_item.2.name=Traffic Cone Large
+
+tile.sign_stop.0.name=Stop
+tile.sign_stop.1.name=Give way
+tile.sign_stop.2.name=No Entry
+tile.sign_stop.3.name=Road Closed
+tile.sign_merge.0.name=Left Merge
+tile.sign_merge.1.name=Right Merge
+tile.sign_merge.2.name=Left Wide
+tile.sign_merge.3.name=Right Wide
+
+tile.sign_detour.0.name=Detour Left
+tile.sign_detour.1.name=Detour Right
+tile.sign_detour.2.name=Detour Up
+tile.sign_detour.3.name=Detour End
+tile.sign_info.0.name=Rest Area
+tile.sign_info.1.name=Exit
+tile.sign_info.2.name=Roadwork Ahead
+tile.sign_info.3.name=Roadwork End
+
+tile.sign_turn.0.name=Keep Left
+tile.sign_turn.1.name=Keep Right
+tile.sign_turn.2.name=Roadwork Keep Left
+tile.sign_turn.3.name=Roadwork Keep Right
+tile.sign_turning.0.name=Left Turn
+tile.sign_turning.1.name=Right Turn
+tile.sign_turning.2.name=No Left Turn
+tile.sign_turning.3.name=No Right Turn
+
+tile.trafficlight_controller.0.name=Intersection Controller
+tile.trafficlight_controller.1.name=Direction Controller
+tile.trafficlight_right.name=Traffic Light (Right)
+tile.trafficlight_straight.name=Traffic Light (Straight)
+tile.trafficlight_left.name=Traffic Light (Left)
+tile.trafficlight_post.name=Traffic Light Post
+
+tile.dynamic_sign_controller.name=Dynamic Sign Controller
+tile.dynamic_sign.name=Dynamic Sign
+tile.event_sign.name=Event Sign
+tile.sign_support.name=Dynamic Sign Support
+
+tile.roadline_white_side.name=Painting: White Side
+tile.roadline_white_middle.name=Painting: White Middle
+tile.roadline_white_diagonal.name=Painting: White Diagonal
+tile.roadline_yellow_side.name=Painting: Yellow Side
+tile.roadline_yellow_middle.name=Painting: Yellow Middle
+tile.roadline_yellow_diagonal.name=Painting: Yellow Diagonal
+
+iteminfo.road_builder.set_data=Shift click a block to set data
+iteminfo.road_builder.view_data=Hold shift to view data
+iteminfo.road_builder.road_data=- Road Data -
+iteminfo.road_builder.left_length=Left Shoulder
+iteminfo.road_builder.road_length=Number of lanes
+iteminfo.road_builder.right_length=Right Shoulder
+iteminfo.road_builder.remove_length=Removing up to 
+iteminfo.road_builder.terrain_data=- Terrain Data -
+iteminfo.road_builder.terrain_left=Left Shoulder
+iteminfo.road_builder.terrain_right=Right Shoulder
+iteminfo.road_builder.mode_automatic=Automatic Mode
+iteminfo.road_builder.mode_ignored=Ignored Mode
+iteminfo.road_builder.mode_remove=Remove Mode
+
+chat.gatecontroller.in.welcome=Welcome! Insert reusable ticket or press to get a ticket
+chat.gatecontroller.in.denied=There was a problem to verify ticket, try again
+chat.gatecontroller.out.welcome=Insert ticket
+chat.gatecontroller.out.denied=Ticket denied
+chat.gatecontroller.exclusive_in.welcome=Welcome! Insert ticket to enter
+chat.gatecontroller.exclusive_in.denied=Invalid ticket
+chat.gatecontroller.exclusive_out.welcome=Insert ticket
+chat.gatecontroller.exclusive_out.denied=Invalid ticket
+chat.gatecontroller.closed.welcome=This gate is closed, come back some other time
+chat.gatecontroller.closed.denied=This gate is closed! Closed I say!
+chat.gatecontroller.toll_start.welcome=Get toll ticket or enter toll pass
+chat.gatecontroller.toll_start.denied=Invalid ticket
+chat.gatecontroller.toll_end.welcome=Insert toll ticket
+chat.gatecontroller.toll_end.denied=Invalid ticket
+chat.gatecontroller.single_use.welcome=Click on machine to pay toll
+
+key.category.jesroads2=JesRoads2
+key.info_overlay.toggle=Toggle Info Overlay
+key.info_overlay.distance=Reset Distance Counter
+key.generic.switch=Switch between block versions
+key.generic.undo=Undo action
+key.generic.redo=Redo action
+key.generic.toggleFlying=Toggle creative flying
+key.generic.toggleReach=Toggle reach distance
+key.roadbuilder.replace=Road Builder: Replace Area
+key.roadbuilder.mode=Road Builder: Change Mode
+key.roadbuilder.block=Road Builder: Toggle relative/slot use for placement mode
+key.roadbuilder.leftterrain_add=Road Builder: Add Left Terrain
+key.roadbuilder.leftterrain_subtract=Road Builder: Subtract Left Terrain
+key.roadbuilder.rightterrain_add=Road Builder: Add Right Terrain
+key.roadbuilder.rightterrain_subtract=Road Builder: Subtract Right Terrain
+key.roadbuilder.place=Road Builder: Placement Mode
+key.roadbuilder.place_r=Road Builder: Replacement Mode

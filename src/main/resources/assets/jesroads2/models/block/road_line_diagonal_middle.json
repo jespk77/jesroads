@@ -1,0 +1,21 @@
+{
+    "parent": "block/block",
+	"elements": [
+        {   "from": [ -3.5, 16, 7.2 ],
+            "to": [ 19.5, 16.1, 8.8 ],
+			"rotation": {
+                "origin": [ 8, 8, 8 ],
+                "axis": "y",
+                "angle": 45,
+                "rescale": false
+            },
+            "faces": {
+                "up":    { "texture": "#line", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "north": { "texture": "#line" },
+                "south": { "texture": "#line" },
+                "west":  { "texture": "#line" },
+                "east":  { "texture": "#line" }
+            }
+        }
+    ]
+}

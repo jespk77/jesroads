@@ -1,0 +1,36 @@
+{
+    "forge_marker": 1,
+	"defaults": {
+		"model": "jesroads2:sign"
+	},
+	"variants": {
+		"direction": {
+			"north": { },
+			"south": { "y": 180 },
+			"east": { "y": 90 },
+			"west": { "y": 270 }
+		},
+		"variant": {
+			"left_merge": { 
+				"textures": {
+					"front": "jesroads2:blocks/signs/left_merge"
+				}
+			},
+			"right_merge": {
+				"textures": {
+					"front": "jesroads2:blocks/signs/right_merge"
+				}
+			},
+			"left_wide": {
+				"textures": {
+					"front": "jesroads2:blocks/signs/left_wide"
+				}
+			},
+			"right_wide": {
+				"textures": {
+					"front": "jesroads2:blocks/signs/right_wide"
+				}
+			}
+		}
+    }
+}

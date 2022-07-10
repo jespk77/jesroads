@@ -1,0 +1,19 @@
+{
+	"parent": "block/block",
+	"elements": [
+		{	"from": [ 0, 0, 0 ],
+			"to": [ 16, 16, 16 ],
+			"faces": {
+				"up": 	{ "texture": "#top", "cullface": "up" },
+				"down": { "texture": "#bottom", "cullface": "down" },
+				"south": { "texture": "#side", "cullface": "south" },
+				"west": { "texture": "#side", "cullface": "west" },
+				"north": { "texture": "#side", "cullface": "north" },
+				"east": { "texture": "#side", "cullface": "east" }
+			}
+		}
+	],
+	"textures": {
+		"particle": "jesroads2:blocks/floodlight_up"
+	}
+}

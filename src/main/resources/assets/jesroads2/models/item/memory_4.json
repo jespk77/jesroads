@@ -1,0 +1,6 @@
+{
+    "parent": "block/cube_all",
+	"textures": {
+		"all": "jesroads2:blocks/memory_yellow"
+	}
+}

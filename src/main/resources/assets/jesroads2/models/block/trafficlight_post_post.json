@@ -1,0 +1,19 @@
+{
+	"parent": "block/block",
+	"elements": [
+        {   "from": [ 6, 0, 6 ],
+            "to": [ 10, 8, 10 ],
+            "faces": {
+                "down":  { "texture": "#tex", "cullface": "down" },
+                "north": { "texture": "#tex" },
+                "south": { "texture": "#tex" },
+                "west":  { "texture": "#tex" },
+                "east":  { "texture": "#tex" }
+            }
+        }
+    ],
+	"textures": {
+		"tex": "jesroads2:blocks/trafficlights/post",
+		"particle": "jesroads2:blocks/trafficlights/post"
+	}
+}

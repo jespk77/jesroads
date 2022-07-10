@@ -1,0 +1,38 @@
+{
+    "forge_marker": 1,
+	"defaults": {
+		"model": "jesroads2:dynamic_sign_d",
+		"y": 180
+	},
+	"variants": {
+		"type":{
+			"none": { "textures": {
+					"front": "jesroads2:blocks/esigns/sign_off"
+				}},
+			"reduced": { "textures": {
+					"front": "jesroads2:blocks/esigns/sign_reduced"
+				}},
+			"slow": { "textures": {
+					"front": "jesroads2:blocks/esigns/sign_slow"
+				}},
+			"merge_left": { "textures": {
+					"front": "jesroads2:blocks/esigns/sign_closed_left"
+				}},
+			"merge_right": { "textures": {
+					"front": "jesroads2:blocks/esigns/sign_closed_right"
+				}},
+			"closed": { "textures": {
+					"front": "jesroads2:blocks/esigns/sign_closed"
+				}},
+			"open": { "textures": {
+					"front": "jesroads2:blocks/esigns/sign_open"
+				}},
+			"end": { "textures": {
+					"front": "jesroads2:blocks/esigns/sign_end"
+				}},
+			"reduced_regular": { "textures": {
+					"front": "jesroads2:blocks/esigns/sign_reduced_regular"
+				}}
+		}
+    }
+}

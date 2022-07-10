@@ -1,0 +1,10 @@
+{
+    "parent": "jesroads2:item/model/roadslope_whitemiddle",
+	"display": {
+        "firstperson_righthand": {
+            "rotation": [ 0, 125, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.40, 0.40, 0.40 ]
+        }
+    }
+}

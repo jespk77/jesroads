@@ -1,0 +1,20 @@
+{
+	"parent": "block/block",
+	"elements": [
+		{	"from": [ 0, 0, 0 ],
+			"to": [ 16, 16, 16 ],
+			"faces": {
+				"up": 	{ "texture": "#top" },
+				"down": { "texture": "#bottom", "cullface": "down" },
+				"south": { "texture": "#side", "cullface": "south" },
+				"west": { "texture": "#side", "cullface": "west" },
+				"north": { "texture": "#side", "cullface": "north" },
+				"east": { "texture": "#side", "cullface": "east" }
+			}
+		}
+	],
+	"textures": {
+		"bottom": "jesroads2:blocks/concrete",
+		"particle": "jesroads2:blocks/road/paved_aged"
+	}
+}

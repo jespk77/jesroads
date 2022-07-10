@@ -1,0 +1,16 @@
+[
+{
+  "modid": "jesroads2",
+  "name": "JesRoads 2",
+  "description": "Building roads in Minecraft since 2013",
+  "version": "2.6-dev",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["JespK77"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

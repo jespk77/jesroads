@@ -1,0 +1,19 @@
+{
+    "parent": "jesroads2:block/freeway_entrance",
+	"display": {
+        "gui": {
+            "rotation": [ 45, 22.5, 0 ],
+			"translation": [ 0, 0, 0],
+            "scale":[ 0.625, 0.625, 0.625 ]
+        },
+		"firstperson_righthand": {
+            "rotation": [ 0, -45, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.40, 0.40, 0.40 ]
+        }
+    },
+	"overrides": [
+		{ "predicate": { "text": 0 }, "model": "jesroads2:item/sign_freeway_entrance" },
+		{ "predicate": { "text": 1 }, "model": "jesroads2:item/sign_freeway_entrance_text" }
+	]
+}

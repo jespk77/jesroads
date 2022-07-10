@@ -1,0 +1,10 @@
+{
+    "parent": "item/handheld",
+	"textures": {
+		"layer0": "jesroads2:items/traffic_binder"
+	},
+	"overrides": [
+		{ "predicate": { "bind_mode": 0 }, "model": "jesroads2:item/traffic_binder" },
+		{ "predicate": { "bind_mode": 1 }, "model": "jesroads2:item/traffic_binder_bind" }
+	]
+}

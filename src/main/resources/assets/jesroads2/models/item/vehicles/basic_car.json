@@ -1,0 +1,6 @@
+{
+	"parent": "item/generated",
+    "textures": {
+        "layer0": "jesroads2:items/vehicles/basic_car"
+    }
+}

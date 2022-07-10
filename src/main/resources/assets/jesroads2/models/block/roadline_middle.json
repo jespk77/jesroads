@@ -1,0 +1,18 @@
+{
+    "parent": "block/block",
+	"elements": [
+        {   "from": [ 7, 0, 2 ],
+            "to": [ 9, 0.2, 14 ],
+            "faces": {
+                "up":    { "texture": "#line" },
+                "north": { "texture": "#line" },
+                "south": { "texture": "#line" },
+                "west":  { "texture": "#line" },
+                "east":  { "texture": "#line" }
+            }
+        }
+    ],
+    "textures": {
+		"particle": "jesroads2:blocks/roadline_white"
+    }
+}

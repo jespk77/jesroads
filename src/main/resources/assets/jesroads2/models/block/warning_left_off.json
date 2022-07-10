@@ -1,0 +1,6 @@
+{
+    "parent": "jesroads2:block/warning_light",
+    "textures": {
+		"front": "jesroads2:blocks/lights/warning_left_off"
+	}
+}

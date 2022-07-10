@@ -1,0 +1,19 @@
+{
+    "parent": "block/block",
+	"elements": [
+        {   
+			"from": [ 6.1, 0, 6.1 ],
+            "to": [ 9.9, 16, 9.9 ],
+            "faces": {
+                "north": { "texture": "#side" },
+                "south": { "texture": "#side" },
+                "west":  { "texture": "#side" },
+                "east":  { "texture": "#side" }
+            }
+        }
+    ],
+    "textures": {
+		"side": "jesroads2:blocks/streetlight_post",
+		"particle": "jesroads2:blocks/streetlight_post"
+    }
+}

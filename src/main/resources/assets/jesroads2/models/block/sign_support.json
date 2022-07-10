@@ -1,0 +1,7 @@
+{
+    "parent": "block/block",
+	"elements": [],
+	"textures":{
+		"particle": "jesroads2:blocks/sign_support"
+	}
+}

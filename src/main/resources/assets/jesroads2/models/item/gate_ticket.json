@@ -1,0 +1,12 @@
+{
+	"parent": "item/generated",
+    "textures": {
+        "layer0": "jesroads2:items/gate_ticket"
+    },
+	"overrides": [
+		{ "predicate": { "reusable": 0 }, "model": "jesroads2:item/gate_ticket" },
+		{ "predicate": { "reusable": 1 }, "model": "jesroads2:item/gate_ticket_reusable" },
+		{ "predicate": { "reusable": 2 }, "model": "jesroads2:item/gate_ticket_toll" },
+		{ "predicate": { "reusable": 3 }, "model": "jesroads2:item/gate_ticket_toll" }
+	]
+}
