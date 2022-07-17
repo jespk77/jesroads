@@ -401,6 +401,13 @@ public class TileEntityDynamicSignController extends TileEntityBase implements I
         removeAllInvalid();
     }
 
+    public void reset(){
+        closedLane = closedAheadLane = warningClosedLane = 0;
+        currentEvents = 0;
+        markDirty();
+        updateSigns();
+    }
+
     private void removeAllInvalid() {
         for (BlockPos r : invalidSigns){
 			if(laneSignList.remove(r)) continue;

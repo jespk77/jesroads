@@ -7,7 +7,8 @@ public class FreewayEvents {
 	private static final IFreewayEvent[] static_events = new IFreewayEvent[] {
 			EventEnd.instance,
 			EventTempOpen.instance,
-			EventCloseAll.instance
+			EventCloseAll.instance,
+			EventReset.instance
 	};
 
 	private static final Class<?>[] dynamic_events = new Class<?>[]{

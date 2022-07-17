@@ -26,14 +26,16 @@ public class GuiDynamicSignController extends GuiBase {
     private BlockPos[] laneSigns, eventSigns;
 
     private enum EButtonID {
-        ScanForSigns, CloseAll, ToggleEnd, ToggleTempOpen, OffsetToggle
+        ScanForSigns, CloseAll, ToggleEnd, ToggleTempOpen, OffsetToggle, ResetController
     }
 
     private final GuiButton scanSign = new GuiButton(EButtonID.ScanForSigns.ordinal(), 10, 30, 90, 20, "Scan for signs"),
             closeAll = new GuiButton(EButtonID.CloseAll.ordinal(), 10, 100, 50, 20, "Close all"),
             toggleEnd = new GuiButton(EButtonID.ToggleEnd.ordinal(), 70, 100, 60, 20, "Toggle end"),
             toggleTempOpen = new GuiButton(EButtonID.ToggleTempOpen.ordinal(), 140, 100, 70, 20, "Toggle open"),
-            regularSpeed = new GuiButton(100 + TileEntityDynamicSignController.ESpeedLimit.Regular.ordinal(), 50, 130, 50, 20, "regular"),
+            resetController = new GuiButton(EButtonID.ResetController.ordinal(), 0, 0, 50, 20, "Reset");
+
+    private final GuiButton regularSpeed = new GuiButton(100 + TileEntityDynamicSignController.ESpeedLimit.Regular.ordinal(), 50, 130, 50, 20, "regular"),
             regularReduced = new GuiButton(100 + TileEntityDynamicSignController.ESpeedLimit.RegularReduced.ordinal(), regularSpeed.x + regularSpeed.width, regularSpeed.y, 95, 20, "regular reduced"),
             reducedSpeed = new GuiButton(100 + TileEntityDynamicSignController.ESpeedLimit.Reduced.ordinal(), regularReduced.x + regularReduced.width, regularSpeed.y, 50, 20, "reduced"),
             slowSpeed = new GuiButton(100 + TileEntityDynamicSignController.ESpeedLimit.Slow.ordinal(), reducedSpeed.x + reducedSpeed.width, regularSpeed.y, 30, 20, "slow"),
@@ -43,8 +45,9 @@ public class GuiDynamicSignController extends GuiBase {
 
     private GuiTextField laneOffsetIn, laneOffsetOut;
 
-    private final GuiButton[] speedButtons = new GuiButton[]{regularSpeed, regularReduced, reducedSpeed, slowSpeed};
-    private final GuiButton[] eventButtons = new GuiButton[]{roadworksEvent, accidentEvent, roadClosedEvent};
+    private final GuiButton[] commandButtons = new GuiButton[]{ scanSign, closeAll, toggleEnd, resetController };
+    private final GuiButton[] speedButtons = new GuiButton[]{ regularSpeed, regularReduced, reducedSpeed, slowSpeed };
+    private final GuiButton[] eventButtons = new GuiButton[]{ roadworksEvent, accidentEvent, roadClosedEvent };
 
     public GuiDynamicSignController(EntityPlayer player, World world, BlockPos pos) {
         super(player, world, pos);
@@ -65,6 +68,7 @@ public class GuiDynamicSignController extends GuiBase {
         laneOffsetIn = new GuiTextField(0, fontRenderer, 70, height - 30, 40, 20);
         laneOffsetOut = new GuiTextField(1, fontRenderer, 150, laneOffsetIn.y, 40, 20);
         resetButtons();
+        updateButtonPositions();
     }
 
     @Override
@@ -94,6 +98,9 @@ public class GuiDynamicSignController extends GuiBase {
                     return;
                 case ToggleTempOpen:
                     notifyEvent(EventTempOpen.instance);
+                    return;
+                case ResetController:
+                    notifyEvent(EventReset.instance);
                     return;
                 default:
             }
@@ -127,9 +134,7 @@ public class GuiDynamicSignController extends GuiBase {
 
         eventSigns = controller.getEventSigns();
         scanSign.x = x;
-        buttonList.add(scanSign);
-        buttonList.add(closeAll);
-        buttonList.add(toggleEnd);
+        buttonList.addAll(Arrays.asList(commandButtons));
         if (controller.hasTempLanes()) buttonList.add(toggleTempOpen);
         buttonList.addAll(Arrays.asList(speedButtons));
         buttonList.addAll(Arrays.asList(eventButtons));
@@ -172,7 +177,13 @@ public class GuiDynamicSignController extends GuiBase {
     @Override
     public void onResize(Minecraft m, int width, int height) {
         super.onResize(m, width, height);
+        updateButtonPositions();
+    }
+
+    private void updateButtonPositions(){
         laneOffsetIn.y = laneOffsetOut.y = height - 30;
+        resetController.x = width - resetController.width - 10;
+        resetController.y = height - resetController.height - 10;
     }
 
     @Override
