@@ -69,6 +69,7 @@ public class GuiDynamicSignController extends GuiBase {
 
     @Override
     public void actionPerformed(GuiButton button) {
+        updateOffset();
         if (button.id >= 300) {
             int eventId = button.id - 300;
             notifyEvent(new EventUpdateEvent(BlockEventSign.EnumEventType.fromID(eventId)));
@@ -154,6 +155,11 @@ public class GuiDynamicSignController extends GuiBase {
 
     @Override
     public void onGuiClosed() {
+        super.onGuiClosed();
+        updateOffset();
+    }
+
+    private void updateOffset() {
         try {
             int offsetIn = Integer.parseInt(textList.get(0).getText()),
                     offsetOut = Integer.parseInt(textList.get(1).getText());
