@@ -231,8 +231,6 @@ public class TileEntityDynamicSignController extends TileEntityBase implements I
     }
 
     public boolean closeLane(int lane, boolean isTemporaryLane, boolean enabled) {
-        lane += laneOffsetIn;
-
         if (isTemporaryLane) {
             if (tempFront) tempFront = false;
             else tempLane = setIndex(tempLane, lane, enabled);
