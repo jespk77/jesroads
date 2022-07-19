@@ -38,7 +38,7 @@ public class GuiIntersectionController extends GuiBase {
     public void initGui() {
         if (controller == null) {
             System.out.println("[ERROR] GuiIntersectionController: Invalid controller - " + controller);
-            mc.displayGuiScreen(null);
+            Close();
             return;
         }
 

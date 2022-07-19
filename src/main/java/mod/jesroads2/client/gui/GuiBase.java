@@ -57,7 +57,7 @@ public abstract class GuiBase extends GuiScreen {
             if (focused + 1 < textList.size()) focused++;
             else focused = 0;
             textList.get(focused).setFocused(true);
-        } else if (focused == -1 && code == 18) mc.displayGuiScreen(null);
+        } else if (focused == -1 && code == 18) Close();
     }
 
     @Override
@@ -73,13 +73,15 @@ public abstract class GuiBase extends GuiScreen {
             text.mouseClicked(mouseX, mouseY, button);
         }
 
-        if (!isField && button == 1) {
-            mc.displayGuiScreen(null);
-        }
+        if (!isField && button == 1) Close();
     }
 
     @Override
     public boolean doesGuiPauseGame() {
         return false;
+    }
+
+    public void Close(){
+        mc.displayGuiScreen(null);
     }
 }

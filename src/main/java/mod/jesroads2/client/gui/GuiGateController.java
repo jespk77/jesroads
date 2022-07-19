@@ -32,7 +32,7 @@ public class GuiGateController extends GuiBase {
         super.initGui();
         if (this.controller == null) {
             System.out.println("[WARNING] GuiGateController: invalid TileEntity null");
-            this.mc.displayGuiScreen(null);
+            Close();
             return;
         }
 

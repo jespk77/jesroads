@@ -139,7 +139,7 @@ public class GuiFloodlightController extends GuiBase {
             JesRoads2.handlerOverlay.getMessage().addMessage((String) controller.processMessage(nbt));
             JesRoads2.channel.sendToServer(new MessageTileEntity(controller, nbt));
         }
-        if (quit) mc.displayGuiScreen(null);
+        if (quit) Close();
     }
 
     private String getGroupName(int index) {

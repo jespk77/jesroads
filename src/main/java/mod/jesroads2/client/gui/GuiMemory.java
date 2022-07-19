@@ -49,7 +49,7 @@ public class GuiMemory extends GuiBase {
     public void initGui() {
         if (memory == null) {
             System.out.println("ERROR - GuiMemory.initGui - invalid memory block tile entity");
-            mc.displayGuiScreen(null);
+            Close();
             return;
         }
 

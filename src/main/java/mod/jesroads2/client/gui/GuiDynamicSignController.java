@@ -61,7 +61,7 @@ public class GuiDynamicSignController extends GuiBase {
     @Override
     public void initGui() {
         if (controller == null) {
-            mc.displayGuiScreen(null);
+            Close();
             return;
         } else controller.bindCheck();
 

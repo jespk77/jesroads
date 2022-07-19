@@ -41,7 +41,7 @@ public class GuiRoadSignEdit extends GuiBase {
         int id = 1, yPos = 50;
         if (sign == null) {
             System.out.println("[ERROR] invalid tileentity: null");
-            mc.displayGuiScreen(null);
+            Close();
             return;
         }
 
