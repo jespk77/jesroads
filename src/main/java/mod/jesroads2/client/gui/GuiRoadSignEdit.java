@@ -103,8 +103,9 @@ public class GuiRoadSignEdit extends GuiBase {
     }
 
     private void updateSignData() {
-        int id = 0;
-        for (SignData d : sign.getData()) {
+        List<SignData> signs = sign.getData();
+        for (int id = 0; id < signs.size() && id < textList.size(); id++) {
+            SignData d = signs.get(id);
             if (d.editable) {
                 d.setText(textList.get(id++).getText());
                 GuiTextField field = textList.get(id++);
