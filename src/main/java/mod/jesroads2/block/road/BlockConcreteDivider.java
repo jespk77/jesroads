@@ -25,7 +25,7 @@ public class BlockConcreteDivider extends BlockBase {
     public BlockConcreteDivider(int id) {
         super(id, new Material(MapColor.GRAY), "concrete_divider", JesRoads2.tabs.road_extra);
 
-        setHardness(5.F).setResistance(15.F);
+        setHardness(0.1F).setResistance(1.F);
         setFullCube(false);
         setDefaultState(getDefaultState().withProperty(axis, EnumFacing.Axis.Z)
                 .withProperty(north, true).withProperty(south, true)

@@ -128,7 +128,7 @@ public class BlockRoadBarrier extends BlockBase {
     public BlockRoadBarrier(int id) {
         super(id, new Material(MapColor.IRON), "roadfence", JesRoads2.tabs.road_extra);
 
-        setHardness(2.0F).setResistance(10.F);
+        setHardness(0.5F).setResistance(1.F);
         setSoundType(SoundType.METAL);
         setFullCube(false);
         setDefaultState(getDefaultState().withProperty(orientation, EnumOrientation.NS)

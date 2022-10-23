@@ -65,7 +65,6 @@ public class BlockTrafficItem extends BlockBase implements IBlockSwitchable {
     public BlockTrafficItem(int id) {
         super(id, new Material(MapColor.GOLD), "traffic_item", JesRoads2.tabs.road_extra, true);
 
-        setHardness(0.1F);
         setFullCube(false);
         setVariantCount(EnumTrafficItems.values().length);
         setDefaultState(getDefaultState().withProperty(variant, EnumTrafficItems.TRAFFIC_CONE));

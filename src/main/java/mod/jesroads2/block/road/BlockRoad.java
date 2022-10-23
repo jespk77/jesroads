@@ -25,6 +25,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -74,7 +75,7 @@ public class BlockRoad extends BlockBaseHorizontal implements ITileEntityProvide
         super(id, new Material(MapColor.BLACK), name, JesRoads2.tabs.road);
 
         roadType = type;
-        setHardness(2.2F).setResistance(100.F).setLightOpacity(255);
+        setHardness(0.5F).setResistance(1.F).setLightOpacity(255);
         setSoundType(SoundType.STONE);
         setTickRandomly(true);
         setDefaultState(getDefaultState().withProperty(shiny, false)
@@ -232,6 +233,11 @@ public class BlockRoad extends BlockBaseHorizontal implements ITileEntityProvide
     }
 
     protected void setTileEntity(World world, BlockPos pos, TileEntity old) {
+    }
+
+    @Override
+    public void onBlockDestroyedByExplosion(World world, BlockPos pos, Explosion explosion){
+        dropBlockAsItem(world, pos, world.getBlockState(pos), 0);
     }
 
     @Override
