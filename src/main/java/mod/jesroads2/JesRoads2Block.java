@@ -7,10 +7,7 @@ import mod.jesroads2.block.basic.*;
 import mod.jesroads2.block.road.*;
 import mod.jesroads2.block.sign.*;
 import mod.jesroads2.block.system.*;
-import mod.jesroads2.block.streetlight.BlockRoadLight;
-import mod.jesroads2.block.streetlight.BlockStreetLamp;
-import mod.jesroads2.block.streetlight.BlockStreetLight;
-import mod.jesroads2.block.streetlight.BlockWarningLight;
+import mod.jesroads2.block.streetlight.*;
 import mod.jesroads2.tileentity.*;
 import mod.jesroads2.tileentity.dynamicsigns.TileEntityDynamicSignController;
 import mod.jesroads2.util.EnumFacingDiagonal;
@@ -66,92 +63,92 @@ public class JesRoads2Block {
     }
 
     private JesRoads2Block(int id) {
-        this.concrete = new BlockConcrete(id++);
-        this.roadbase = new BlockRoadBase(id++);
-        this.memory = new BlockMemory(id++);
+        concrete = new BlockConcrete(id++);
+        roadbase = new BlockRoadBase(id++);
+        memory = new BlockMemory(id++);
         registerTileEntityLegacy(TileEntityMemory.class, "TileEntityMemory");
 
-        this.floodlight = new BlockFloodlight(id++);
-        this.floodlight_beam = new BlockFloodlightBeam();
-        this.floodlight_controller = new BlockFloodlightController(id++);
+        floodlight = new BlockFloodlight(id++);
+        floodlight_beam = new BlockFloodlightBeam();
+        floodlight_controller = new BlockFloodlightController(id++);
         registerTileEntityLegacy(TileEntityFloodlightController.class, "floodlight_controller");
-        this.extender = new BlockExtender(id++);
+        extender = new BlockExtender(id++);
         registerTileEntityLegacy(TileEntityExtender.class, "extender");
-        this.colored_light_off = new BlockColoredLight(id++, false);
-        this.colored_light_on = new BlockColoredLight(-1, true);
+        colored_light_off = new BlockColoredLight(id++, false);
+        colored_light_on = new BlockColoredLight(-1, true);
 
         BlockRoad.EnumRoadType[] road_type = BlockRoad.EnumRoadType.values();
-        this.road = new BlockBase[road_type.length];
+        road = new BlockBase[road_type.length];
         for (BlockRoad.EnumRoadType type : road_type)
-            this.road[type.id] = new BlockRoad(id++, type, type.name);
+            road[type.id] = new BlockRoad(id++, type, type.name);
         registerTileEntityLegacy(TileEntityAgeble.class, "TileEntityAgeble");
-        this.road_detector = new BlockRoadDetector(id++);
+        road_detector = new BlockRoadDetector(id++);
         registerTileEntityLegacy(TileEntityRoadDetector.class, "RoadDetectorDateEntity");
 
         BlockRoadSlope.EnumSlopeType[] slope_type = BlockRoadSlope.EnumSlopeType.values();
-        this.roadslope = new BlockBase[slope_type.length];
-        this.roadslope_rotated = new BlockBase[slope_type.length];
+        roadslope = new BlockBase[slope_type.length];
+        roadslope_rotated = new BlockBase[slope_type.length];
         for (BlockRoadSlope.EnumSlopeType type : slope_type) {
-            this.roadslope[type.id] = new BlockRoadSlope(id++, type, type.name, false);
-            this.roadslope_rotated[type.id] = new BlockRoadSlope(-1, type, type.name + "_rotated", true);
+            roadslope[type.id] = new BlockRoadSlope(id++, type, type.name, false);
+            roadslope_rotated[type.id] = new BlockRoadSlope(-1, type, type.name + "_rotated", true);
         }
         registerTileEntityLegacy(TileEntityRoadSlope.class, "RoadSlopeDateEntity");
 
-        this.road_line = new BlockBase[]{new BlockRoadLine("white"), new BlockRoadLine("yellow")};
+        road_line = new BlockBase[]{new BlockRoadLine("white"), new BlockRoadLine("yellow")};
 
-        this.roadfence = new BlockRoadBarrier(id++);
-        this.concrete_divider = new BlockConcreteDivider(id++);
-        this.road_item = new BlockTrafficItem(id++);
-        this.warning_light = new BlockWarningLight(id++);
+        roadfence = new BlockRoadBarrier(id++);
+        concrete_divider = new BlockConcreteDivider(id++);
+        road_item = new BlockTrafficItem(id++);
+        warning_light = new BlockWarningLight(id++);
 
         BlockRoadLight.EnumRoadLightType[] light_type = BlockRoadLight.EnumRoadLightType.values();
-        this.road_light = new BlockBase[light_type.length];
+        road_light = new BlockBase[light_type.length];
         for (BlockRoadLight.EnumRoadLightType type : light_type)
-            this.road_light[type.id] = new BlockRoadLight(id++, type);
+            road_light[type.id] = new BlockRoadLight(id++, type);
 
-        this.street_light = new BlockStreetLight(id++);
-        this.street_lamp = new BlockStreetLamp();
+        street_light = new BlockStreetLight(id++);
+        street_lamp = new BlockStreetLamp();
 
-        this.signpost = new BlockSignPost(id++);
-        this.freewaysupport = new BlockFreewaySupport(id++);
+        signpost = new BlockSignPost(id++);
+        freewaysupport = new BlockFreewaySupport(id++);
 
         BlockTrafficlight.EnumTrafficLightType[] traffic_type = BlockTrafficlight.EnumTrafficLightType.values();
-        this.traffic_light = new BlockBase[traffic_type.length];
+        traffic_light = new BlockBase[traffic_type.length];
         for (BlockTrafficlight.EnumTrafficLightType type : traffic_type)
-            this.traffic_light[type.id] = new BlockTrafficlight(id++, type);
-        this.traffic_light_support = new BlockTrafficlightSupport(id++);
-        this.intersection_controller = new BlockIntersectionController(id++);
+            traffic_light[type.id] = new BlockTrafficlight(id++, type);
+        traffic_light_support = new BlockTrafficlightSupport(id++);
+        intersection_controller = new BlockIntersectionController(id++);
         registerTileEntityLegacy(TileEntityIntersectionController.class, "TrafficLightControllerEntity");
         registerTileEntityLegacy(TileEntityDirectionController.class, "traffic_controller");
 
-        this.freeway_sign = new BlockDynamicSign(id++);
+        freeway_sign = new BlockDynamicSign(id++);
         EnumFacingDiagonal[] direction = EnumFacingDiagonal.values();
-        this.freeway_sign_directional = new BlockBase[direction.length];
+        freeway_sign_directional = new BlockBase[direction.length];
         for (EnumFacingDiagonal dir : direction)
-            this.freeway_sign_directional[dir.ordinal()] = new BlockDynamicSign(dir);
-        this.event_sign = new BlockEventSign(id++);
-        this.event_sign_directional = new BlockBase[direction.length];
+            freeway_sign_directional[dir.ordinal()] = new BlockDynamicSign(dir);
+        event_sign = new BlockEventSign(id++);
+        event_sign_directional = new BlockBase[direction.length];
         for (EnumFacingDiagonal dir : direction)
-            this.event_sign_directional[dir.ordinal()] = new BlockEventSign(dir);
-        this.freeway_controller = new BlockDynamicSignController(id++);
+            event_sign_directional[dir.ordinal()] = new BlockEventSign(dir);
+        freeway_controller = new BlockDynamicSignController(id++);
         registerTileEntity(TileEntityDynamicSignController.class, TileEntityDynamicSignController.name);
 
         BlockGateBarrier.EnumGateType[] gate_type = BlockGateBarrier.EnumGateType.values();
-        this.gate = new BlockBase[gate_type.length];
+        gate = new BlockBase[gate_type.length];
         for (BlockGateBarrier.EnumGateType type : gate_type)
-            this.gate[type.ordinal()] = new BlockGateBarrier(id++, type);
+            gate[type.ordinal()] = new BlockGateBarrier(id++, type);
         registerTileEntityLegacy(TileEntityGateBarrier.class, "TileEntityBarrier");
-        this.gate_controller = new BlockGateController(id++);
+        gate_controller = new BlockGateController(id++);
         registerTileEntityLegacy(TileEntityGateController.class, "TileEntityGateController");
-        this.gate_machine = new BlockGateTicketMachine(id++);
+        gate_machine = new BlockGateTicketMachine(id++);
 
         BlockSign.EnumSignType[] sign_type = BlockSign.EnumSignType.values();
-        this.direction_signs = new BlockBase[sign_type.length];
+        direction_signs = new BlockBase[sign_type.length];
         for (BlockSign.EnumSignType type : sign_type)
-            this.direction_signs[type.ordinal()] = new BlockSign(type.showInTab() ? id++ : -1, type);
+            direction_signs[type.ordinal()] = new BlockSign(type.showInTab() ? id++ : -1, type);
         registerTileEntityLegacy(TileEntityRoadSign.class, "SignEntity");
 
-        this.traffic_signs = new BlockBase[]{
+        traffic_signs = new BlockBase[]{
                 new BlockRoadSignStop(id++),
                 new BlockRoadSignMerge(id++),
                 new BlockRoadSignDetour(id++),
@@ -160,14 +157,14 @@ public class JesRoads2Block {
                 new BlockRoadSignMove(id++)
         };
 
-        this.maxID = id;
+        maxID = id;
         MinecraftForge.EVENT_BUS.register(this);
     }
 
     @SubscribeEvent
     public void registerBlocks(RegistryEvent.Register<Block> event) {
         IForgeRegistry<Block> registry = event.getRegistry();
-        for (Field field : this.getClass().getDeclaredFields()) {
+        for (Field field : getClass().getDeclaredFields()) {
             try {
                 Object o = field.get(this);
                 if (o == null) continue;
@@ -181,7 +178,7 @@ public class JesRoads2Block {
     @SubscribeEvent
     public void registerItemBlocks(RegistryEvent.Register<Item> event) {
         IForgeRegistry<Item> registry = event.getRegistry();
-        for (Field field : this.getClass().getDeclaredFields()) {
+        for (Field field : getClass().getDeclaredFields()) {
             try {
                 Object o = field.get(this);
                 if (o == null) continue;
@@ -206,17 +203,17 @@ public class JesRoads2Block {
 
     @SubscribeEvent
     public void registerBlockModels(ModelRegistryEvent event) {
-        for (Field field : this.getClass().getDeclaredFields()) {
+        for (Field field : getClass().getDeclaredFields()) {
             try {
                 Object o = field.get(this);
                 if (o == null) continue;
                 else if (o instanceof BlockBase) {
                     BlockBase block = (BlockBase) o;
-                    this.registerBlock(block);
+                    registerBlock(block);
                 } else if (o.getClass() == BlockBase[].class) {
                     BlockBase[] block = (BlockBase[]) o;
                     for (BlockBase b : block)
-                        this.registerBlock(b);
+                        registerBlock(b);
                 }
             } catch (IllegalArgumentException | IllegalAccessException ignored) {
             }
@@ -230,10 +227,14 @@ public class JesRoads2Block {
             int variants = block.getVariantCount();
             if (variants > 1) {
                 for (int meta = 0; meta < block.getVariantCount(); meta++)
-                    ModelLoader.setCustomModelResourceLocation(block.item, meta, new ModelResourceLocation(new ResourceLocation(JesRoads2.modid, block.name + "_" + meta), "inventory"));
+                    registerItem(block.item, meta, new ResourceLocation(JesRoads2.modid, block.name + "_" + meta));
             } else
-                ModelLoader.setCustomModelResourceLocation(block.item, 0, new ModelResourceLocation(block.getRegistryName(), "inventory"));
+                registerItem(block.item, 0, block.getRegistryName());
         }
+    }
+
+    private void registerItem(Item item, int metadata, ResourceLocation location){
+        ModelLoader.setCustomModelResourceLocation(item, metadata, new ModelResourceLocation(location, "inventory"));
     }
 
     private void registerTileEntityLegacy(Class<? extends TileEntity> tileClass, String name) {
