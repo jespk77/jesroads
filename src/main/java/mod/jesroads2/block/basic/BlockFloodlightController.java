@@ -96,6 +96,17 @@ public class BlockFloodlightController extends BlockBaseAll implements ITileEnti
                 if(world.isRemote) JesRoads2.handlerOverlay.getMessage().addMessage("[Freeway Controller] Light removed");
             }
             else {
+                // allow a regular bind to reuse the last group to make adding a lot of lights easier
+                // the gui will always be opened when sneaking to allow for changing the group
+                if(!player.isSneaking()) {
+                    String message = controller.addToGroup(null, pos);
+                    // message will contain characters when adding to group succeeds
+                    if(message.length() > 0) {
+                        if (world.isRemote) JesRoads2.handlerOverlay.getMessage().addMessage(message);
+                        return true;
+                    }
+                }
+
                 if(world.isRemote) player.openGui(JesRoads2.instance, GuiFloodlightController.ID, world, binder.getX(), binder.getY(), binder.getZ());
             }
         }

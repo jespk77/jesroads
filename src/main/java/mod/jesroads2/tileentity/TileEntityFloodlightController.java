@@ -91,6 +91,8 @@ public class TileEntityFloodlightController extends TileEntityBase implements IT
 
     private boolean isBinding;
 
+    private String lastUsedGroup;
+
     public TileEntityFloodlightController() {
         groups = new HashMap<>();
         ignoreRedstone = false;
@@ -106,6 +108,7 @@ public class TileEntityFloodlightController extends TileEntityBase implements IT
         }
         ignoreRedstone = nbt.getBoolean("ignoreRedstone");
         isBinding = nbt.getBoolean("isBinding");
+        if(nbt.hasKey("lastUsedGroup")) lastUsedGroup = nbt.getString("lastUsedGroup");
     }
 
     @Override
@@ -116,6 +119,7 @@ public class TileEntityFloodlightController extends TileEntityBase implements IT
             nbt.setTag(entry.getKey(), entry.getValue().getNBT());
         nbt.setBoolean("ignoreRedstone", ignoreRedstone);
         nbt.setBoolean("isBinding", isBinding);
+        if(lastUsedGroup != null) nbt.setString("LastUsedGroup", lastUsedGroup);
         return nbt;
     }
 
@@ -140,21 +144,27 @@ public class TileEntityFloodlightController extends TileEntityBase implements IT
     }
 
     public String addToGroup(String group, BlockPos pos) {
-        if (groups.containsKey(group)) {
-            FloodlightGroup g = groups.get(group);
-            g.addLight(pos);
-            IBlockState s = world.getBlockState(pos);
-            Block b = s.getBlock();
-            if (b instanceof IFloodlightBind) ((IFloodlightBind) b).set(world, pos, s, g.enabled);
-            markDirty();
-            return "[Floodlight Controller] Floodlight added to group: " + group;
-        } else if (groups.size() < maxGroups) {
-            FloodlightGroup g = new FloodlightGroup();
-            g.addLight(pos);
-            groups.put(group, g);
-            markDirty();
-            return "[Floodlight Controller] Floodlight added to group: " + group;
+        if(group != null) lastUsedGroup = group;
+        else group = lastUsedGroup;
+
+        if(group != null) {
+            if (groups.containsKey(group)) {
+                FloodlightGroup g = groups.get(group);
+                g.addLight(pos);
+                IBlockState s = world.getBlockState(pos);
+                Block b = s.getBlock();
+                if (b instanceof IFloodlightBind) ((IFloodlightBind) b).set(world, pos, s, g.enabled);
+                markDirty();
+                return "[Floodlight Controller] Floodlight added to group: " + group;
+            } else if (groups.size() < maxGroups) {
+                FloodlightGroup g = new FloodlightGroup();
+                g.addLight(pos);
+                groups.put(group, g);
+                markDirty();
+                return "[Floodlight Controller] Floodlight added to group: " + group;
+            }
         }
+
         return "";
     }
 
@@ -303,5 +313,6 @@ public class TileEntityFloodlightController extends TileEntityBase implements IT
     @Override
     public void onStopBind() {
         isBinding = false;
+        lastUsedGroup = null;
     }
 }
