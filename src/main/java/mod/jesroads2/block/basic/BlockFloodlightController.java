@@ -90,12 +90,14 @@ public class BlockFloodlightController extends BlockBaseAll implements ITileEnti
 
     @Override
     public boolean onBind(World world, BlockPos binder, BlockPos pos, EntityPlayer player) {
-        TileEntityFloodlightController controller = this.getTileEntity(world, binder, TileEntityFloodlightController.class);
-        if (controller != null && world.isRemote) {
-            if (controller.removeIfExist(pos))
-                JesRoads2.handlerOverlay.getMessage().addMessage("[Freeway Controller] Light removed");
-            else
-                player.openGui(JesRoads2.instance, GuiFloodlightController.ID, world, binder.getX(), binder.getY(), binder.getZ());
+        TileEntityFloodlightController controller = getTileEntity(world, binder, TileEntityFloodlightController.class);
+        if (controller != null) {
+            if (controller.removeIfExist(pos)) {
+                if(world.isRemote) JesRoads2.handlerOverlay.getMessage().addMessage("[Freeway Controller] Light removed");
+            }
+            else {
+                if(world.isRemote) player.openGui(JesRoads2.instance, GuiFloodlightController.ID, world, binder.getX(), binder.getY(), binder.getZ());
+            }
         }
         return true;
     }
