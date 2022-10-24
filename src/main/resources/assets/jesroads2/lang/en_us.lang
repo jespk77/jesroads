@@ -12,6 +12,7 @@ item.remote_control.name=Remote Control
 
 item.car.name=Car
 
+tile.scaffolding.name=Scaffolding
 tile.concrete.name=Concrete
 tile.roadbase.name=Road Base
 tile.ground.name=Ground

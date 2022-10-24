@@ -30,6 +30,8 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class JesRoads2Block {
     private static JesRoads2Block instance;
 
+    public final BlockBase scaffolding;
+
     public final BlockBase concrete, roadbase, memory, extender;
     public final BlockBase floodlight, floodlight_beam, floodlight_controller;
     public final BlockBase colored_light_off, colored_light_on;
@@ -76,6 +78,7 @@ public class JesRoads2Block {
         registerTileEntityLegacy(TileEntityExtender.class, "extender");
         colored_light_off = new BlockColoredLight(id++, false);
         colored_light_on = new BlockColoredLight(-1, true);
+        scaffolding = new BlockScaffolding(id++);
 
         BlockRoad.EnumRoadType[] road_type = BlockRoad.EnumRoadType.values();
         road = new BlockBase[road_type.length];
