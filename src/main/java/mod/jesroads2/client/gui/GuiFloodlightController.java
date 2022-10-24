@@ -135,7 +135,6 @@ public class GuiFloodlightController extends GuiBase {
         } else System.out.println("WARNING unknown button text: " + button.displayString + " for group " + group);
 
         if (!nbt.hasNoTags()) {
-            System.out.println(nbt);
             JesRoads2.handlerOverlay.getMessage().addMessage((String) controller.processMessage(nbt));
             JesRoads2.channel.sendToServer(new MessageTileEntity(controller, nbt));
         }
