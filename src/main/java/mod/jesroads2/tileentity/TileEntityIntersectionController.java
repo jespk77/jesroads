@@ -9,6 +9,7 @@ import mod.jesroads2.block.system.BlockTrafficlight;
 import mod.jesroads2.block.system.BlockTrafficlight.EnumTrafficLightState;
 import mod.jesroads2.block.system.BlockTrafficlight.EnumTrafficLightType;
 import mod.jesroads2.util.IRemoteBinding;
+import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
@@ -280,7 +281,6 @@ public class TileEntityIntersectionController extends TileEntity implements ITic
 
     protected boolean setLight(BlockPos pos, TrafficLightData data, EnumTrafficLightState s) {
         World world = getWorld();
-        if (world == null) return true;
         emptyTick = 0;
 
         IBlockState state = world.getBlockState(pos);
@@ -291,8 +291,6 @@ public class TileEntityIntersectionController extends TileEntity implements ITic
     }
 
     protected void setDefaults() {
-        if (getWorld() == null) return;
-
         if (orientation != null) {
             for (Entry<BlockPos, TrafficLightData> entry : lights.entrySet()) {
                 TrafficLightData data = entry.getValue();
@@ -356,7 +354,6 @@ public class TileEntityIntersectionController extends TileEntity implements ITic
             IBlockState c = world.getBlockState(getPos()), s = world.getBlockState(light);
             EnumFacing facing = s.getValue(BlockTrafficlight.facing);
             BlockTrafficlight block = ((BlockTrafficlight) s.getBlock());
-            EnumTrafficLightType type = block.type;
             TrafficLightData data = new TrafficLightData(facing, block.type, s.getValue(BlockTrafficlight.sign));
             lights.put(light, data);
             markDirty();
@@ -434,7 +431,7 @@ public class TileEntityIntersectionController extends TileEntity implements ITic
 
     protected void setAllLightsInstant(EnumTrafficLightState state) {
         World world = getWorld();
-        if (world != null && !world.isRemote)
+        if (!world.isRemote)
             for (Entry<BlockPos, TrafficLightData> entry : lights.entrySet())
                 setLight(entry.getKey(), entry.getValue(), state);
     }
@@ -456,8 +453,9 @@ public class TileEntityIntersectionController extends TileEntity implements ITic
         bindCheck();
         StringBuilder build = new StringBuilder();
         build.append(getLightCount()).append(" lights connected");
-        for (BlockPos p : lights.keySet()) {
-            TrafficLightData data = lights.get(p);
+        for (Entry<BlockPos, TrafficLightData> entry : lights.entrySet()) {
+            BlockPos p = entry.getKey();
+            TrafficLightData data = entry.getValue();
             build.append("\n[x=").append(p.getX()).append(", y=").append(p.getY()).append(", z=").append(p.getZ()).append("] Direction=").append(data.facing.getName().toLowerCase()).append(", Type=").append(data.type.getName().toLowerCase());
         }
         return build.toString();
@@ -466,11 +464,18 @@ public class TileEntityIntersectionController extends TileEntity implements ITic
     @Override
     public void bindCheck() {
         World world = getWorld();
-        if (world == null) return;
 
         ArrayList<BlockPos> removing = new ArrayList<>(3);
-        for (BlockPos p : lights.keySet())
-            if (world.getBlockState(p).getBlock() instanceof BlockTrafficlight) removing.add(p);
+        for (Entry<BlockPos, TrafficLightData> entry : lights.entrySet()) {
+            BlockPos lightPos = entry.getKey();
+            TrafficLightData data = entry.getValue();
+            IBlockState lightState = world.getBlockState(lightPos);
+            Block block = lightState.getBlock();
+            if (!(block instanceof BlockTrafficlight)
+                || lightState.getValue(BlockTrafficlight.facing) != data.facing
+                || ((BlockTrafficlight) block).type != data.type)
+                    removing.add(lightPos);
+        }
 
         for (BlockPos r : removing)
             lights.remove(r);
