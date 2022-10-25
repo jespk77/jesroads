@@ -104,11 +104,12 @@ public class GuiRoadSignEdit extends GuiBase {
 
     private void updateSignData() {
         List<SignData> signs = sign.getData();
-        for (int id = 0; id < signs.size() && id < textList.size(); id++) {
-            SignData d = signs.get(id);
+        int signId = 0, textId = 0;
+        while (signId < signs.size() && textId < textList.size()) {
+            SignData d = signs.get(signId++);
             if (d.editable) {
-                d.setText(textList.get(id++).getText());
-                GuiTextField field = textList.get(id++);
+                d.setText(textList.get(textId++).getText());
+                GuiTextField field = textList.get(textId++);
                 String color = field.getText();
                 boolean valid = true;
                 if (BlockSign.colors.containsKey(color)) d.setColor(BlockSign.colors.get(color));
