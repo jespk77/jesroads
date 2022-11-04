@@ -431,6 +431,8 @@ public class TileEntityIntersectionController extends TileEntity implements ITic
 
     protected void setAllLightsInstant(EnumTrafficLightState state) {
         World world = getWorld();
+        if(world == null) return;
+
         if (!world.isRemote)
             for (Entry<BlockPos, TrafficLightData> entry : lights.entrySet())
                 setLight(entry.getKey(), entry.getValue(), state);
