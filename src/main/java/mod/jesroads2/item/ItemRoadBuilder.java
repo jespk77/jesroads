@@ -10,6 +10,7 @@ import mod.jesroads2.JesRoads2;
 import mod.jesroads2.block.BlockBase;
 import mod.jesroads2.block.road.BlockRoad;
 import mod.jesroads2.block.road.BlockRoad.EnumRoadType;
+import mod.jesroads2.client.PlayerReachController;
 import mod.jesroads2.client.gui.GuiRoadBuilder;
 import mod.jesroads2.util.EnumFacingDiagonal;
 import mod.jesroads2.util.IBlockSwitchable;
@@ -120,7 +121,14 @@ public class ItemRoadBuilder extends ItemBase implements IItemCustomHighlightRen
     @Override
     public void onUpdate(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
         if (selected) {
-            if (stack.hasTagCompound() && stack.getTagCompound().getSize() > 6) stack.setTagCompound(null);
+            boolean shouldFocus = true;
+            if (stack.hasTagCompound()){
+                NBTTagCompound nbt = stack.getSubCompound(nbt_name);
+                if(nbt != null && nbt.getInteger("placemode") != 0) shouldFocus = false;
+            }
+
+            //System.out.println(shouldFocus);
+            PlayerReachController.setFocused(Minecraft.getMinecraft(), (EntityPlayer) entity, shouldFocus);
             if (!world.isRemote && entity.isSneaking()) {
                 BlockPos pos = entity.getPosition().down();
                 speedGrowth(world, pos);
@@ -129,6 +137,7 @@ public class ItemRoadBuilder extends ItemBase implements IItemCustomHighlightRen
             NBTTagCompound nbt = stack.getSubCompound(nbt_name);
             if (nbt != null && (nbt.getInteger("right_length") != 0 || nbt.getInteger("road_length") != 0 || nbt.getInteger("left_length") != 0))
                 nbt.setInteger("placemode", 0);
+            PlayerReachController.setFocused(Minecraft.getMinecraft(), (EntityPlayer) entity, false);
         }
     }
 
