@@ -41,9 +41,10 @@ public class BlockScaffolding extends BlockBase {
                 world.setBlockState(pos, getDefaultState());
                 SoundType sound = getSoundType(state, world, pos, null);
                 world.playSound(null, pos, sound.getBreakSound(), SoundCategory.BLOCKS, (sound.getVolume() + 1.0F) / 2.0F, sound.getPitch() * 0.8F);
+                return true;
             }
 
-            return true;
+            return false;
         }
 
         return super.onBlockActivated(world, pos, state, entity, stack, side, hitX, hitY, hitZ);
