@@ -3,7 +3,7 @@
   "modid": "jesroads2",
   "name": "JesRoads 2",
   "description": "Building roads in Minecraft since 2013",
-  "version": "2.6-dev",
+  "version": "2.6",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",

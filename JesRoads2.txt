@@ -4,9 +4,6 @@ TO DO
  * Add entering and leaving "state" signs [on hold]
  * Add ground blocks that convert to dirt after some time [ON HOLD]
 
-- Fixes
- * Traffic light bindings don't save
-
 RELEASES
 === REVIVAL UPDATE ===
 == 2.6 ==
