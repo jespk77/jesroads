@@ -109,6 +109,7 @@ tile.sign_freeway_blank.name=Freeway Sign: Text
 tile.sign_freeway_entrance.name=Freeway Sign: Entrance
 tile.sign_freeway_distance.name=Freeway Sign: Distance
 tile.sign_freeway_separator.name=Freeway Sign: Separator
+tile.sign_freeway_exit.name=Freeway Sign: Exit
 
 tile.signpost.0.name=Signpost Large
 tile.signpost.1.name=Signpost Small

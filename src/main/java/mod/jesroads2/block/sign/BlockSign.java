@@ -84,7 +84,8 @@ public class BlockSign extends BlockBaseHorizontal implements IBlockSwitchable, 
         F_DISTANCE(25, "freeway_distance", new SignData[]{new SignData(8, -4, 0xAAAAAA, 2.F, "", 3), new SignData(49, -2, 0xAAAAAA, 1.8F, "", 5),
                 new SignData(34, 23, 0xAAAAAA, 2.7F, "", 4)}),
         F_SEPARATOR(26, "freeway_separator", null),
-        FD_SEPARATOR(27, "dfreeway_separator", null);
+        FD_SEPARATOR(27, "dfreeway_separator", null),
+        F_EXIT(28, "freeway_exit", new SignData[]{new SignData(20, 6, 0xAAAAAA, 3F, "EXIT", 0).setEditable(false), new SignData(24, 46, 0xAAAAAA, 3F, "", 3)});
 
         private final int id;
         public final String name;
@@ -141,7 +142,7 @@ public class BlockSign extends BlockBaseHorizontal implements IBlockSwitchable, 
         }
 
         public boolean needsPost() {
-            return isHighway() || this == F_ENTRANCE;
+            return isHighway() || this == F_ENTRANCE || this == F_EXIT;
         }
 
         public CreativeTabs getTab() {
