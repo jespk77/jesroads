@@ -229,7 +229,7 @@ public class BlockSign extends BlockBaseHorizontal implements IBlockSwitchable, 
     }
 
     protected boolean isSolid(IBlockAccess world, IBlockState state, BlockPos pos) {
-        return !isReplaceable(world, pos) && !(state.getBlock() instanceof BlockDynamicSign);
+        return !isReplaceable(world, pos);
     }
 
     @Override
