@@ -1,0 +1,22 @@
+{
+    "parent": "jesroads2:block/highwaysign_overhead",
+	"textures": {
+		"front": "jesroads2:blocks/signs/highway_overhead"
+	},
+	"display": {
+        "gui": {
+            "rotation": [ 45, 22.5, 0 ],
+			"translation": [ 0, 0, 0],
+            "scale":[ 0.625, 0.625, 0.625 ]
+        },
+		"firstperson_righthand": {
+            "rotation": [ 0, -45, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.40, 0.40, 0.40 ]
+        }
+    },
+	"overrides": [
+		{ "predicate": { "text": 0 }, "model": "jesroads2:item/sign_highway_text_overhead" },
+		{ "predicate": { "text": 1 }, "model": "jesroads2:item/sign_highway_text_overhead_text" }
+	]
+}

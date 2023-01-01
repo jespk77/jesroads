@@ -1,0 +1,18 @@
+{
+    "parent": "jesroads2:block/highwaysign_overhead",
+	"textures": {
+		"front": "jesroads2:blocks/signs/highway_overhead_text"
+	},
+	"display": {
+        "gui": {
+            "rotation": [ 45, 22.5, 0 ],
+			"translation": [ 0, 0, 0],
+            "scale":[ 0.625, 0.625, 0.625 ]
+        },
+		"firstperson_righthand": {
+            "rotation": [ 0, -45, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.40, 0.40, 0.40 ]
+        }
+    }
+}

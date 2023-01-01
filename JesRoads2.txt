@@ -7,6 +7,10 @@ TO DO
 RELEASES
 === SIGNS AND SIGNALS UPDATE ===
 == 2.7 ==
+- All other sign textures have been reworked
+- Added freeway exit sign
+- Added highway overhead signs
+- Fixes and improvements
 
 === REVIVAL UPDATE ===
 == 2.6 - Dec 10, 2022 ==

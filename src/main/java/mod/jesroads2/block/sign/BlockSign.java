@@ -85,7 +85,18 @@ public class BlockSign extends BlockBaseHorizontal implements IBlockSwitchable, 
                 new SignData(34, 23, 0xAAAAAA, 2.7F, "", 4)}),
         F_SEPARATOR(26, "freeway_separator", null),
         FD_SEPARATOR(27, "dfreeway_separator", null),
-        F_EXIT(28, "freeway_exit", new SignData[]{new SignData(20, 6, 0xAAAAAA, 3F, "EXIT", 0).setEditable(false), new SignData(24, 46, 0xAAAAAA, 3F, "", 3)});
+        F_EXIT(28, "freeway_exit", new SignData[]{new SignData(20, 6, 0xAAAAAA, 3F, "EXIT", 0).setEditable(false), new SignData(24, 46, 0xAAAAAA, 3F, "", 3)}),
+
+        H_TEXT_OVERHEAD(29, "highway_text_overhead", new SignData[]{new SignData(0, 0, 0xAAAAAA, 3.5F, "", 0), new SignData(0, 40, 0xAAAAAA, 3.5F, "", 0)}),
+        HD_TEXT_OVERHEAD(30, "dhighway_text_overhead", new SignData[]{new SignData(0, 0, 0xAAAAAA, 3.5F, "", 0), new SignData(0, 40, 0xAAAAAA, 3.5F, "", 0)}),
+        H_DIR_UP_OVERHEAD(31, "highway_dir_up_overhead", null),
+        HD_DIR_UP_OVERHEAD(32, "dhighway_dir_up_overhead", null),
+        H_DIR_RIGHT_OVERHEAD(34, "highway_dir_right_overhead", null),
+        HD_DIR_RIGHT_OVERHEAD(35, "dhighway_dir_right_overhead", null),
+        H_ROUTE_OVERHEAD(36, "highway_route_overhead", new SignData[]{new SignData(16, 3, 0xAAAAAA, 4F, "", 0), new SignData(0, 50, 0xAAAAAA, 3.7F, "", 0)}),
+        HD_ROUTE_OVERHEAD(37, "dhighway_route_overhead", new SignData[]{new SignData(16, 3, 0xAAAAAA, 4F, "", 0), new SignData(0, 50, 0xAAAAAA, 3.7F, "", 0)}),
+        H_ROUTEH_OVERHEAD(38, "highway_routeh_overhead", new SignData[]{new SignData(16, 3, 0x000000, 4F, "", 0), new SignData(0, 50, 0xAAAAAA, 3.7F, "", 0)}),
+        HD_ROUTEH_OVERHEAD(39, "dhighway_routeh_overhead", new SignData[]{new SignData(16, 3, 0x000000, 4F, "", 0), new SignData(0, 50, 0xAAAAAA, 3.7F, "", 0)});
 
         private final int id;
         public final String name;
