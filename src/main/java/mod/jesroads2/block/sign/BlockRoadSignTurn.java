@@ -86,7 +86,7 @@ public class BlockRoadSignTurn extends BlockRoadSign implements IBlockSwitchable
         IBlockState state = super.getStateForPlacement(world, pos, enfacing, hitX, hitY, hitZ, meta, entity);
 
         EnumFacing face = state.getValue(facing);
-        if (shouldPlacePost(world, pos)) {
+        if (shouldPlacePost(world, pos, face)) {
             ItemStack stack = entity.getHeldItemMainhand();
             if (stack == null) stack = entity.getHeldItemOffhand();
             if (stack == null) return state;

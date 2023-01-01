@@ -103,8 +103,8 @@ public class BlockSignPost extends BlockBaseHorizontal {
                 if (state.getValue(size) == EnumSize.SMALL) {
                     minX = 0.4F;
                     xWidth = 0.2F;
-                    minZ = 0.9F;
-                    zWidth = 0.1F;
+                    minZ = 0.8F;
+                    zWidth = 0.2F;
                 } else {
                     minX = 0.4F;
                     xWidth = 0.2F;
@@ -116,7 +116,7 @@ public class BlockSignPost extends BlockBaseHorizontal {
             case WEST: {
                 if (state.getValue(size) == EnumSize.SMALL) {
                     minX = 0.0F;
-                    xWidth = 0.1F;
+                    xWidth = 0.2F;
                     minZ = 0.4F;
                     zWidth = 0.2F;
                 } else {
@@ -129,8 +129,8 @@ public class BlockSignPost extends BlockBaseHorizontal {
             }
             case EAST: {
                 if (state.getValue(size) == EnumSize.SMALL) {
-                    minX = 0.9F;
-                    xWidth = 0.1F;
+                    minX = 0.8F;
+                    xWidth = 0.2F;
                     minZ = 0.4F;
                     zWidth = 0.2F;
                 } else {
@@ -146,7 +146,7 @@ public class BlockSignPost extends BlockBaseHorizontal {
                     minX = 0.4F;
                     xWidth = 0.2F;
                     minZ = 0.0F;
-                    zWidth = 0.1F;
+                    zWidth = 0.2F;
                 } else {
                     minX = 0.4F;
                     xWidth = 0.2F;

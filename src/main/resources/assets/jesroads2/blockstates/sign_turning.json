@@ -31,6 +31,15 @@
 					"front": "jesroads2:blocks/signs/no_right_turn"
 				}
 			}
+		},
+		"up_sign": {
+			"true": { "submodel": "jesroads2:sign_with_post_up" },
+			"false": {  }
+		},
+		"support_type": {
+			"none": {  },
+			"post": { "model": "jesroads2:sign_with_post" },
+			"back": {  }
 		}
     }
 }

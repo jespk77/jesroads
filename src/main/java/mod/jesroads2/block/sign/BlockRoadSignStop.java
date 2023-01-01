@@ -84,18 +84,11 @@ public class BlockRoadSignStop extends BlockRoadSign implements IBlockSwitchable
     }
 
     @Override
-    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
-        AxisAlignedBB box = super.getBoundingBox(state, world, pos);
-        if (state.getValue(variant) == EnumType.ROAD_CLOSED) return box.contract(0, 0.5, 0);
-        else return box;
-    }
-
-    @Override
     public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing enfacing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase entity) {
         IBlockState state = super.getStateForPlacement(world, pos, enfacing, hitX, hitY, hitZ, meta, entity);
 
         EnumFacing face = state.getValue(facing);
-        if (shouldPlacePost(world, pos)) {
+        if (shouldPlacePost(world, pos, face)) {
             ItemStack stack = entity.getHeldItemMainhand();
             if (stack == null) stack = entity.getHeldItemOffhand();
             if (stack == null) return state;

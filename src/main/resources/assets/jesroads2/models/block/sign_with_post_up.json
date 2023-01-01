@@ -1,0 +1,21 @@
+{
+  "parent": "block/block",
+  "elements": [
+    {
+      "from": [ 7, 10, 0 ],
+      "to": [ 9, 16, 2 ],
+      "faces": {
+        "down":  { "texture": "#side", "cullface": "down" },
+        "up":    { "texture": "#side" },
+        "north": { "texture": "#side", "cullface": "north" },
+        "south": { "texture": "#side" },
+        "west":  { "texture": "#side" },
+        "east":  { "texture": "#side" }
+      }
+    }
+  ],
+  "textures": {
+    "particle": "jesroads2:blocks/signs/side",
+    "side": "jesroads2:blocks/signs/side"
+  }
+}

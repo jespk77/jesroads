@@ -1,5 +1,5 @@
 {
-    "parent": "jesroads2:item/model/roadsign_half",
+    "parent": "jesroads2:item/model/roadsign",
 	"textures": {
 		"front": "jesroads2:blocks/signs/road_closed"
 	},

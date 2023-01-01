@@ -1,5 +1,8 @@
 {
     "forge_marker": 1,
+	"defaults": {
+		"model": "jesroads2:sign"
+	},
 	"variants": {
 		"direction": {
 			"north": { },
@@ -9,29 +12,34 @@
 		},
 		"variant": {
 			"stop": { 
-				"submodel": "jesroads2:sign",
 				"textures": {
 					"front": "jesroads2:blocks/signs/stop"
 				}
 			},
 			"giveway": {
-				"submodel": "jesroads2:sign",
 				"textures": {
 					"front": "jesroads2:blocks/signs/giveway"
 				}
 			},
 			"no_entry": {
-				"submodel": "jesroads2:sign",
 				"textures": {
 					"front": "jesroads2:blocks/signs/no_entry"
 				}
 			},
 			"road_closed": {
-				"submodel": "jesroads2:sign_half",
 				"textures" : {
 					"front": "jesroads2:blocks/signs/road_closed"
 				}
 			}
+		},
+		"up_sign": {
+			"true": { "submodel": "jesroads2:sign_with_post_up" },
+			"false": {  }
+		},
+		"support_type": {
+			"none": {  },
+			"post": { "model": "jesroads2:sign_with_post" },
+			"back": {  }
 		}
     }
 }
