@@ -317,23 +317,27 @@ public class BlockSign extends BlockBaseHorizontal implements IBlockSwitchable, 
 
     @Override
     public NBTTagCompound onBlockPlaced(World world, BlockPos pos, ItemStack stack, EntityPlayer player, NBTTagCompound blockEntity) {
-        if (type == BlockSign.EnumSignType.F_DISTANCE && blockEntity != null) {
-            if (blockEntity.hasKey("data_2")) {
-                NBTTagCompound data = blockEntity.getCompoundTag("data_2");
-                try {
-                    int distance = Integer.parseInt(data.getString("text").replace(".", "")), walked = JesRoads2.handlerOverlay.getOverlay().getDistance() / 100;
-                    if (distance + walked < 999) {
-                        distance += walked;
-                        StringBuilder b = new StringBuilder();
-                        b.append(distance);
-                        b.insert(b.length() - 1, ".");
-                        data.setString("text", b.toString());
-                        world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockSign.data, true), 2);
+        if(blockEntity != null){
+            if (type == BlockSign.EnumSignType.F_DISTANCE) {
+                if (blockEntity.hasKey("data_2")) {
+                    NBTTagCompound data = blockEntity.getCompoundTag("data_2");
+                    try {
+                        int distance = Integer.parseInt(data.getString("text").replace(".", "")), walked = JesRoads2.handlerOverlay.getOverlay().getDistance() / 100;
+                        if (distance + walked < 999) {
+                            distance += walked;
+                            StringBuilder b = new StringBuilder();
+                            b.append(distance);
+                            b.insert(b.length() - 1, ".");
+                            data.setString("text", b.toString());
+                        }
+                    } catch (NumberFormatException ignored) {
                     }
-                } catch (NumberFormatException ignored) {
                 }
             }
+
+            world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockSign.data, true), 2);
         }
+
         return blockEntity;
     }
 
