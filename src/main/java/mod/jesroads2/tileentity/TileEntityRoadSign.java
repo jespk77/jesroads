@@ -118,7 +118,6 @@ public class TileEntityRoadSign extends TileEntityBase {
             SignData[] signs = new SignData[signData.size()];
             for(int index = 0; index < signData.size(); index++){
                 signs[index] = new SignData(signData.get(index));
-                signs[index].data = "";
             }
             template.setData(signs);
             storage.addTemplate(name, template);
