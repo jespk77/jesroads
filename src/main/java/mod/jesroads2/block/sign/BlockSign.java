@@ -92,7 +92,9 @@ public class BlockSign extends BlockBaseHorizontal implements IBlockSwitchable, 
         H_ROUTE_OVERHEAD(36, "highway_route_overhead"),
         HD_ROUTE_OVERHEAD(37, "dhighway_route_overhead"),
         H_ROUTEH_OVERHEAD(38, "highway_routeh_overhead"),
-        HD_ROUTEH_OVERHEAD(39, "dhighway_routeh_overhead");
+        HD_ROUTEH_OVERHEAD(39, "dhighway_routeh_overhead"),
+        H_DIR_LEFT_OVERHEAD(40, "highway_dir_left_overhead"),
+        HD_DIR_LEFT_OVERHEAD(41, "dhighway_dir_left_overhead");
 
         private final int id;
         public final String name;

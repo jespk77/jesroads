@@ -113,6 +113,7 @@ tile.sign_freeway_exit.name=Freeway sign: Exit
 
 tile.sign_highway_dir_right_overhead.name=Highway overhead sign: Right arrow
 tile.sign_highway_dir_up_overhead.name=Highway overhead sign: Up arrow
+tile.sign_highway_dir_left_overhead.name=Highway overhead sign: Left arrow
 tile.sign_highway_route_overhead.name=Highway overhead sign: Freeway pointer
 tile.sign_highway_routeh_overhead.name=Highway overhead sign: Highway pointer
 tile.sign_highway_text_overhead.name=Highway overhead sign: Text
