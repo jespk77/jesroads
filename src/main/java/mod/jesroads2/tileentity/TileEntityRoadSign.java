@@ -7,72 +7,63 @@ import java.util.List;
 import mod.jesroads2.JesRoads2;
 import mod.jesroads2.block.sign.BlockSign;
 import mod.jesroads2.block.sign.BlockSign.EnumSignType;
+import mod.jesroads2.world.SignTemplateStorage;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.play.server.SPacketUpdateTileEntity;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class TileEntityRoadSign extends TileEntity {
-    private List<SignData> data = null;
-    private EnumSignType type = null;
+public class TileEntityRoadSign extends TileEntityBase {
+    private List<SignData> signData = null;
+    private EnumSignType signType = null;
     private boolean hasData = false;
 
-    public TileEntityRoadSign() {
-    }
+    public TileEntityRoadSign() { }
 
     public TileEntityRoadSign(EnumSignType type) {
-        this.type = type;
-        if (type != null) {
-            SignData[] data = type.getData();
-            if (this.data != null) this.data = new ArrayList<>(Arrays.asList(data));
-        }
-        if (data == null) data = new ArrayList<>(3);
+        signType = type;
+        signData = new ArrayList<>(3);
     }
 
     @Override
     public void readFromNBT(NBTTagCompound t) {
         super.readFromNBT(t);
+
         hasData = false;
         if (t.hasKey("hasData") && t.getBoolean("hasData")) {
-            data = null;
+            signData = null;
             return;
         }
 
-        data = new ArrayList<>(t.hasKey("size") ? t.getInteger("size") + 1 : 4);
-        int index = 0;
-        String key = "data_" + index;
-        while (t.hasKey(key)) {
-            SignData d = new SignData(t.getCompoundTag(key));
-            if (!hasData) hasData = d.text.length() > 0;
-            data.add(d);
-            key = "data_" + (++index);
+        int size = t.hasKey("size") ? t.getInteger("size") : 0;
+        signData = new ArrayList<>(size);
+        for (int index = 0; index < size; index++) {
+            SignData d = new SignData(t.getCompoundTag("data_" + index));
+            if (!hasData) hasData = d.data.length() > 0;
+            signData.add(d);
         }
 
-        if (t.hasKey("type")) type = EnumSignType.fromOrdinal(t.getInteger("type"));
-        else type = null;
+        if (t.hasKey("type")) signType = EnumSignType.fromOrdinal(t.getInteger("type"));
+        else signType = null;
     }
 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound t) {
         t = super.writeToNBT(t);
-        if (data == null) {
+        if (signData == null) {
             t.setBoolean("hasData", false);
             return t;
         }
 
-        t.setInteger("size", data.size());
+        t.setInteger("size", signData.size());
         int index = 0;
         String key = "data_" + index;
-        for (SignData d : data) {
+        for (SignData d : signData) {
             t.setTag(key, d.getTag());
             key = "data_" + (++index);
         }
-        if (type != null) t.setInteger("type", type.ordinal());
+
+        if (signType != null) t.setInteger("type", signType.ordinal());
         return t;
     }
 
@@ -81,101 +72,104 @@ public class TileEntityRoadSign extends TileEntity {
         return !(nw.getBlock() instanceof BlockSign);
     }
 
-    @Override
-    public NBTTagCompound getUpdateTag() {
-        return writeToNBT(new NBTTagCompound());
-    }
-
-    @Override
-    @SideOnly(Side.SERVER)
-    public SPacketUpdateTileEntity getUpdatePacket() {
-        return new SPacketUpdateTileEntity(pos, 1, getUpdateTag());
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void onDataPacket(NetworkManager network, SPacketUpdateTileEntity packet) {
-        readFromNBT(packet.getNbtCompound());
-    }
-
     public IBlockState getState() {
         return getWorld().getBlockState(getPos());
     }
 
-    public boolean hasData() {
-        return hasData;
-    }
-
     public boolean checkForData() {
-        if (data == null) return false;
+        if (signData == null) return false;
         boolean empty = true;
-        for (SignData d : data)
-            if (d.text != null && d.text.length() > 0) {
+        for (SignData d : signData)
+            if (d.data != null && d.data.length() > 0) {
                 empty = false;
                 break;
             }
         hasData = !empty;
-        return hasData();
-    }
-
-    public SignData addData(int id, SignData data) {
-        if (id < this.data.size()) return this.data.set(id, data);
-        else this.data.add(data);
-        checkForData();
-        return data;
+        return hasData;
     }
 
     public List<SignData> getData() {
-        if (type != null && !hasData) {
-            data = new ArrayList<>(Arrays.asList(type.getData()));
+        if (signType != null && !hasData) {
             hasData = true;
         }
-        return data;
+        return signData;
+    }
+
+    public void applyTemplate(String templateName){
+        SignTemplateStorage storage = SignTemplateStorage.getInstance();
+        SignTemplateStorage.SignDataTemplate template = storage.getTemplate(templateName);
+        if(template != null){
+            String[] data = new String[signData.size()];
+            for(int index = 0; index < data.length; index++)
+                data[index] = signData.get(index).data;
+
+            signData.clear();
+            signData.addAll(Arrays.asList(template.getData()));
+            for(int index = 0; index < data.length && index < signData.size(); index++)
+                signData.get(index).setText(data[index]);
+        }
+    }
+
+    public void saveAsTemplate(String name){
+        if(hasData) {
+            SignTemplateStorage storage = SignTemplateStorage.getInstance();
+            SignTemplateStorage.SignDataTemplate template = new SignTemplateStorage.SignDataTemplate();
+
+            SignData[] signs = new SignData[signData.size()];
+            for(int index = 0; index < signData.size(); index++){
+                signs[index] = new SignData(signData.get(index));
+                signs[index].data = "";
+            }
+            template.setData(signs);
+            storage.addTemplate(name, template);
+        }
     }
 
     public void update(SignData[] data) {
-        int size = size(), i;
+        int size = signData.size(), i;
         for (i = 0; i < data.length; i++) {
-            if (i < size) this.data.get(i).update(data[i]);
-            else this.data.add(data[i]);
+            if (i < size) signData.get(i).update(data[i]);
+            else signData.add(data[i]);
         }
-        this.data.subList(i, this.data.size()).clear();
-    }
-
-    public int size() {
-        return data.size();
+        signData.subList(i, signData.size()).clear();
     }
 
     public static class SignData {
         public int xPos;
         public int yPos;
-        public int color;
-        public float size;
+        public int textColor;
+        public float textSize;
         public final int max;
-        public String text;
+        public String data;
 
-        public boolean editable, blackout;
+        public boolean isEditable, blackout;
 
         public SignData(int x, int y, int color, float size, String text, int maxLength) {
             xPos = x;
             yPos = y;
-            this.color = color;
-            this.size = size;
-            this.text = text;
+            textColor = color;
+            textSize = size;
+            data = text;
             max = maxLength;
-            editable = true;
+            isEditable = true;
             blackout = false;
+        }
+
+        public SignData(SignData other){
+            this(other.xPos, other.yPos, other.textColor, other.textSize, other.data, other.max);
+            isEditable = other.isEditable;
+            blackout = other.blackout;
         }
 
         public SignData(NBTTagCompound t) {
             xPos = t.getInteger("xPos");
             yPos = t.getInteger("yPos");
-            color = t.getInteger("color");
-            size = t.getFloat("fsize");
-            text = t.getString("text");
+            textColor = t.getInteger("color");
+            textSize = t.getFloat("fsize");
+            data = t.getString("text");
             max = t.getInteger("max");
-            if (t.hasKey("editable")) editable = t.getBoolean("editable");
-            else editable = true;
+            if (t.hasKey("editable")) isEditable = t.getBoolean("editable");
+            else isEditable = true;
             blackout = t.getBoolean("blackout");
         }
 
@@ -183,11 +177,11 @@ public class TileEntityRoadSign extends TileEntity {
             NBTTagCompound t = new NBTTagCompound();
             t.setInteger("xPos", xPos);
             t.setInteger("yPos", yPos);
-            t.setInteger("color", color);
-            t.setFloat("fsize", size);
-            t.setString("text", text);
+            t.setInteger("color", textColor);
+            t.setFloat("fsize", textSize);
+            t.setString("text", data);
             t.setInteger("max", max);
-            t.setBoolean("editable", editable);
+            t.setBoolean("editable", isEditable);
             t.setBoolean("blackout", blackout);
             return t;
         }
@@ -195,10 +189,10 @@ public class TileEntityRoadSign extends TileEntity {
         public void update(SignData d) {
             xPos = d.xPos;
             yPos = d.yPos;
-            color = d.color;
-            size = d.size;
-            text = d.text;
-            editable = d.editable;
+            textColor = d.textColor;
+            textSize = d.textSize;
+            data = d.data;
+            isEditable = d.isEditable;
             blackout = d.blackout;
         }
 
@@ -208,12 +202,12 @@ public class TileEntityRoadSign extends TileEntity {
         }
 
         public SignData setEditable(boolean editable) {
-            this.editable = editable;
+            isEditable = editable;
             return this;
         }
 
         public SignData setPos(int x, int y) {
-            if (editable) {
+            if (isEditable) {
                 xPos = posInBounds(xPos + x);
                 yPos = posInBounds(yPos + y);
             }
@@ -226,34 +220,33 @@ public class TileEntityRoadSign extends TileEntity {
         }
 
         public SignData setColor(int color) {
-            if (editable) this.color = color;
+            if (isEditable) textColor = color;
             return this;
         }
 
         public SignData increaseSize(float amount) {
-            if (editable) {
-                float nsize = size + amount;
-                if (nsize > 0 && nsize < JesRoads2.options.road_sign.text_max_pos) size = nsize;
+            if (isEditable) {
+                float nsize = textSize + amount;
+                if (nsize > 0 && nsize < JesRoads2.options.road_sign.text_max_pos) textSize = nsize;
             }
             return this;
         }
 
         public SignData setText(String text) {
-            if (editable) {
-                if (max > 0) this.text = text.length() > max ? text.substring(0, max) : text;
-                else this.text = text;
+            if (isEditable) {
+                if (max > 0) data = text.length() > max ? text.substring(0, max) : text;
+                else data = text;
             }
             return this;
         }
 
         public SignData getCopy() {
-            return new SignData(xPos, yPos, color, size, text, max).setEditable(editable);
+            return new SignData(xPos, yPos, textColor, textSize, data, max).setEditable(isEditable);
         }
 
         @Override
         public String toString() {
-            return "SignData[x:" + xPos + ", y:" + yPos + ", color:" + color + ", fontSize:" + size + ", text:" + text + ", maxLength:" + max + "]";
+            return "SignData[x:" + xPos + ", y:" + yPos + ", color:" + textColor + ", fontSize:" + textSize + ", text:" + data + ", maxLength:" + max + "]";
         }
     }
-
 }

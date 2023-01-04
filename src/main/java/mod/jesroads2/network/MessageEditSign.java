@@ -71,7 +71,7 @@ public class MessageEditSign implements IMessage {
             main.addScheduledTask(new Runnable() {
                 private boolean isEmpty() {
                     for (SignData d : message.data)
-                        if (d.text.length() > 0) return false;
+                        if (d.data.length() > 0) return false;
                     return true;
                 }
 

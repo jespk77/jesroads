@@ -83,7 +83,7 @@ public class RendererBlockSign extends TileEntitySpecialRenderer<TileEntityRoadS
     }
 
     public void renderText(FontRenderer font, SignData data) {
-        float size = data.size;
+        float size = data.textSize;
         float fontSize = size * SCALE_FACTOR;
         int x = (int) (data.xPos / size);
         int y = (int) (data.yPos / size);
@@ -95,7 +95,7 @@ public class RendererBlockSign extends TileEntitySpecialRenderer<TileEntityRoadS
             x -= 1;
             y -= 1;
             size = 2 * size + 4.2F;
-            double length = font.getStringWidth(data.text) + 1;
+            double length = font.getStringWidth(data.data) + 1;
             Tessellator tes = Tessellator.getInstance();
             BufferBuilder buffer = tes.getBuffer();
             GlStateManager.color(.1F, .1F, .1F);
@@ -107,7 +107,7 @@ public class RendererBlockSign extends TileEntitySpecialRenderer<TileEntityRoadS
             buffer.pos(x, y, 0).endVertex();
             tes.draw();
             GlStateManager.enableTexture2D();
-        } else font.drawString(data.text, x, y, data.blackout ? 0 : data.color);
+        } else font.drawString(data.data, x, y, data.blackout ? 0 : data.textColor);
         GL11.glPopMatrix();
     }
 }

@@ -18,13 +18,17 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class GuiRoadSignEdit extends GuiBase {
-
     public static final int ID = 164;
+    private static final int MAX_SIZE = 6;
+
+    private static final GuiButton addButton = new GuiButton(0, 15, 0, 30, 20, "add"),
+        loadTemplateButton = new GuiButton(-32, 135, 0, 30, 20, "apply"),
+        saveTemplateButton = new GuiButton(-33, 135, 20, 30, 20, "save");
 
     private final TileEntityRoadSign sign;
-    private boolean dirty;
-
     private final EnumFacing facing;
+    private boolean dirty;
+    private GuiTextField templateNameField;
 
     public GuiRoadSignEdit(EntityPlayer player, World world, BlockPos pos) {
         super(player, world, pos);
@@ -48,7 +52,7 @@ public class GuiRoadSignEdit extends GuiBase {
         List<SignData> data = sign.getData();
         for (int i = 0; i < data.size(); i++) {
             SignData s = data.get(i);
-            if (s.editable) {
+            if (s.isEditable) {
                 addDataLine(i + 1, id, yPos, s);
                 yPos += 30;
             }
@@ -56,7 +60,13 @@ public class GuiRoadSignEdit extends GuiBase {
         }
         if (!textList.isEmpty()) textList.get(0).setFocused(true);
 
-        buttonList.add(new GuiButton(0, 15, yPos, 30, 20, "add"));
+        addButton.y = yPos;
+        addButton.enabled = data.size() < MAX_SIZE;
+        templateNameField = new GuiTextField(5, fontRenderer, 1, 11, 130, 20);
+        textList.add(templateNameField);
+        buttonList.add(addButton);
+        buttonList.add(loadTemplateButton);
+        buttonList.add(saveTemplateButton);
     }
 
     private void addDataLine(int index, int id, int yPos, SignData s) {
@@ -82,9 +92,9 @@ public class GuiRoadSignEdit extends GuiBase {
         GuiTextField text = new GuiTextField(id, fontRenderer, 155, yPos, 150, 20),
                 color = new GuiTextField(id + 1, fontRenderer, 315, yPos, 50, 20);
         if (s.max > 0) text.setMaxStringLength(s.max);
-        text.setText(s.text);
+        text.setText(s.data);
         color.setMaxStringLength(6);
-        color.setText(Integer.toHexString(s.color));
+        color.setText(Integer.toHexString(s.textColor));
         textList.add(text);
         textList.add(color);
     }
@@ -107,7 +117,7 @@ public class GuiRoadSignEdit extends GuiBase {
         int signId = 0, textId = 0;
         while (signId < signs.size() && textId < textList.size()) {
             SignData d = signs.get(signId++);
-            if (d.editable) {
+            if (d.isEditable) {
                 d.setText(textList.get(textId++).getText());
                 GuiTextField field = textList.get(textId++);
                 String color = field.getText();
@@ -136,13 +146,14 @@ public class GuiRoadSignEdit extends GuiBase {
         drawString(fontRenderer, "text", 170, 35, 0xFFFFFF);
         drawString(fontRenderer, "color", 325, 35, 0xFFFFFF);
         drawString(fontRenderer, "size", 395, 35, 0xFFFFFF);
+        drawString(fontRenderer, "Template", 1, 1, 0xFFFFFF);
 
         int yPos = 55;
         for (SignData data : sign.getData()) {
-            if (data.editable) {
+            if (data.isEditable) {
                 drawCenteredString(fontRenderer, String.valueOf(data.xPos), 41, yPos, 0xFFFFFF);
                 drawCenteredString(fontRenderer, String.valueOf(data.yPos), 111, yPos, 0xFFFFFF);
-                drawCenteredString(fontRenderer, String.valueOf(data.size).substring(0, 3), 405, yPos, 0xFFFFFF);
+                drawCenteredString(fontRenderer, String.valueOf(data.textSize).substring(0, 3), 405, yPos, 0xFFFFFF);
 
                 yPos += 30;
             }
@@ -159,6 +170,30 @@ public class GuiRoadSignEdit extends GuiBase {
     public void actionPerformed(GuiButton button) {
         dirty = true;
         List<SignData> data = sign.getData();
+        if (button.id == addButton.id) {
+            SignData s = new SignData(1, 1, 0xFFFFFF, 2.5F, "", 0);
+            data.add(s);
+            buttonList.clear();
+            textList.clear();
+            initGui();
+            return;
+        } else if(button.id == loadTemplateButton.id){
+            String templateName = templateNameField.getText();
+            if(!templateName.isEmpty()) {
+                sign.applyTemplate(templateName);
+                buttonList.clear();
+                textList.clear();
+                initGui();
+            }
+            return;
+        } else if(button.id == saveTemplateButton.id){
+            String templateName = templateNameField.getText();
+            if(!templateName.isEmpty()) {
+                sign.saveAsTemplate(templateName);
+            }
+            return;
+        }
+
         if (button.id < 0) {
             try {
                 int id = Math.abs(button.id) - 1;
@@ -168,13 +203,6 @@ public class GuiRoadSignEdit extends GuiBase {
                 initGui();
             } catch (Exception ignored) {
             }
-            return;
-        } else if (button.id == 0) {
-            SignData s = new SignData(1, 1, 0xFFFFFF, 2.5F, "", 0);
-            data.add(s);
-            buttonList.clear();
-            textList.clear();
-            initGui();
             return;
         }
 

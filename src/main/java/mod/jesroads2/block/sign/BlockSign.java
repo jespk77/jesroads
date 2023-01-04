@@ -6,12 +6,10 @@ import java.util.Map;
 import java.util.Random;
 
 import mod.jesroads2.JesRoads2;
-import mod.jesroads2.block.system.BlockDynamicSign;
 import mod.jesroads2.block.system.BlockFreewaySupport;
 import mod.jesroads2.block.BlockBaseHorizontal;
 import mod.jesroads2.client.gui.GuiRoadSignEdit;
 import mod.jesroads2.tileentity.TileEntityRoadSign;
-import mod.jesroads2.tileentity.TileEntityRoadSign.SignData;
 import mod.jesroads2.util.EnumFacingDiagonal;
 import mod.jesroads2.util.IBlockSwitchable;
 import mod.jesroads2.util.ITileEntityPlacement;
@@ -56,58 +54,54 @@ public class BlockSign extends BlockBaseHorizontal implements IBlockSwitchable, 
     }
 
     public enum EnumSignType {
-        H_TEXT(0, "highway_text", new SignData[]{new SignData(5, 12, 0xAAAAAA, 2.2F, "", 0), new SignData(5, 41, 0xAAAAAA, 2.2F, "", 0)}),
-        H_DIR_UP(1, "highway_dir_up", null),
-        H_DIR_LEFT(2, "highway_dir_left", null),
-        H_DIR_RIGHT(3, "highway_dir_right", null),
-        H_ROUTE(4, "highway_route", new SignData[]{new SignData(12, 12, 0x000000, 2.6F, "", 0), new SignData(25, 45, 0xAAAAAA, 2.4F, "", 0)}),
-        H_ROUTEF(5, "highway_routef", new SignData[]{new SignData(12, 12, 0xAAAAAA, 2.6F, "", 0), new SignData(16, 45, 0xAAAAAA, 2.4F, "", 0)}),
+        H_TEXT(0, "highway_text"),
+        H_DIR_UP(1, "highway_dir_up"),
+        H_DIR_LEFT(2, "highway_dir_left"),
+        H_DIR_RIGHT(3, "highway_dir_right"),
+        H_ROUTE(4, "highway_route"),
+        H_ROUTEF(5, "highway_routef"),
 
-        F_TEXT(10, "freeway_text", new SignData[]{new SignData(0, 0, 0xAAAAAA, 3.5F, "", 0), new SignData(0, 40, 0xAAAAAA, 3.5F, "", 0)}),
-        FD_TEXT(11, "dfreeway_text", new SignData[]{new SignData(0, 0, 0xAAAAAA, 3.5F, "", 0), new SignData(0, 40, 0xAAAAAA, 3.5F, "", 0)}),
-        F_DIR_UP(12, "freeway_dir_up", null),
-        FD_DIR_UP(13, "dfreeway_dir_up", null),
-        F_DIR_DOWN(14, "freeway_dir_down", null),
-        FD_DIR_DOWN(15, "dfreeway_dir_down", null),
-        F_DIR_RIGHT(16, "freeway_dir_right", null),
-        FD_DIR_RIGHT(17, "dfreeway_dir_right", null),
-        F_ROUTE(18, "freeway_route", new SignData[]{new SignData(16, 3, 0xAAAAAA, 4F, "", 0), new SignData(0, 50, 0xAAAAAA, 3.7F, "", 0)}),
-        FD_ROUTE(19, "dfreeway_route", new SignData[]{new SignData(16, 3, 0xAAAAAA, 4F, "", 0), new SignData(0, 50, 0xAAAAAA, 3.7F, "", 0)}),
-        F_ROUTEH(20, "freeway_routeh", new SignData[]{new SignData(16, 3, 0x000000, 4F, "", 0), new SignData(0, 50, 0xAAAAAA, 3.7F, "", 0)}),
-        FD_ROUTEH(21, "dfreeway_routeh", new SignData[]{new SignData(16, 3, 0x000000, 4F, "", 0), new SignData(0, 50, 0xAAAAAA, 3.7F, "", 0)}),
+        F_TEXT(10, "freeway_text"),
+        FD_TEXT(11, "dfreeway_text"),
+        F_DIR_UP(12, "freeway_dir_up"),
+        FD_DIR_UP(13, "dfreeway_dir_up"),
+        F_DIR_DOWN(14, "freeway_dir_down"),
+        FD_DIR_DOWN(15, "dfreeway_dir_down"),
+        F_DIR_RIGHT(16, "freeway_dir_right"),
+        FD_DIR_RIGHT(17, "dfreeway_dir_right"),
+        F_ROUTE(18, "freeway_route"),
+        FD_ROUTE(19, "dfreeway_route"),
+        F_ROUTEH(20, "freeway_routeh"),
+        FD_ROUTEH(21, "dfreeway_routeh"),
 
-        F_TEXT_HALF(22, "freeway_text_half", new SignData[]{new SignData(4, 50, 0xAAAAAA, 3F, "", 0)}),
-        FD_TEXT_HALF(23, "dfreeway_text_half", new SignData[]{new SignData(0, 50, 0xAAAAAA, 3F, "", 0)}),
+        F_TEXT_HALF(22, "freeway_text_half"),
+        FD_TEXT_HALF(23, "dfreeway_text_half"),
 
-        F_ENTRANCE(24, "freeway_entrance", new SignData[]{new SignData(8, -10, 0xAAAAAA, 2.1F, "Freeway", 0).setEditable(false), new SignData(4, 11, 0xAAAAAA, 2.1F, "Entrance", 0).setEditable(false),
-                new SignData(29, 42, 0xAAAAAA, 2.6F, "", 3), new SignData(18, 65, 0xAAAAAA, 2.4F, "", 5)}),
-        F_DISTANCE(25, "freeway_distance", new SignData[]{new SignData(8, -4, 0xAAAAAA, 2.F, "", 3), new SignData(49, -2, 0xAAAAAA, 1.8F, "", 5),
-                new SignData(34, 23, 0xAAAAAA, 2.7F, "", 4)}),
-        F_SEPARATOR(26, "freeway_separator", null),
-        FD_SEPARATOR(27, "dfreeway_separator", null),
-        F_EXIT(28, "freeway_exit", new SignData[]{new SignData(20, 6, 0xAAAAAA, 3F, "EXIT", 0).setEditable(false), new SignData(24, 46, 0xAAAAAA, 3F, "", 3)}),
+        F_ENTRANCE(24, "freeway_entrance"),
+        F_DISTANCE(25, "freeway_distance"),
+        F_SEPARATOR(26, "freeway_separator"),
+        FD_SEPARATOR(27, "dfreeway_separator"),
+        F_EXIT(28, "freeway_exit"),
 
-        H_TEXT_OVERHEAD(29, "highway_text_overhead", new SignData[]{new SignData(0, 0, 0xAAAAAA, 3.5F, "", 0), new SignData(0, 40, 0xAAAAAA, 3.5F, "", 0)}),
-        HD_TEXT_OVERHEAD(30, "dhighway_text_overhead", new SignData[]{new SignData(0, 0, 0xAAAAAA, 3.5F, "", 0), new SignData(0, 40, 0xAAAAAA, 3.5F, "", 0)}),
-        H_DIR_UP_OVERHEAD(31, "highway_dir_up_overhead", null),
-        HD_DIR_UP_OVERHEAD(32, "dhighway_dir_up_overhead", null),
-        H_DIR_RIGHT_OVERHEAD(34, "highway_dir_right_overhead", null),
-        HD_DIR_RIGHT_OVERHEAD(35, "dhighway_dir_right_overhead", null),
-        H_ROUTE_OVERHEAD(36, "highway_route_overhead", new SignData[]{new SignData(16, 3, 0xAAAAAA, 4F, "", 0), new SignData(0, 50, 0xAAAAAA, 3.7F, "", 0)}),
-        HD_ROUTE_OVERHEAD(37, "dhighway_route_overhead", new SignData[]{new SignData(16, 3, 0xAAAAAA, 4F, "", 0), new SignData(0, 50, 0xAAAAAA, 3.7F, "", 0)}),
-        H_ROUTEH_OVERHEAD(38, "highway_routeh_overhead", new SignData[]{new SignData(16, 3, 0x000000, 4F, "", 0), new SignData(0, 50, 0xAAAAAA, 3.7F, "", 0)}),
-        HD_ROUTEH_OVERHEAD(39, "dhighway_routeh_overhead", new SignData[]{new SignData(16, 3, 0x000000, 4F, "", 0), new SignData(0, 50, 0xAAAAAA, 3.7F, "", 0)});
+        H_TEXT_OVERHEAD(29, "highway_text_overhead"),
+        HD_TEXT_OVERHEAD(30, "dhighway_text_overhead"),
+        H_DIR_UP_OVERHEAD(31, "highway_dir_up_overhead"),
+        HD_DIR_UP_OVERHEAD(32, "dhighway_dir_up_overhead"),
+        H_DIR_RIGHT_OVERHEAD(34, "highway_dir_right_overhead"),
+        HD_DIR_RIGHT_OVERHEAD(35, "dhighway_dir_right_overhead"),
+        H_ROUTE_OVERHEAD(36, "highway_route_overhead"),
+        HD_ROUTE_OVERHEAD(37, "dhighway_route_overhead"),
+        H_ROUTEH_OVERHEAD(38, "highway_routeh_overhead"),
+        HD_ROUTEH_OVERHEAD(39, "dhighway_routeh_overhead");
 
         private final int id;
         public final String name;
-        private final SignData[] data;
 
         private static final EnumSignType[] list = new EnumSignType[values().length];
 
-        EnumSignType(int id, String name, SignData[] data) {
+        EnumSignType(int id, String name) {
             this.id = id;
             this.name = name;
-            this.data = data;
         }
 
         public boolean showInTab() {
@@ -117,19 +111,6 @@ public class BlockSign extends BlockBaseHorizontal implements IBlockSwitchable, 
         public static EnumSignType fromOrdinal(int i) {
             if (i > 0 && i < list.length) return list[i];
             else return EnumSignType.H_TEXT;
-        }
-
-        public boolean createTileEntity() {
-            return data != null && data.length > 0;
-        }
-
-        public SignData[] getData() {
-            if (!createTileEntity()) return new SignData[0];
-
-            SignData[] copy = new SignData[data.length];
-            for (int i = 0; i < data.length; i++)
-                copy[i] = data[i].getCopy();
-            return copy;
         }
 
         public float top() {
@@ -149,7 +130,7 @@ public class BlockSign extends BlockBaseHorizontal implements IBlockSwitchable, 
         }
 
         public boolean hasDiagonal() {
-            return ordinal() < list.length - 1 ? list[ordinal() + 1].name.startsWith("d") : false;
+            return ordinal() < list.length - 1 && list[ordinal() + 1].name.startsWith("d");
         }
 
         public boolean needsPost() {
@@ -183,9 +164,9 @@ public class BlockSign extends BlockBaseHorizontal implements IBlockSwitchable, 
 		setHardness(2.F).setResistance(25.F);
 		setFullCube(false);
         setDefaultState(getDefaultState().withProperty(up, false).withProperty(down, false)
-                .withProperty(blackout, false).withProperty(data, type.createTileEntity()));
+                .withProperty(blackout, false).withProperty(data, false));
 
-        if (item != null && type.createTileEntity()) {
+        if (item != null) {
             item.addPropertyOverride(new ResourceLocation("text"), (stack, worldIn, entityIn) -> stack.hasTagCompound() ? 1.F : 0.F);
         }
     }
