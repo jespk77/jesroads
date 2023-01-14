@@ -71,7 +71,7 @@ public class SignTemplateStorage {
             try {
                 NBTTagCompound nbt = CompressedStreamTools.read(file);
                 for (String key : nbt.getKeySet()) {
-
+                    templates.put(key, new SignDataTemplate(nbt.getCompoundTag(key)));
                 }
             }
             catch (Exception e){
