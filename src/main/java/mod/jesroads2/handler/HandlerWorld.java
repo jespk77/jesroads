@@ -99,7 +99,6 @@ public class HandlerWorld {
     public void onWorldLoad(WorldEvent.Load event) {
         JesRoads2.handlerOverlay.getOverlay().onWorldLoad();
         ((ItemRoadBuilder) JesRoads2.items.road_builder).clearHistory();
-        ItemRoadBuilder.last_pos = null;
         ItemRemoteControl.data = null;
     }
 

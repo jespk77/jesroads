@@ -156,7 +156,7 @@ public class GuiOverlay extends Gui implements IOverlay {
             if (nbt == null) return;
 
             int xPos = 5, yPos = guiHeight - 45, color = 0xAAAAAA;
-            BlockPos last_pos = ItemRoadBuilder.last_pos;
+            BlockPos lastPlacementPos = NBTUtils.readBlockPos(nbt.getCompoundTag("place_location"));
             RayTraceResult ray = player.rayTrace(8, 0);
             if (ray != null && ray.typeOfHit == RayTraceResult.Type.BLOCK) {
                 BlockPos rayPos = ray.getBlockPos();
@@ -190,8 +190,8 @@ public class GuiOverlay extends Gui implements IOverlay {
                 }
 
                 default: { // Other modes
-                    if (last_pos != null)
-                        drawCenteredString(currentMinecraft.fontRenderer, "Build [x=" + last_pos.getX() + ", y=" + last_pos.getY() + ", z=" + last_pos.getZ() + "]", guiWidth / 2, guiHeight - 43, color);
+                    if (lastPlacementPos != null)
+                        drawCenteredString(currentMinecraft.fontRenderer, "Build [x=" + lastPlacementPos.getX() + ", y=" + lastPlacementPos.getY() + ", z=" + lastPlacementPos.getZ() + "]", guiWidth / 2, guiHeight - 43, color);
                     if (mode == EnumRoadBuilderMode.REMOVE.id) {
                         currentMinecraft.fontRenderer.drawString("Remove roads", xPos, yPos, 0xFF9999);
                         yPos += getIncrement();

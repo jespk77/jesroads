@@ -73,8 +73,8 @@ public class GuiRoadBuilder extends GuiBase {
         updateNBT(nbt, "remove_length", textList.get(5).getText(), JesRoads2.options.road_builder.max_remove);
         updateNBT(nbt, "builder_mode", String.valueOf(mode.id), EnumRoadBuilderMode.values().length);
         nbt.setInteger("index", 0);
+        nbt.removeTag("last_location");
 
-        ItemRoadBuilder.last_pos = null;
         JesRoads2.channel.sendToServer(new MessageItemNBTUpdate(stack.getTagCompound(), stack.getItem(), EnumHand.MAIN_HAND));
     }
 
