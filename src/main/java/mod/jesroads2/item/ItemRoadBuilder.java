@@ -438,7 +438,7 @@ public class ItemRoadBuilder extends ItemBase implements IItemCustomHighlightRen
                 BlockPos newPlacementPos = lastPlacementPos.offset(GuiScreen.isCtrlKeyDown() ? f.getOpposite() : f);
                 if (facing.isDiagonal()) newPlacementPos = newPlacementPos.offset(GuiScreen.isCtrlKeyDown() ? f.rotateY().getOpposite() : f.rotateY());
                 nbt.setTag("place_location", NBTUtils.writeBlockPos(newPlacementPos));
-                EnumActionResult res = onItemUse(player, world, newPlacementPos, hand, facing.getFacing(), -1, -1, -1);
+                EnumActionResult res = onItemUse(player, world, newPlacementPos, hand, facing.getFacing(), -1, -1, -1, lastPlacementPos);
                 return new ActionResult<>(res, stack);
             }
         }
@@ -468,6 +468,10 @@ public class ItemRoadBuilder extends ItemBase implements IItemCustomHighlightRen
 
     @Override
     public EnumActionResult onItemUse(EntityPlayer entity, World world, BlockPos pos, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
+        return onItemUse(entity, world, pos, hand, side, hitX, hitY, hitZ, null);
+    }
+
+    public EnumActionResult onItemUse(EntityPlayer entity, World world, BlockPos pos, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ, BlockPos savePosition) {
         if (GuiScreen.isShiftKeyDown()) {
             if (world.isRemote)
                 entity.openGui(JesRoads2.instance, GuiRoadBuilder.ID, world, pos.getX(), pos.getY(), pos.getZ());
@@ -506,7 +510,7 @@ public class ItemRoadBuilder extends ItemBase implements IItemCustomHighlightRen
         }
 
         int index = nbt.getInteger("index");
-        BuilderAction action = new BuilderAction(stack, index);
+        BuilderAction action = new BuilderAction(stack, savePosition != null ? savePosition : pos, index);
         if (manual && JesRoads2.EnumKeyBindings.BUILDER_REPLACE.getBind().isKeyDown()) {
             Iterator<BlockPos> replacing = getBlocksInRange(pos);
             if (item == null) item = getPlayerInventorySlot(entity, entity.inventory.currentItem + 1);
@@ -855,15 +859,17 @@ public class ItemRoadBuilder extends ItemBase implements IItemCustomHighlightRen
 
         private final Map<BlockPos, BuilderActionData> actionMap;
         private final ItemStack itemStack;
+        private final BlockPos itemPlacementPos;
         private final int itemIndex;
 
         public BuilderAction(ItemStack stack){
-            this(stack, -1);
+            this(stack, null, -1);
         }
 
-        public BuilderAction(ItemStack stack, int index) {
+        public BuilderAction(ItemStack stack, BlockPos pos, int index) {
             actionMap = new HashMap<>();
             itemStack = stack;
+            itemPlacementPos = pos;
             itemIndex = index;
         }
 
@@ -884,6 +890,7 @@ public class ItemRoadBuilder extends ItemBase implements IItemCustomHighlightRen
 
             if (itemStack != null) {
                 NBTTagCompound nbt = itemStack.getSubCompound(nbt_name);
+                if(itemPlacementPos != null) nbt.setTag("place_location", NBTUtils.writeBlockPos(itemPlacementPos));
                 if(nbt != null && itemIndex >= 0) nbt.setInteger("index", itemIndex);
             }
         }
