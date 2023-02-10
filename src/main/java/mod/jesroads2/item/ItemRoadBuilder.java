@@ -504,7 +504,8 @@ public class ItemRoadBuilder extends ItemBase implements IItemCustomHighlightRen
             set = Block.getBlockFromItem(item.getItem()).getStateFromMeta(item.getItemDamage());
         }
 
-        BuilderAction action = new BuilderAction(stack);
+        int index = nbt.getInteger("index");
+        BuilderAction action = new BuilderAction(stack, index);
         if (manual && JesRoads2.EnumKeyBindings.BUILDER_REPLACE.getBind().isKeyDown()) {
             Iterator<BlockPos> replacing = getBlocksInRange(pos);
             if (item == null) item = getPlayerInventorySlot(entity, entity.inventory.currentItem + 1);
@@ -562,7 +563,7 @@ public class ItemRoadBuilder extends ItemBase implements IItemCustomHighlightRen
             else ItemRoadBuilder.last_pos.setPos(pos);
         }
         int left = nbt.getInteger("left_length"), road = nbt.getInteger("road_length"), right = nbt.getInteger("right_length"),
-                t_left = nbt.getInteger("terrain_left"), t_right = nbt.getInteger("terrain_right"), index = nbt.getInteger("index");
+                t_left = nbt.getInteger("terrain_left"), t_right = nbt.getInteger("terrain_right");
         BlockBase[] blocks = getBlocksFromNumberLanes(road, face.isDiagonal(), index, !terrain || right > 0);
         left = Math.min(left, JesRoads2.options.road_builder.max_shoulder);
         right = right >= JesRoads2.options.road_builder.max_shoulder ? JesRoads2.options.road_builder.max_shoulder : face.isDiagonal() && right > 1 ? right + 1 : right;
@@ -721,15 +722,11 @@ public class ItemRoadBuilder extends ItemBase implements IItemCustomHighlightRen
     }
 
     protected static int updateIndex(int index) {
-        return index >= 4 ? 0 : index + 1;
+        return (index + 1) % 5;
     }
 
     protected static MutableBlockPos updatePos(EnumFacingDiagonal face, MutableBlockPos pos) {
         return face.isDiagonal() ? pos.move(face.getFacing().getOpposite()) : pos.move(getRight(face.getFacing()));
-    }
-
-    protected static int undoIndex(int index) {
-        return index == 0 ? 4 : index - 1;
     }
 
     protected static EnumFacing getRight(EnumFacing facing) {
@@ -859,15 +856,17 @@ public class ItemRoadBuilder extends ItemBase implements IItemCustomHighlightRen
         }
 
         private final Map<BlockPos, BuilderActionData> actionMap;
-        private final ItemStack stack;
+        private final ItemStack itemStack;
+        private final int itemIndex;
 
-        public BuilderAction() {
-            this(null);
+        public BuilderAction(ItemStack stack){
+            this(stack, -1);
         }
 
-        public BuilderAction(ItemStack stack) {
+        public BuilderAction(ItemStack stack, int index) {
             actionMap = new HashMap<>();
-            this.stack = stack;
+            itemStack = stack;
+            itemIndex = index;
         }
 
         public boolean addAction(BlockPos pos, IBlockState state, TileEntity tile) {
@@ -885,9 +884,9 @@ public class ItemRoadBuilder extends ItemBase implements IItemCustomHighlightRen
                 if (data.nbt != null) world.setTileEntity(pos, TileEntity.create(world, data.nbt));
             }
 
-            if (stack != null && stack.hasTagCompound()) {
-                NBTTagCompound nbt = stack.getTagCompound();
-                nbt.setInteger("index", ItemRoadBuilder.undoIndex(nbt.getInteger("index")));
+            if (itemStack != null) {
+                NBTTagCompound nbt = itemStack.getSubCompound(nbt_name);
+                if(nbt != null && itemIndex >= 0) nbt.setInteger("index", itemIndex);
             }
         }
     }
