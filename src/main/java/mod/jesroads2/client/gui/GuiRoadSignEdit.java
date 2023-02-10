@@ -5,6 +5,7 @@ import java.util.List;
 
 import mod.jesroads2.JesRoads2;
 import mod.jesroads2.block.sign.BlockSign;
+import mod.jesroads2.client.gui.template.GuiTemplateManager;
 import mod.jesroads2.network.MessageEditSign;
 import mod.jesroads2.tileentity.TileEntityRoadSign;
 import mod.jesroads2.tileentity.TileEntityRoadSign.SignData;
@@ -22,13 +23,11 @@ public class GuiRoadSignEdit extends GuiBase {
     private static final int MAX_SIZE = 6;
 
     private static final GuiButton addButton = new GuiButton(0, 15, 0, 30, 20, "add"),
-        loadTemplateButton = new GuiButton(-32, 135, 0, 30, 20, "apply"),
-        saveTemplateButton = new GuiButton(-33, 135, 20, 30, 20, "save");
+        openTemplateManagerButton = new GuiButton(-34, 10, 10, 80, 20, "Templates");
 
     private final TileEntityRoadSign sign;
     private final EnumFacing facing;
     private boolean dirty;
-    private GuiTextField templateNameField;
 
     public GuiRoadSignEdit(EntityPlayer player, World world, BlockPos pos) {
         super(player, world, pos);
@@ -62,11 +61,8 @@ public class GuiRoadSignEdit extends GuiBase {
 
         addButton.y = yPos;
         addButton.enabled = data.size() < MAX_SIZE;
-        templateNameField = new GuiTextField(5, fontRenderer, 1, 11, 130, 20);
-        textList.add(templateNameField);
         buttonList.add(addButton);
-        buttonList.add(loadTemplateButton);
-        buttonList.add(saveTemplateButton);
+        buttonList.add(openTemplateManagerButton);
     }
 
     private void addDataLine(int index, int id, int yPos, SignData s) {
@@ -177,20 +173,9 @@ public class GuiRoadSignEdit extends GuiBase {
             textList.clear();
             initGui();
             return;
-        } else if(button.id == loadTemplateButton.id){
-            String templateName = templateNameField.getText();
-            if(!templateName.isEmpty()) {
-                sign.applyTemplate(templateName);
-                buttonList.clear();
-                textList.clear();
-                initGui();
-            }
-            return;
-        } else if(button.id == saveTemplateButton.id){
-            String templateName = templateNameField.getText();
-            if(!templateName.isEmpty()) {
-                sign.saveAsTemplate(templateName);
-            }
+        }
+        else if(button.id == openTemplateManagerButton.id){
+            player.openGui(JesRoads2.instance, GuiTemplateManager.ID, world, pos.getX(), pos.getY(), pos.getZ());
             return;
         }
 

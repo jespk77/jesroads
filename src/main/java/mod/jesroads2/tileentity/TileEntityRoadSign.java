@@ -95,9 +95,7 @@ public class TileEntityRoadSign extends TileEntityBase {
         return signData;
     }
 
-    public void applyTemplate(String templateName){
-        SignTemplateStorage storage = SignTemplateStorage.getInstance();
-        SignTemplateStorage.SignDataTemplate template = storage.getTemplate(templateName);
+    public void applyTemplate(SignTemplateStorage.SignDataTemplate template){
         if(template != null){
             String[] data = new String[signData.size()];
             for(int index = 0; index < data.length; index++)
@@ -110,9 +108,8 @@ public class TileEntityRoadSign extends TileEntityBase {
         }
     }
 
-    public void saveAsTemplate(String name){
+    public SignTemplateStorage.SignDataTemplate createTemplate(){
         if(hasData) {
-            SignTemplateStorage storage = SignTemplateStorage.getInstance();
             SignTemplateStorage.SignDataTemplate template = new SignTemplateStorage.SignDataTemplate();
 
             SignData[] signs = new SignData[signData.size()];
@@ -120,8 +117,10 @@ public class TileEntityRoadSign extends TileEntityBase {
                 signs[index] = new SignData(signData.get(index));
             }
             template.setData(signs);
-            storage.addTemplate(name, template);
+            return template;
         }
+
+        return null;
     }
 
     public void update(SignData[] data) {

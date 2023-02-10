@@ -3,6 +3,7 @@ package mod.jesroads2;
 import org.lwjgl.input.Keyboard;
 
 import mod.jesroads2.client.gui.*;
+import mod.jesroads2.client.gui.template.*;
 import mod.jesroads2.command.CommandSleep;
 import mod.jesroads2.handler.*;
 import mod.jesroads2.network.*;
@@ -162,6 +163,7 @@ public class JesRoads2 {
         handlerGui.registerGui(Side.CLIENT, GuiRoadBuilder.ID, GuiRoadBuilder.class);
         handlerGui.registerGui(Side.CLIENT, GuiRoadSignEdit.ID, GuiRoadSignEdit.class);
         handlerGui.registerGui(Side.CLIENT, GuiGateController.ID, GuiGateController.class);
+        handlerGui.registerGui(Side.CLIENT, GuiTemplateManager.ID, GuiTemplateManager.class);
     }
 
     public static boolean isDevelopmentMode() {
