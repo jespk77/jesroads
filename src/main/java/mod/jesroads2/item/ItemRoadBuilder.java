@@ -15,6 +15,7 @@ import mod.jesroads2.client.gui.GuiRoadBuilder;
 import mod.jesroads2.util.EnumFacingDiagonal;
 import mod.jesroads2.util.IBlockSwitchable;
 import mod.jesroads2.util.LimitedStack;
+import mod.jesroads2.util.NBTUtils;
 import net.minecraft.block.*;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -94,7 +95,6 @@ public class ItemRoadBuilder extends ItemBase implements IItemCustomHighlightRen
     private static final int teleport_distance = 3;
 
     public static final String nbt_name = "roadbuilder_data";
-    public static MutableBlockPos last_pos;
 
     public ItemRoadBuilder(int id) {
         super(id, "road_builder", JesRoads2.tabs.road_extra);
@@ -418,28 +418,29 @@ public class ItemRoadBuilder extends ItemBase implements IItemCustomHighlightRen
         }
 
         if (stack.hasTagCompound()) {
-            if (ItemRoadBuilder.last_pos != null && world.isBlockLoaded(ItemRoadBuilder.last_pos)) {
+            NBTTagCompound nbt = stack.getSubCompound(nbt_name);
+            BlockPos lastPlacementPos = nbt != null ? NBTUtils.readBlockPos(nbt.getCompoundTag("place_location")) : null;
+
+            if (lastPlacementPos != null && world.isBlockLoaded(lastPlacementPos)) {
                 EnumFacingDiagonal facing = EnumFacingDiagonal.fromEntityF(player);
                 if (player.rotationPitch > 65.f) {
-                    if (!world.isRemote) ItemRoadBuilder.last_pos.move(EnumFacing.DOWN);
+                    if (!world.isRemote) nbt.setTag("place_location", NBTUtils.writeBlockPos(lastPlacementPos.down()));
                     return new ActionResult<>(EnumActionResult.SUCCESS, stack);
                 } else if (player.rotationPitch < -65.f) {
-                    if (!world.isRemote) ItemRoadBuilder.last_pos.move(EnumFacing.UP);
+                    if (!world.isRemote) nbt.setTag("place_location", NBTUtils.writeBlockPos(lastPlacementPos.up()));
                     return new ActionResult<>(EnumActionResult.SUCCESS, stack);
                 } else if (player.isSneaking()) {
-                    if (!world.isRemote) ItemRoadBuilder.last_pos.move(player.getHorizontalFacing());
+                    if (!world.isRemote) nbt.setTag("place_location", NBTUtils.writeBlockPos(lastPlacementPos.offset(player.getHorizontalFacing())));
                     return new ActionResult<>(EnumActionResult.SUCCESS, stack);
                 }
 
-                if (!world.isRemote) {
-                    EnumFacing f = facing.getFacing();
-                    ItemRoadBuilder.last_pos.move(GuiScreen.isCtrlKeyDown() ? f.getOpposite() : f);
-                    if (facing.isDiagonal())
-                        ItemRoadBuilder.last_pos.move(GuiScreen.isCtrlKeyDown() ? f.rotateY().getOpposite() : f.rotateY());
-                }
-                EnumActionResult res = onItemUse(player, world, ItemRoadBuilder.last_pos.toImmutable(), hand, facing.getFacing(), -1, -1, -1);
+                EnumFacing f = facing.getFacing();
+                BlockPos newPlacementPos = lastPlacementPos.offset(GuiScreen.isCtrlKeyDown() ? f.getOpposite() : f);
+                if (facing.isDiagonal()) newPlacementPos = newPlacementPos.offset(GuiScreen.isCtrlKeyDown() ? f.rotateY().getOpposite() : f.rotateY());
+                nbt.setTag("place_location", NBTUtils.writeBlockPos(newPlacementPos));
+                EnumActionResult res = onItemUse(player, world, newPlacementPos, hand, facing.getFacing(), -1, -1, -1);
                 return new ActionResult<>(res, stack);
-            } else ItemRoadBuilder.last_pos = null;
+            }
         }
         return new ActionResult<>(EnumActionResult.PASS, stack);
     }
@@ -558,10 +559,7 @@ public class ItemRoadBuilder extends ItemBase implements IItemCustomHighlightRen
             return EnumActionResult.SUCCESS;
         }
 
-        if (manual) {
-            if (ItemRoadBuilder.last_pos == null) ItemRoadBuilder.last_pos = new MutableBlockPos(pos);
-            else ItemRoadBuilder.last_pos.setPos(pos);
-        }
+        if (manual) nbt.setTag("place_location", NBTUtils.writeBlockPos(pos));
         int left = nbt.getInteger("left_length"), road = nbt.getInteger("road_length"), right = nbt.getInteger("right_length"),
                 t_left = nbt.getInteger("terrain_left"), t_right = nbt.getInteger("terrain_right");
         BlockBase[] blocks = getBlocksFromNumberLanes(road, face.isDiagonal(), index, !terrain || right > 0);
