@@ -52,7 +52,7 @@ public class HandlerWorld {
             Block b = state.getBlock();
             if (b instanceof ITileEntityPlacement)
                 blockEntity = ((ITileEntityPlacement) b).onBlockPlaced(world, pos, stack, player, blockEntity);
-            if (blockEntity != null) {
+            if (blockEntity != null && blockEntity.getSize() > 0) {
                 world.setTileEntity(pos, TileEntity.create(world, blockEntity));
                 JesRoads2.channel.sendToAll(new MessageTileEntityNBTUpdate(true, pos, blockEntity));
             }
