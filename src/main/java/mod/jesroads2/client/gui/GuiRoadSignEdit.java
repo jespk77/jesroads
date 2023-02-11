@@ -167,7 +167,7 @@ public class GuiRoadSignEdit extends GuiBase {
         dirty = true;
         List<SignData> data = sign.getData();
         if (button.id == addButton.id) {
-            SignData s = new SignData(1, 1, 0xFFFFFF, 2.5F, "", 0);
+            SignData s = new SignData(1, 1, 0xAAAAAA, 3.5F, "", 0);
             data.add(s);
             buttonList.clear();
             textList.clear();
