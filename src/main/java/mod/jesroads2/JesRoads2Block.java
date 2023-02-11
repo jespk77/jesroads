@@ -157,7 +157,8 @@ public class JesRoads2Block {
                 new BlockRoadSignDetour(id++),
                 new BlockRoadSignInfo(id++),
                 new BlockRoadSignTurn(id++),
-                new BlockRoadSignMove(id++)
+                new BlockRoadSignMove(id++),
+                new BlockRoadSignSplit(id++)
         };
 
         maxID = id;

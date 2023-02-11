@@ -128,30 +128,35 @@ tile.traffic_item.2.name=Traffic Cone Large
 
 tile.sign_stop.0.name=Stop
 tile.sign_stop.1.name=Give way
-tile.sign_stop.2.name=No Entry
-tile.sign_stop.3.name=Road Closed
-tile.sign_merge.0.name=Left Merge
-tile.sign_merge.1.name=Right Merge
-tile.sign_merge.2.name=Left Wide
-tile.sign_merge.3.name=Right Wide
+tile.sign_stop.2.name=No entry
+tile.sign_stop.3.name=Road closed
+tile.sign_merge.0.name=Left merge
+tile.sign_merge.1.name=Right merge
+tile.sign_merge.2.name=Left wide
+tile.sign_merge.3.name=Right wide
 
-tile.sign_detour.0.name=Detour Left
-tile.sign_detour.1.name=Detour Right
-tile.sign_detour.2.name=Detour Up
-tile.sign_detour.3.name=Detour End
-tile.sign_info.0.name=Rest Area
+tile.sign_detour.0.name=Detour left
+tile.sign_detour.1.name=Detour right
+tile.sign_detour.2.name=Detour up
+tile.sign_detour.3.name=Detour end
+tile.sign_info.0.name=Rest area
 tile.sign_info.1.name=Exit
-tile.sign_info.2.name=Roadwork Ahead
-tile.sign_info.3.name=Roadwork End
+tile.sign_info.2.name=Roadwork ahead
+tile.sign_info.3.name=Roadwork end
 
-tile.sign_turn.0.name=Keep Left
-tile.sign_turn.1.name=Keep Right
-tile.sign_turn.2.name=Roadwork Keep Left
-tile.sign_turn.3.name=Roadwork Keep Right
-tile.sign_turning.0.name=Left Turn
-tile.sign_turning.1.name=Right Turn
-tile.sign_turning.2.name=No Left Turn
-tile.sign_turning.3.name=No Right Turn
+tile.sign_turn.0.name=Left corner
+tile.sign_turn.1.name=Right corner
+tile.sign_turn.2.name=Left corner (Roadwork)
+tile.sign_turn.3.name=Right corner (Roadwork)
+tile.sign_turning.0.name=Left turn
+tile.sign_turning.1.name=Right turn
+tile.sign_turning.2.name=No Left turn
+tile.sign_turning.3.name=No Right turn
+
+tile.sign_split.0.name=Keep right
+tile.sign_split.1.name=Split
+tile.sign_split.2.name=Merge right
+tile.sign_split.3.name=Merge
 
 tile.trafficlight_controller.0.name=Intersection Controller
 tile.trafficlight_controller.1.name=Direction Controller
