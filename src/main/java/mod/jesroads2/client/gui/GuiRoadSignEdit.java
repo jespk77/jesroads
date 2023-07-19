@@ -80,10 +80,10 @@ public class GuiRoadSignEdit extends GuiBase {
         buttonList.add(new GuiButton(id + 2, xPos, yPos, 20, 20, "-"));
         xPos += 25;
         if (s.max == 0) {
-            buttonList.add(new GuiButton(id + 3, 440, yPos, 20, 20, s.blackout ? "X" : "O"));
+            buttonList.add(new GuiButton(id + 3, 440, yPos, 20, 20, s.blackout ? "-" : "O"));
             xPos += 30;
         }
-        buttonList.add(new GuiButton(-index, xPos, yPos, 20, 20, "del"));
+        buttonList.add(new GuiButton(-index, xPos, yPos, 20, 20, "X"));
 
         GuiTextField text = new GuiTextField(id, fontRenderer, 155, yPos, 150, 20),
                 color = new GuiTextField(id + 1, fontRenderer, 315, yPos, 50, 20);
@@ -134,7 +134,7 @@ public class GuiRoadSignEdit extends GuiBase {
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         super.drawScreen(mouseX, mouseY, partialTicks);
-        drawCenteredString(fontRenderer, "Edit Sign Text:", width / 2, 10, 0xFFFFFF);
+        drawCenteredString(fontRenderer, "Sign Editor", width / 2, 10, 0xFFFFFF);
         drawCenteredString(fontRenderer, getFacing(), width / 2, 23, 0xAAAAAA);
 
         drawString(fontRenderer, "xPos", 30, 35, 0xFFFFFF);
@@ -142,7 +142,6 @@ public class GuiRoadSignEdit extends GuiBase {
         drawString(fontRenderer, "text", 170, 35, 0xFFFFFF);
         drawString(fontRenderer, "color", 325, 35, 0xFFFFFF);
         drawString(fontRenderer, "size", 395, 35, 0xFFFFFF);
-        drawString(fontRenderer, "Template", 1, 1, 0xFFFFFF);
 
         int yPos = 55;
         for (SignData data : sign.getData()) {
@@ -167,7 +166,19 @@ public class GuiRoadSignEdit extends GuiBase {
         dirty = true;
         List<SignData> data = sign.getData();
         if (button.id == addButton.id) {
-            SignData s = new SignData(1, 1, 0xAAAAAA, 3.5F, "", 0);
+            int x = 1, y = 1, color = 0xAAAAAA;
+            float size = 3.5F;
+            if(data.size() > 0){
+                SignData last = data.get(data.size() - 1);
+                x = last.xPos;
+                y = last.yPos + Math.round(last.textSize * 10);
+                if(GuiScreen.isShiftKeyDown()){
+                    color = last.textColor;
+                    size = last.textSize;
+                }
+            }
+
+            SignData s = new SignData(x, y, color, size, "", 0);
             data.add(s);
             buttonList.clear();
             textList.clear();
@@ -205,7 +216,7 @@ public class GuiRoadSignEdit extends GuiBase {
             else data.get(id).increaseSize(-step / 10.f);
         } else if (bid == 3) { //editing blackout
             SignData d = data.get(id);
-            button.displayString = d.toggleBlackout() ? "X" : "O";
+            button.displayString = d.toggleBlackout() ? "-" : "O";
         }
         updateSignData();
     }
