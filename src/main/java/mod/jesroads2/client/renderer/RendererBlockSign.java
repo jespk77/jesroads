@@ -100,6 +100,7 @@ public class RendererBlockSign extends TileEntitySpecialRenderer<TileEntityRoadS
             BufferBuilder buffer = tes.getBuffer();
             GlStateManager.color(.1F, .1F, .1F);
             GlStateManager.disableTexture2D();
+            GlStateManager.disableDepth();
             buffer.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION);
             buffer.pos(x, y + size, 0).endVertex();
             buffer.pos(x + length, y + size, 0).endVertex();
@@ -107,7 +108,8 @@ public class RendererBlockSign extends TileEntitySpecialRenderer<TileEntityRoadS
             buffer.pos(x, y, 0).endVertex();
             tes.draw();
             GlStateManager.enableTexture2D();
-        } else font.drawString(data.data, x, y, data.blackout ? 0 : data.textColor);
+            GlStateManager.enableDepth();
+        } else font.drawString(data.data, x, y, data.textColor);
         GL11.glPopMatrix();
     }
 }
