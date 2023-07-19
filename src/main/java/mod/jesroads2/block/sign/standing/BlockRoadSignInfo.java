@@ -1,5 +1,6 @@
-package mod.jesroads2.block.sign;
+package mod.jesroads2.block.sign.standing;
 
+import mod.jesroads2.block.sign.BlockRoadSign;
 import mod.jesroads2.util.IBlockSwitchable;
 import net.minecraft.util.IStringSerializable;
 

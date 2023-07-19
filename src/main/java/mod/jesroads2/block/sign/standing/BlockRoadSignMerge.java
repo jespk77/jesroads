@@ -1,11 +1,12 @@
-package mod.jesroads2.block.sign;
+package mod.jesroads2.block.sign.standing;
 
+import mod.jesroads2.block.sign.BlockRoadSign;
 import mod.jesroads2.util.IBlockSwitchable;
 import net.minecraft.util.IStringSerializable;
 
-public class BlockRoadSignSplit extends BlockRoadSign<BlockRoadSignSplit.EnumType> implements IBlockSwitchable {
+public class BlockRoadSignMerge extends BlockRoadSign<BlockRoadSignMerge.EnumType> implements IBlockSwitchable {
     public enum EnumType implements IStringSerializable {
-        KEEP_RIGHT, SPLIT, MERGE_RIGHT, MERGE;
+        LEFT_MERGE, RIGHT_MERGE, LEFT_WIDE, RIGHT_WIDE;
 
         @Override
         public String getName() {
@@ -13,8 +14,8 @@ public class BlockRoadSignSplit extends BlockRoadSign<BlockRoadSignSplit.EnumTyp
         }
     }
 
-    public BlockRoadSignSplit(int id){
-        super(id, "sign_split");
+    public BlockRoadSignMerge(int id) {
+        super(id, "sign_merge");
     }
 
     @Override

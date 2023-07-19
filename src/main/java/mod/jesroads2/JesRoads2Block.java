@@ -6,6 +6,7 @@ import mod.jesroads2.block.BlockBase;
 import mod.jesroads2.block.basic.*;
 import mod.jesroads2.block.road.*;
 import mod.jesroads2.block.sign.*;
+import mod.jesroads2.block.sign.standing.*;
 import mod.jesroads2.block.system.*;
 import mod.jesroads2.block.streetlight.*;
 import mod.jesroads2.tileentity.*;

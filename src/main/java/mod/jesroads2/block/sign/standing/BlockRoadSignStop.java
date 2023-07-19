@@ -1,11 +1,12 @@
-package mod.jesroads2.block.sign;
+package mod.jesroads2.block.sign.standing;
 
+import mod.jesroads2.block.sign.BlockRoadSign;
 import mod.jesroads2.util.IBlockSwitchable;
 import net.minecraft.util.IStringSerializable;
 
-public class BlockRoadSignTurn extends BlockRoadSign<BlockRoadSignTurn.EnumType> implements IBlockSwitchable {
+public class BlockRoadSignStop extends BlockRoadSign<BlockRoadSignStop.EnumType> implements IBlockSwitchable {
     public enum EnumType implements IStringSerializable {
-        LEFT, RIGHT, NO_LEFT, NO_RIGHT;
+        STOP, GIVEWAY, NO_ENTRY, ROAD_CLOSED;
 
         @Override
         public String getName() {
@@ -13,8 +14,8 @@ public class BlockRoadSignTurn extends BlockRoadSign<BlockRoadSignTurn.EnumType>
         }
     }
 
-    public BlockRoadSignTurn(int id) {
-        super(id, "sign_turning");
+    public BlockRoadSignStop(int id) {
+        super(id, "sign_stop");
     }
 
     @Override
