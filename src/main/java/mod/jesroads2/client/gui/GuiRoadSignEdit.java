@@ -6,7 +6,8 @@ import java.util.List;
 import mod.jesroads2.JesRoads2;
 import mod.jesroads2.block.sign.BlockSign;
 import mod.jesroads2.client.gui.template.GuiTemplateManager;
-import mod.jesroads2.network.MessageEditSign;
+import mod.jesroads2.client.renderer.RendererBlockSign;
+import mod.jesroads2.network.MessageTileEntityNBTUpdate;
 import mod.jesroads2.tileentity.TileEntityRoadSign;
 import mod.jesroads2.tileentity.TileEntityRoadSign.SignData;
 import net.minecraft.client.gui.GuiButton;
@@ -16,6 +17,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
 public class GuiRoadSignEdit extends GuiBase {
@@ -23,7 +25,8 @@ public class GuiRoadSignEdit extends GuiBase {
     private static final int MAX_SIZE = 6;
 
     private static final GuiButton addButton = new GuiButton(0, 15, 0, 30, 20, "add"),
-        openTemplateManagerButton = new GuiButton(-34, 10, 10, 80, 20, "Templates");
+        openTemplateManagerButton = new GuiButton(-34, 10, 10, 80, 20, "Templates"),
+        signFontButton = new GuiButton(-35, 10, 10, 50, 20, "Font");
 
     private final TileEntityRoadSign sign;
     private final EnumFacing facing;
@@ -43,7 +46,7 @@ public class GuiRoadSignEdit extends GuiBase {
     public void initGui() {
         int id = 1, yPos = 50;
         if (sign == null) {
-            System.out.println("[ERROR] invalid tileentity: null");
+            System.err.println("[ERROR] invalid tileentity: null");
             Close();
             return;
         }
@@ -55,7 +58,7 @@ public class GuiRoadSignEdit extends GuiBase {
                 addDataLine(i + 1, id, yPos, s);
                 yPos += 30;
             }
-            id += 4;
+            id += 7;
         }
         if (!textList.isEmpty()) textList.get(0).setFocused(true);
 
@@ -63,6 +66,9 @@ public class GuiRoadSignEdit extends GuiBase {
         addButton.enabled = data.size() < MAX_SIZE;
         buttonList.add(addButton);
         buttonList.add(openTemplateManagerButton);
+        signFontButton.x = width - signFontButton.width - 10;
+        signFontButton.displayString = "Font #" + sign.getFontVersion();
+        buttonList.add(signFontButton);
     }
 
     private void addDataLine(int index, int id, int yPos, SignData s) {
@@ -79,8 +85,15 @@ public class GuiRoadSignEdit extends GuiBase {
         xPos += 40;
         buttonList.add(new GuiButton(id + 2, xPos, yPos, 20, 20, "-"));
         xPos += 25;
+        buttonList.add(new GuiButton(id + 3, xPos, yPos, 20, 20, s.isBold() ? TextFormatting.BOLD + "B" : "B"));
+        xPos += 25;
+        buttonList.add(new GuiButton(id + 4, xPos, yPos, 20, 20, s.isUnderline() ? TextFormatting.UNDERLINE + "U" : "U"));
+        xPos += 25;
+        buttonList.add(new GuiButton(id + 5, xPos, yPos, 20, 20, s.isItalic() ? TextFormatting.ITALIC + "I" : "I"));
+        xPos += 25;
+
         if (s.max == 0) {
-            buttonList.add(new GuiButton(id + 3, 440, yPos, 20, 20, s.blackout ? "-" : "O"));
+            buttonList.add(new GuiButton(id + 6, xPos, yPos, 20, 20, s.blackout ? "-" : "O"));
             xPos += 30;
         }
         buttonList.add(new GuiButton(-index, xPos, yPos, 20, 20, "X"));
@@ -103,8 +116,7 @@ public class GuiRoadSignEdit extends GuiBase {
             updateSignData();
             sign.markDirty();
             sign.checkForData();
-            List<SignData> data = sign.getData();
-            JesRoads2.channel.sendToServer(new MessageEditSign(true, data.toArray(new SignData[0]), pos));
+            JesRoads2.channel.sendToServer(new MessageTileEntityNBTUpdate(false, pos, sign));
         }
     }
 
@@ -137,11 +149,12 @@ public class GuiRoadSignEdit extends GuiBase {
         drawCenteredString(fontRenderer, "Sign Editor", width / 2, 10, 0xFFFFFF);
         drawCenteredString(fontRenderer, getFacing(), width / 2, 23, 0xAAAAAA);
 
-        drawString(fontRenderer, "xPos", 30, 35, 0xFFFFFF);
-        drawString(fontRenderer, "yPos", 100, 35, 0xFFFFFF);
-        drawString(fontRenderer, "text", 170, 35, 0xFFFFFF);
-        drawString(fontRenderer, "color", 325, 35, 0xFFFFFF);
-        drawString(fontRenderer, "size", 395, 35, 0xFFFFFF);
+        drawString(fontRenderer, "X", 35, 35, 0xFFFFFF);
+        drawString(fontRenderer, "Y", 105, 35, 0xFFFFFF);
+        drawString(fontRenderer, "Text", 170, 35, 0xFFFFFF);
+        drawString(fontRenderer, "Color", 327, 35, 0xFFFFFF);
+        drawString(fontRenderer, "Size", 395, 35, 0xFFFFFF);
+        drawString(fontRenderer, "Effects", 460, 35, 0xFFFFFF);
 
         int yPos = 55;
         for (SignData data : sign.getData()) {
@@ -184,9 +197,13 @@ public class GuiRoadSignEdit extends GuiBase {
             textList.clear();
             initGui();
             return;
-        }
-        else if(button.id == openTemplateManagerButton.id){
+        } else if(button.id == openTemplateManagerButton.id){
             player.openGui(JesRoads2.instance, GuiTemplateManager.ID, world, pos.getX(), pos.getY(), pos.getZ());
+            return;
+        } else if(button.id == signFontButton.id){
+            int version = (sign.getFontVersion() + 1) % (RendererBlockSign.fontResourceLocations.length + 1);
+            sign.setFontVersion(version);
+            button.displayString = "Font #" + version;
             return;
         }
 
@@ -202,21 +219,27 @@ public class GuiRoadSignEdit extends GuiBase {
             return;
         }
 
-        int id = (button.id - 1) / 4,
-                bid = (button.id - 1) - (4 * id),
+        int id = (button.id - 1) / 7,
+                bid = (button.id - 1) - (7 * id),
                 step = GuiScreen.isShiftKeyDown() ? 10 : 2;
+        SignData s = data.get(id);
         if (bid == 0) { // editing xPos
-            if (button.displayString.contains("+")) data.get(id).setPos(step, 0);
-            else data.get(id).setPos(-step, 0);
+            if (button.displayString.contains("+")) s.setPos(step, 0);
+            else s.setPos(-step, 0);
         } else if (bid == 1) { // editing yPos
-            if (button.displayString.contains("+")) data.get(id).setPos(0, step);
-            else data.get(id).setPos(0, -step);
+            if (button.displayString.contains("+")) s.setPos(0, step);
+            else s.setPos(0, -step);
         } else if (bid == 2) { // editing size
-            if (button.displayString.contains("+")) data.get(id).increaseSize(step / 10.f);
-            else data.get(id).increaseSize(-step / 10.f);
-        } else if (bid == 3) { //editing blackout
-            SignData d = data.get(id);
-            button.displayString = d.toggleBlackout() ? "-" : "O";
+            if (button.displayString.contains("+")) s.increaseSize(step / 10.f);
+            else s.increaseSize(-step / 10.f);
+        } else if(bid == 3){ // editing bold
+            button.displayString = s.toggleBold() ? TextFormatting.BOLD + "B" : "B";
+        } else if(bid == 4){ // editing underline
+            button.displayString = s.toggleUnderline() ? TextFormatting.UNDERLINE + "U" : "U";
+        } else if(bid == 5){ // editing italic
+            button.displayString = s.toggleItalic() ? TextFormatting.ITALIC + "I" : "I";
+        } else if (bid == 6) { //editing blackout
+            button.displayString = s.toggleBlackout() ? "-" : "O";
         }
         updateSignData();
     }

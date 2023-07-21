@@ -11,12 +11,15 @@ import mod.jesroads2.world.SignTemplateStorage;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
 public class TileEntityRoadSign extends TileEntityBase {
     private List<SignData> signData = null;
     private EnumSignType signType = null;
     private boolean hasData = false;
+
+    private int fontVersion = 0;
 
     public TileEntityRoadSign() { }
 
@@ -35,6 +38,7 @@ public class TileEntityRoadSign extends TileEntityBase {
             return;
         }
 
+        fontVersion = t.getInteger("font");
         int size = t.hasKey("size") ? t.getInteger("size") : 0;
         signData = new ArrayList<>(size);
         for (int index = 0; index < size; index++) {
@@ -55,6 +59,7 @@ public class TileEntityRoadSign extends TileEntityBase {
             return t;
         }
 
+        t.setInteger("font", fontVersion);
         t.setInteger("size", signData.size());
         int index = 0;
         String key = "data_" + index;
@@ -105,6 +110,7 @@ public class TileEntityRoadSign extends TileEntityBase {
             signData.addAll(Arrays.asList(template.getData()));
             for(int index = 0; index < data.length && index < signData.size(); index++)
                 signData.get(index).setText(data[index]);
+            fontVersion = template.fontVersion;
         }
     }
 
@@ -117,19 +123,20 @@ public class TileEntityRoadSign extends TileEntityBase {
                 signs[index] = new SignData(signData.get(index));
             }
             template.setData(signs);
+            template.fontVersion = fontVersion;
             return template;
         }
 
         return null;
     }
 
-    public void update(SignData[] data) {
-        int size = signData.size(), i;
-        for (i = 0; i < data.length; i++) {
-            if (i < size) signData.get(i).update(data[i]);
-            else signData.add(data[i]);
-        }
-        signData.subList(i, signData.size()).clear();
+    public int getFontVersion(){
+        return fontVersion;
+    }
+
+    public int setFontVersion(int version){
+        fontVersion = version;
+        return fontVersion;
     }
 
     public static class SignData {
@@ -141,6 +148,7 @@ public class TileEntityRoadSign extends TileEntityBase {
         public String data;
 
         public boolean isEditable, blackout;
+        public int effects;
 
         public SignData(int x, int y, int color, float size, String text, int maxLength) {
             xPos = x;
@@ -151,12 +159,14 @@ public class TileEntityRoadSign extends TileEntityBase {
             max = maxLength;
             isEditable = true;
             blackout = false;
+            effects = 0;
         }
 
         public SignData(SignData other){
             this(other.xPos, other.yPos, other.textColor, other.textSize, other.data, other.max);
             isEditable = other.isEditable;
             blackout = other.blackout;
+            effects = other.effects;
         }
 
         public SignData(NBTTagCompound t) {
@@ -169,6 +179,7 @@ public class TileEntityRoadSign extends TileEntityBase {
             if (t.hasKey("editable")) isEditable = t.getBoolean("editable");
             else isEditable = true;
             blackout = t.getBoolean("blackout");
+            effects = t.getInteger("effects");
         }
 
         public NBTTagCompound getTag() {
@@ -181,17 +192,8 @@ public class TileEntityRoadSign extends TileEntityBase {
             t.setInteger("max", max);
             t.setBoolean("editable", isEditable);
             t.setBoolean("blackout", blackout);
+            t.setInteger("effects", effects);
             return t;
-        }
-
-        public void update(SignData d) {
-            xPos = d.xPos;
-            yPos = d.yPos;
-            textColor = d.textColor;
-            textSize = d.textSize;
-            data = d.data;
-            isEditable = d.isEditable;
-            blackout = d.blackout;
         }
 
         public boolean toggleBlackout() {
@@ -230,16 +232,39 @@ public class TileEntityRoadSign extends TileEntityBase {
             return this;
         }
 
+        public boolean isBold(){ return (effects & 1) != 0; }
+        public boolean toggleBold(){
+            effects ^= 1;
+            return isBold();
+        }
+
+        public boolean isUnderline(){ return (effects & 2) != 0; }
+        public boolean toggleUnderline(){
+            effects ^= 2;
+            return isUnderline();
+        }
+
+        public boolean isItalic(){ return (effects & 4) != 0; }
+        public boolean toggleItalic(){
+            effects ^= 4;
+            return isItalic();
+        }
+
+        public String getText(){
+            StringBuilder builder = new StringBuilder();
+            if(isBold()) builder.append(TextFormatting.BOLD);
+            if(isUnderline()) builder.append(TextFormatting.UNDERLINE);
+            if(isItalic()) builder.append(TextFormatting.ITALIC);
+            builder.append(data);
+            return builder.toString();
+        }
+
         public SignData setText(String text) {
             if (isEditable) {
                 if (max > 0) data = text.length() > max ? text.substring(0, max) : text;
                 else data = text;
             }
             return this;
-        }
-
-        public SignData getCopy() {
-            return new SignData(xPos, yPos, textColor, textSize, data, max).setEditable(isEditable);
         }
 
         @Override

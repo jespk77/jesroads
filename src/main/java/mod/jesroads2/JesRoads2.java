@@ -116,7 +116,6 @@ public class JesRoads2 {
     private void registerNetworkMessages() {
         int id = 0;
         channel = NetworkRegistry.INSTANCE.newSimpleChannel("jesroads2");
-        channel.registerMessage(MessageEditSign.MessageEditSignHandler.class, MessageEditSign.class, id++, Side.SERVER);
         channel.registerMessage(MessageItemNBTUpdate.MessageRoadBuilderHandler.class, MessageItemNBTUpdate.class, id++, Side.SERVER);
         channel.registerMessage(MessageBlockUpdate.MessageBlockUpdateHandler.class, MessageBlockUpdate.class, id++, Side.CLIENT);
         channel.registerMessage(MessageFreewayEvent.MessageFreewayEventHandler.class, MessageFreewayEvent.class, id++, Side.SERVER);

@@ -10,6 +10,7 @@ RELEASES
 - All other sign textures have been reworked
 - Added freeway exit sign
 - Added highway overhead signs
+- More font options for signs
 - Fixes and improvements
 
 === REVIVAL UPDATE ===

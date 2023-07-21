@@ -1,5 +1,8 @@
 package mod.jesroads2.client.renderer;
 
+import mod.jesroads2.JesRoads2;
+import net.minecraft.client.Minecraft;
+import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import mod.jesroads2.block.BlockBaseHorizontal;
@@ -17,7 +20,24 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 
 public class RendererBlockSign extends TileEntitySpecialRenderer<TileEntityRoadSign> {
-    public static final float SCALE_FACTOR = 0.01F;
+    private static final float SCALE_FACTOR = 0.01F;
+
+    public static final ResourceLocation[] fontResourceLocations = new ResourceLocation[]{
+            new ResourceLocation(JesRoads2.modid, "textures/font/highway_gothic.png"),
+    };
+
+    private final FontRenderer[] fontRenderers;
+
+    public RendererBlockSign(){
+        Minecraft mc = Minecraft.getMinecraft();
+        fontRenderers = new FontRenderer[fontResourceLocations.length + 1];
+        fontRenderers[0] = mc.fontRenderer;
+        for(int i = 0; i < fontResourceLocations.length; i++) {
+            FontRenderer fontRenderer = new FontRenderer(mc.gameSettings, fontResourceLocations[i], mc.renderEngine, false);
+            fontRenderer.onResourceManagerReload(mc.getResourceManager());
+            fontRenderers[i+1] = fontRenderer;
+        }
+    }
 
     @Override
     public void render(TileEntityRoadSign sign, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
@@ -74,15 +94,14 @@ public class RendererBlockSign extends TileEntitySpecialRenderer<TileEntityRoadS
         }
         GlStateManager.disableLighting();
 
-        FontRenderer font = getFontRenderer();
         for (SignData s : sign.getData())
-            renderText(font, s);
+            renderText(fontRenderers[sign.getFontVersion()], s);
 
         GlStateManager.enableLighting();
         GlStateManager.popMatrix();
     }
 
-    public void renderText(FontRenderer font, SignData data) {
+    public void renderText(FontRenderer fontRenderer, SignData data) {
         float size = data.textSize;
         float fontSize = size * SCALE_FACTOR;
         int x = (int) (data.xPos / size);
@@ -91,16 +110,16 @@ public class RendererBlockSign extends TileEntitySpecialRenderer<TileEntityRoadS
         GL11.glPushMatrix();
         GL11.glRotatef(180.F, 1.F, 0.F, 0.F);
         GL11.glScalef(fontSize, fontSize, fontSize);
+        String text = data.getText();
         if (data.blackout) {
             x -= 1;
             y -= 1;
-            size = 2 * size + 4.2F;
-            double length = font.getStringWidth(data.data) + 1;
+            size = 1.7F * size + 3.8F;
+            double length = fontRenderer.getStringWidth(text) + 1;
             Tessellator tes = Tessellator.getInstance();
             BufferBuilder buffer = tes.getBuffer();
             GlStateManager.color(.1F, .1F, .1F);
             GlStateManager.disableTexture2D();
-            GlStateManager.disableDepth();
             buffer.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION);
             buffer.pos(x, y + size, 0).endVertex();
             buffer.pos(x + length, y + size, 0).endVertex();
@@ -108,8 +127,7 @@ public class RendererBlockSign extends TileEntitySpecialRenderer<TileEntityRoadS
             buffer.pos(x, y, 0).endVertex();
             tes.draw();
             GlStateManager.enableTexture2D();
-            GlStateManager.enableDepth();
-        } else font.drawString(data.data, x, y, data.textColor);
+        } else fontRenderer.drawString(text, x, y, data.textColor);
         GL11.glPopMatrix();
     }
 }

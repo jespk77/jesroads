@@ -12,6 +12,8 @@ public class SignTemplateStorage {
     public static class SignDataTemplate {
         private TileEntityRoadSign.SignData[] templateData;
 
+        public int fontVersion;
+
         public SignDataTemplate(){ }
 
         public SignDataTemplate(NBTTagCompound nbt){
@@ -24,6 +26,7 @@ public class SignTemplateStorage {
             for(int index = 0; index < size; index++){
                 templateData[index] = new TileEntityRoadSign.SignData(nbt.getCompoundTag("item_" + index));
             }
+            fontVersion = nbt.getInteger("font");
         }
 
         public NBTTagCompound writeToNBT(){
@@ -33,12 +36,13 @@ public class SignTemplateStorage {
             for (TileEntityRoadSign.SignData data : templateData){
                 nbt.setTag("item_"+(index++), data.getTag());
             }
+            nbt.setInteger("font", fontVersion);
             return nbt;
         }
 
         public TileEntityRoadSign.SignData[] getData(){
             TileEntityRoadSign.SignData[] data = new TileEntityRoadSign.SignData[templateData.length];
-            for(int index = 0; index < data.length; index++) data[index] = templateData[index].getCopy();
+            for(int index = 0; index < data.length; index++) data[index] = new TileEntityRoadSign.SignData(templateData[index]);
             return data;
         }
 
